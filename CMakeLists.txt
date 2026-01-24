@@ -25,7 +25,7 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_LIST_DIR}/firmware/toolchain-arm-cortex
 
 set(CMAKE_COLOR_MAKEFILE ON)
 
-add_compile_options(-fdiagnostics-color=always)
+add_compile_options( "-D${BOARD}" -fdiagnostics-color=always)
 
 #Flash size related options
 #This is the size of the flash memory we SUPPORT. Don't worry, the internl flash app has harder limits based on device type.
@@ -86,6 +86,7 @@ message("Building version: ${VERSION} MD5: ${VERSION_MD5}")
 set(LICENSE_PATH ${CMAKE_CURRENT_LIST_DIR}/LICENSE)
 set(HARDWARE_PATH ${CMAKE_CURRENT_LIST_DIR}/hardware)
 
+set(BOARD ${BOARD} CACHE STRING "" FORCE) # Ensure it's in the cache
 add_subdirectory(hackrf/firmware)
 
 set(HACKRF_FIRMWARE_DFU_FILENAME hackrf_usb.dfu)

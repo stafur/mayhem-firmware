@@ -26,6 +26,8 @@
 #include "sgpio.h"
 #include "si5351c.h"
 #include "spi_ssp.h"
+#include "max2831.h"
+#include "max2831_target.h"
 #include "max283x.h"
 #include "max5864.h"
 #include "max5864_target.h"
@@ -34,6 +36,7 @@
 #include "i2c_bus.h"
 #include "i2c_lpc.h"
 #include "cpld_jtag.h"
+#include "ice40_spi.h"
 #include "platform_detect.h"
 #include "clkin.h"
 #include <libopencm3/lpc43xx/cgu.h>

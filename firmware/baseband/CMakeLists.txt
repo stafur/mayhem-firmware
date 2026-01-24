@@ -213,7 +213,7 @@ set(CPPWARN "-Wall -Wextra")
 # List all default C defines here, like -D_DEBUG=1
 # TODO: Switch -DCRT0_INIT_DATA depending on load from RAM or SPIFI?
 # NOTE: _RANDOM_TCC to kill a GCC 4.9.3 error with std::max argument types
-set(DDEFS "-DLPC43XX -DLPC43XX_M4 -D__NEWLIB__ -DHACKRF_ONE -DTOOLCHAIN_GCC -DTOOLCHAIN_GCC_ARM -D_RANDOM_TCC=0 -D'VERSION_STRING=\"${VERSION}\"'")
+set(DDEFS "-DLPC43XX -DLPC43XX_M4 -D__NEWLIB__ -D${BOARD} -DTOOLCHAIN_GCC -DTOOLCHAIN_GCC_ARM -D_RANDOM_TCC=0 -D'VERSION_STRING=\"${VERSION}\"'")
 
 # List all default ASM defines here, like -D_DEBUG=1
 set(DADEFS)
@@ -677,13 +677,13 @@ set(MODE_INCDIR
 	${HACKRF_PATH}/firmware/libopencm3/include
 )
 set(MODE_CPPSRC
-	sd_over_usb/proc_sd_over_usb.cpp
+	#sd_over_usb/proc_sd_over_usb.cpp
 
-	sd_over_usb/scsi.c
-	sd_over_usb/diskio.c
-	sd_over_usb/sd_over_usb.c
-	sd_over_usb/usb_descriptor.c
-	sd_over_usb/hackrf_core.c
+	#sd_over_usb/scsi.c
+	#sd_over_usb/diskio.c
+	#sd_over_usb/sd_over_usb.c
+	#sd_over_usb/usb_descriptor.c
+	#sd_over_usb/hackrf_core.c
 
 	${HACKRF_PATH}/firmware/common/adc.c
 	${HACKRF_PATH}/firmware/common/selftest.c
@@ -716,7 +716,7 @@ set(MODE_CPPSRC
 	${HACKRF_PATH}/firmware/libopencm3/lib/lpc43xx/timer.c
 	${HACKRF_PATH}/firmware/libopencm3/lib/lpc43xx/i2c.c
 )
-DeclareTargets(PUSB sd_over_usb)
+# DeclareTargets(PUSB sd_over_usb)
 
 
 ### HackRF "factory" firmware
