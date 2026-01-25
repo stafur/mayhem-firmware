@@ -572,9 +572,14 @@ static const scu_setup_t pin_setup_detect { 5,  0, scu_config_normal_drive_t { .
 
 /* Check resistor on GPIO2_9 (P5_0) to detect HackRF hardware revision. */
 extern "C" bool detect_hackrf_r9() {
+#ifdef PRALINE
+    // Force TRUE to reflect gpio similarities with R9
+    return true;
+#else
     setup_pin(pin_setup_detect);
     LPC_GPIO->DIR[2] &= ~(1 << 9);
     return LPC_GPIO->W2[9] == 0;
+#endif
 }
 
 static void configure_spifi(void) {

@@ -336,6 +336,15 @@ static void set_cpu_clock_speed() {
      * core clock speed to the 110 - 204MHz range.
      */
 
+    //USED TO DEBUG PRALINE BOARD
+    ui::Painter painter;
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: SETSPD1A"
+    );
+
+
     /* Step into the 90-110MHz M4 clock range */
     /* OG:
      * 	Fclkin = 40M
@@ -518,22 +527,46 @@ init_status_t init() {
     } else {
         if (check_portapack_cpld() == false)
             return init_status_t::INIT_PORTAPACK_CPLD_FAILED;
-    }
+    };
 
     /* Cache some configuration data from persistent memory. */
     rtc_time::dst_init();
+
     chThdSleepMilliseconds(10);
 
+    //USED TO DEBUG PRALINE BOARD
+    ui::Painter painter;
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: INITCLKGEN==="
+    );
+    chThdSleepMilliseconds(3000);
     clock_manager.init_clock_generator();
 
     i2c0.stop();
-
     chThdSleepMilliseconds(10);
 
     set_clock_config(clock_config_irc);
+
     cgu::pll1::disable();
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: PLL1X==="
+    );
+    chThdSleepMilliseconds(3000);
 
     set_cpu_clock_speed();
+
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: SETSPD==="
+    );
+
 
     /* sample max: 1023 sample_t AKA uint16_t
      * touch_sensitivity: range: 1 to 128
@@ -548,7 +581,7 @@ init_status_t init() {
 
     i2c0.start(i2c_config_fast_clock);
     chThdSleepMilliseconds(10);
-
+    
     /* Check if portapack is attached by checking if any of the two audio chips is present. */
     if (lcd_fast_setup == false && is_portapack_present() == false)
         return init_status_t::INIT_NO_PORTAPACK;
@@ -556,27 +589,39 @@ init_status_t init() {
     if (lcd_fast_setup)
         draw_splash_screen_icon(1, ui::bitmap_icon_remote);
 
+#ifndef PRALINE
     touch::adc::init();
     controls_init();
+#endif
+
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: CTRLS===" 
+    );
+
     chThdSleepMilliseconds(10);
 
     clock_manager.set_reference_ppb(persistent_memory::correction_ppb());
     clock_manager.enable_if_clocks();
     clock_manager.enable_codec_clocks();
-    radio::init();
 
+#ifndef PRALINE
+    radio::init();
     sdcStart(&SDCD1, nullptr);
     sd_card::poll_inserted();
-
+#endif
     chThdSleepMilliseconds(10);
 
     if (lcd_fast_setup)
         draw_splash_screen_icon(2, ui::bitmap_icon_sd);
 
+    hackrf_r9 = true;
     init_status_t return_code = init_status_t::INIT_SUCCESS;
     if (!hackrf::cpld::load_sram()) {
-        if (lcd_fast_setup)
-            chDbgPanic("HACKRF CPLD FAILED");
+        //if (lcd_fast_setup)
+            //chDbgPanic("HACKRF CPLD FAILED");
 
         return_code = init_status_t::INIT_HACKRF_CPLD_FAILED;
     }
@@ -591,9 +636,11 @@ init_status_t init() {
 
     chThdSleepMilliseconds(10);
 
+#ifndef PRALINE
     audio::init(portapack_audio_codec());
     battery::BatteryManagement::set_calc_override(persistent_memory::ui_override_batt_calc());
     i2cdev::I2CDevManager::init();
+#endif
 
     if (lcd_fast_setup)
         draw_splash_screen_icon(4, ui::bitmap_icon_speaker);

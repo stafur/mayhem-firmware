@@ -279,7 +279,31 @@ void ClockManager::init_clock_generator() {
             .clk_pdn(ClockControl::ClockPowerDown::Power_On));
     clock_generator.enable_output(clock_generator_output_mcu_clkin);
 
+    //USED TO DEBUG PRALINE BOARD
+    ui::Painter painter;
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: CLCK CHKREF1==="
+    );
+    chThdSleepMilliseconds(3000);
+
+#ifdef PRALINE
+    // FOR HACKRF_PRO DRIVE THE CLOCK REGISTERS FIRST
+    clock_generator.write(si5351_pll_a_xtal_reg);
+    clock_generator.write(si5351a_ms_2_mcu_10m_reg);
+    clock_generator.reset_plls();
+    chThdSleepMilliseconds(50); // Small wait for Si5351 to stabilize
+#endif
+
     reference = choose_reference();
+    
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: CLCK CHKREF3==="
+    );
+    chThdSleepMilliseconds(3000);
 
     clock_generator.disable_output(clock_generator_output_mcu_clkin);
 
@@ -328,8 +352,18 @@ void ClockManager::init_clock_generator() {
                                  : (ref_pll == ClockControl::MultiSynthSource::PLLB)
                                      ? 0x40
                                      : 0x20;
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: CLCK GENSTT1==="
+    );
     while ((clock_generator.device_status() & device_status_mask) != 0);
-
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: CLCK GENSTT2==="
+    );
     clock_generator.set_clock_control(
         clock_generator_output_mcu_clkin,
         si5351_clock_control_common[clock_generator_output_mcu_clkin].ms_src(ref_pll).clk_pdn(ClockControl::ClockPowerDown::Power_On));
@@ -372,10 +406,66 @@ ClockManager::ReferenceSource ClockManager::detect_reference_source() {
 }
 
 ClockManager::Reference ClockManager::choose_reference() {
+    //USED TO DEBUG PRALINE BOARD
+    ui::Painter painter;
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: CLCK CHKREF2==="
+    );
+    chThdSleepMilliseconds(3000);
+
+#ifdef PRALINE
+    hackrf_r9 = true;
+#endif
     if (hackrf_r9) {
+#ifdef PRALINE
+        //USED TO DEBUG PRALINE BOARD
+        //ui::Painter painter;
+        painter.draw_string(
+            {0, 0},// Coordinates (X, Y)
+            ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+            "DEBUG: CLCK CHKREF2A==="
+        );
+        chThdSleepMilliseconds(3000);
+#endif
+
         gpio_r9_clkin_en.write(1);
+
+#ifdef PRALINE
+
+	// Force the correct R9 reference source and frequency
+        // Praline/R9 MUST use 10000000 (10MHz), NOT 25000000.
+        const Reference r9_ref = { ReferenceSource::Xtal, 10000000 };
+
+	//USED TO DEBUG PRALINE BOARD
+        //ui::Painter painter;
+        painter.draw_string(
+            {0, 0},// Coordinates (X, Y)
+            ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+            "DEBUG: CLCK CHKREF2B==="
+        );
+        chThdSleepMilliseconds(3000);
+
+	// Increase the stabilization delay significantly.
+        // A blank screen often means the MCU clock glitched during the transition.
+        volatile uint32_t delay = 1000000;
+        while (delay--);
+
+        //USED TO DEBUG PRALINE BOARD
+        //ui::Painter painter;
+        painter.draw_string(
+            {0, 0},// Coordinates (X, Y)
+            ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+            "DEBUG: CLCK CHKREF2C==="
+        );
+        chThdSleepMilliseconds(3000);
+
+        return r9_ref;
+#else
         volatile uint32_t delay = 240000 + 24000;
         while (delay--);
+#endif
     }
     const auto detected_reference = detect_reference_source();
 
@@ -576,7 +666,13 @@ void ClockManager::stop_audio_pll() {
 }
 
 void ClockManager::enable_clock_output(bool enable) {
-    if (hackrf_r9) {
+//Create a safety flag specifically for PRALINE
+#ifdef PRALINE
+        const bool needs_r9_safety = true;
+#else
+       const bool needs_r9_safety = hackrf_r9;
+#endif
+    if (needs_r9_safety) {
         gpio_r9_clkout_en.output();
         gpio_r9_clkout_en.write(enable);
 
