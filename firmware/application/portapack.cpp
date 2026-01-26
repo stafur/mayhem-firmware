@@ -374,7 +374,6 @@ static void set_cpu_clock_speed() {
 		    Color::yellow(), Color::black()}, 
 		    "PRO: STAYING ON IRC");
     return;
-#endif
 
     //USED TO DEBUG PRALINE BOARD
     painter.draw_string(
@@ -383,6 +382,7 @@ static void set_cpu_clock_speed() {
         "DEBUG: CLK IN TST==="
     );
     chThdSleepMilliseconds(3000);
+#endif
 
     cgu::pll1::enable();
 
@@ -400,9 +400,6 @@ static void set_cpu_clock_speed() {
 		"ERR: PLL1 LOCK FAIL");
         return;
     }
-#else
-    while (!cgu::pll1::is_locked());
-#endif 
 
     //USED TO DEBUG PRALINE BOARD
     painter.draw_string(
@@ -410,6 +407,10 @@ static void set_cpu_clock_speed() {
         ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
         "DEBUG: SETSPD1B==="
     );
+
+#else
+    while (!cgu::pll1::is_locked());
+#endif 
 
     set_clock_config(clock_config_pll1_step);
 
@@ -671,6 +672,7 @@ init_status_t init() {
     gpdma::controller.enable();
     chThdSleepMilliseconds(10);
 
+#ifdef PRALINE    
     //USED TO DEBUG PRALINE BOARD
     ui::Painter painter;
     painter.draw_string(
@@ -679,9 +681,12 @@ init_status_t init() {
         "DEBUG: GDMA==="
     );
     chThdSleepMilliseconds(3000);
+#endif
 
-/*
+#ifndef PRALINE
     audio::init(portapack_audio_codec());
+#else
+    //audio::init(portapack_audio_codec());
     //USED TO DEBUG PRALINE BOARD
     painter.draw_string(
         {0, 0},// Coordinates (X, Y)
@@ -689,9 +694,10 @@ init_status_t init() {
         "DEBUG: AUDIO==="
     );
     chThdSleepMilliseconds(3000);
-*/
+#endif
 
     battery::BatteryManagement::set_calc_override(persistent_memory::ui_override_batt_calc());
+#ifdef PRALINE
     //USED TO DEBUG PRALINE BOARD
     painter.draw_string(
         {0, 0},// Coordinates (X, Y)
@@ -699,8 +705,10 @@ init_status_t init() {
         "DEBUG: BTTRY==="
     );
     chThdSleepMilliseconds(3000);
+#endif
 
     i2cdev::I2CDevManager::init();
+#ifdef PRALINE
     //USED TO DEBUG PRALINE BOARD
     painter.draw_string(
         {0, 0},// Coordinates (X, Y)
@@ -708,6 +716,7 @@ init_status_t init() {
         "DEBUG: I2CDEV==="
     );
     chThdSleepMilliseconds(3000);
+#endif
 
     if (lcd_fast_setup)
         draw_splash_screen_icon(4, ui::bitmap_icon_speaker);
@@ -716,6 +725,7 @@ init_status_t init() {
         portapack::backlight()->on();
     }
 
+#ifdef PRALINE
     //USED TO DEBUG PRALINE BOARD
     painter.draw_string(
         {0, 0},// Coordinates (X, Y)
@@ -723,7 +733,7 @@ init_status_t init() {
         "DEBUG: RTRNTOMAIN==="
     );
     chThdSleepMilliseconds(3000);
-
+#endif
     return return_code;
 }
 
