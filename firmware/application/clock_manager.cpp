@@ -279,32 +279,26 @@ void ClockManager::init_clock_generator() {
             .clk_pdn(ClockControl::ClockPowerDown::Power_On));
     clock_generator.enable_output(clock_generator_output_mcu_clkin);
 
-    //USED TO DEBUG PRALINE BOARD
-    ui::Painter painter;
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: CLCK CHKREF1==="
-    );
-    chThdSleepMilliseconds(3000);
-
 #ifdef PRALINE
     // FOR HACKRF_PRO DRIVE THE CLOCK REGISTERS FIRST
+    // Force the pins to GPIO mode with no pull-ups/downs
+    // P2_11 is clkin_en, P2_12 is clkout_en on R9/Pro
+    LPC_SCU->SFSP[2][11] = 0x0; // GPIO mode, disable glitch filter
+    LPC_SCU->SFSP[2][12] = 0x0;
+
+    // Ensure the GPIO directions are set to output
+    gpio_r9_clkin_en.output();
+    gpio_r9_clkout_en.output();
+
     clock_generator.write(si5351_pll_a_xtal_reg);
     clock_generator.write(si5351a_ms_2_mcu_10m_reg);
     clock_generator.reset_plls();
+
     chThdSleepMilliseconds(50); // Small wait for Si5351 to stabilize
 #endif
 
     reference = choose_reference();
     
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: CLCK CHKREF3==="
-    );
-    chThdSleepMilliseconds(3000);
-
     clock_generator.disable_output(clock_generator_output_mcu_clkin);
 
     const auto ref_pll = hackrf_r9
@@ -352,18 +346,9 @@ void ClockManager::init_clock_generator() {
                                  : (ref_pll == ClockControl::MultiSynthSource::PLLB)
                                      ? 0x40
                                      : 0x20;
-    //USED TO DEBUG PRALINE BOARD
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: CLCK GENSTT1==="
-    );
+
     while ((clock_generator.device_status() & device_status_mask) != 0);
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: CLCK GENSTT2==="
-    );
+
     clock_generator.set_clock_control(
         clock_generator_output_mcu_clkin,
         si5351_clock_control_common[clock_generator_output_mcu_clkin].ms_src(ref_pll).clk_pdn(ClockControl::ClockPowerDown::Power_On));
@@ -406,63 +391,30 @@ ClockManager::ReferenceSource ClockManager::detect_reference_source() {
 }
 
 ClockManager::Reference ClockManager::choose_reference() {
-    //USED TO DEBUG PRALINE BOARD
-    ui::Painter painter;
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: CLCK CHKREF2==="
-    );
-    chThdSleepMilliseconds(3000);
 
 #ifdef PRALINE
     hackrf_r9 = true;
 #endif
     if (hackrf_r9) {
 #ifdef PRALINE
-        //USED TO DEBUG PRALINE BOARD
-        //ui::Painter painter;
-        painter.draw_string(
-            {0, 0},// Coordinates (X, Y)
-            ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-            "DEBUG: CLCK CHKREF2A==="
-        );
-        chThdSleepMilliseconds(3000);
-#endif
+	gpio_r9_clkout_en.write(1); // Enable clock output from Si5351
 
-        gpio_r9_clkin_en.write(1);
-
-#ifdef PRALINE
+	// P2_11 is GP_CLKIN. We must enable the input buffer (bit 6)
+        // and set it to high-speed mode (bit 5).
+        LPC_SCU->SFSP[2][11] = (0 << 0) | (1 << 5) | (1 << 6);
 
 	// Force the correct R9 reference source and frequency
         // Praline/R9 MUST use 10000000 (10MHz), NOT 25000000.
         const Reference r9_ref = { ReferenceSource::Xtal, 10000000 };
-
-	//USED TO DEBUG PRALINE BOARD
-        //ui::Painter painter;
-        painter.draw_string(
-            {0, 0},// Coordinates (X, Y)
-            ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-            "DEBUG: CLCK CHKREF2B==="
-        );
-        chThdSleepMilliseconds(3000);
 
 	// Increase the stabilization delay significantly.
         // A blank screen often means the MCU clock glitched during the transition.
         volatile uint32_t delay = 1000000;
         while (delay--);
 
-        //USED TO DEBUG PRALINE BOARD
-        //ui::Painter painter;
-        painter.draw_string(
-            {0, 0},// Coordinates (X, Y)
-            ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-            "DEBUG: CLCK CHKREF2C==="
-        );
-        chThdSleepMilliseconds(3000);
-
         return r9_ref;
 #else
+        gpio_r9_clkin_en.write(1);
         volatile uint32_t delay = 240000 + 24000;
         while (delay--);
 #endif

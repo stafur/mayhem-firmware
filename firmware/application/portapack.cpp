@@ -336,15 +336,6 @@ static void set_cpu_clock_speed() {
      * core clock speed to the 110 - 204MHz range.
      */
 
-    //USED TO DEBUG PRALINE BOARD
-    ui::Painter painter;
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: SETSPD1A"
-    );
-
-
     /* Step into the 90-110MHz M4 clock range */
     /* OG:
      * 	Fclkin = 40M
@@ -368,8 +359,57 @@ static void set_cpu_clock_speed() {
         .clk_sel = cgu::CLK_SEL::GP_CLKIN,
     });
 
+#ifdef PRALINE
+    // NOW enable the hardware path from the FPGA
+    // Doing it here minimizes the time the MCU spends "breathless"
+    
+    //TODO: gpio_r9_clkin_en.write(1); //This write is causing the screen to go black.
+
+    // We SKIP the switch to GP_CLKIN entirely.
+    // This prevents the black screen.
+    ui::Painter painter;
+    painter.draw_string(
+		    {0, 16}, 
+		    {ui::font::fixed_8x16, 
+		    Color::yellow(), Color::black()}, 
+		    "PRO: STAYING ON IRC");
+    return;
+#endif
+
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: CLK IN TST==="
+    );
+    chThdSleepMilliseconds(3000);
+
     cgu::pll1::enable();
+
+#ifdef PRALINE
+    // Add a safety counter to prevent infinite hang
+    uint32_t timeout = 1000000;
+    while (!cgu::pll1::is_locked() && --timeout);
+
+    if (timeout == 0) {
+        // If we timed out, the clock is DEAD.
+        // Print a warning and stay on the internal 12MHz clock.
+        painter.draw_string(
+		{0, 16}, 
+		{ui::font::fixed_8x16, Color::red(), Color::black()}, 
+		"ERR: PLL1 LOCK FAIL");
+        return;
+    }
+#else
     while (!cgu::pll1::is_locked());
+#endif 
+
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: SETSPD1B==="
+    );
 
     set_clock_config(clock_config_pll1_step);
 
@@ -508,10 +548,14 @@ static void initialize_boot_splash_screen() {
  */
 
 init_status_t init() {
+#ifdef PRALINE
+    //Force R9 HACKRF PRO mimic for boot.
+    hackrf_r9 = true;
+#endif    
+
     set_idivc_base_clocks(cgu::CLK_SEL::IDIVC);
 
     i2c0.start(i2c_config_boot_clock);
-
     chThdSleepMilliseconds(100);
 
     configure_pins_portapack();
@@ -523,6 +567,8 @@ init_status_t init() {
     bool lcd_fast_setup = switches_state == 0 && portapack::display.read_display_status();
 
     if (lcd_fast_setup) {
+        portapack::display.init();
+        portapack::backlight()->on();
         initialize_boot_splash_screen();
     } else {
         if (check_portapack_cpld() == false)
@@ -531,17 +577,8 @@ init_status_t init() {
 
     /* Cache some configuration data from persistent memory. */
     rtc_time::dst_init();
-
     chThdSleepMilliseconds(10);
 
-    //USED TO DEBUG PRALINE BOARD
-    ui::Painter painter;
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: INITCLKGEN==="
-    );
-    chThdSleepMilliseconds(3000);
     clock_manager.init_clock_generator();
 
     i2c0.stop();
@@ -550,23 +587,7 @@ init_status_t init() {
     set_clock_config(clock_config_irc);
 
     cgu::pll1::disable();
-    //USED TO DEBUG PRALINE BOARD
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: PLL1X==="
-    );
-    chThdSleepMilliseconds(3000);
-
     set_cpu_clock_speed();
-
-    //USED TO DEBUG PRALINE BOARD
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: SETSPD==="
-    );
-
 
     /* sample max: 1023 sample_t AKA uint16_t
      * touch_sensitivity: range: 1 to 128
@@ -576,6 +597,10 @@ init_status_t init() {
 
     if (lcd_fast_setup)
         draw_splash_screen_icon(0, ui::bitmap_icon_memory);
+    else {
+        portapack::display.init();
+        portapack::backlight()->on();
+    }
 
     usb_serial.initialize();
 
@@ -588,59 +613,101 @@ init_status_t init() {
 
     if (lcd_fast_setup)
         draw_splash_screen_icon(1, ui::bitmap_icon_remote);
+    else {
+        portapack::display.init();
+        portapack::backlight()->on();
+    }
 
-#ifndef PRALINE
     touch::adc::init();
     controls_init();
-#endif
-
-    //USED TO DEBUG PRALINE BOARD
-    painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: CTRLS===" 
-    );
-
     chThdSleepMilliseconds(10);
 
     clock_manager.set_reference_ppb(persistent_memory::correction_ppb());
     clock_manager.enable_if_clocks();
     clock_manager.enable_codec_clocks();
 
-#ifndef PRALINE
     radio::init();
     sdcStart(&SDCD1, nullptr);
     sd_card::poll_inserted();
-#endif
     chThdSleepMilliseconds(10);
 
     if (lcd_fast_setup)
         draw_splash_screen_icon(2, ui::bitmap_icon_sd);
+    else {
+        portapack::display.init();
+        portapack::backlight()->on();
+    }
 
-    hackrf_r9 = true;
+
+#ifdef PRALINE
+    //Start the FGPA sooner for the HACKRF_PRO
     init_status_t return_code = init_status_t::INIT_SUCCESS;
     if (!hackrf::cpld::load_sram()) {
         //if (lcd_fast_setup)
             //chDbgPanic("HACKRF CPLD FAILED");
+        
+        return_code = init_status_t::INIT_HACKRF_CPLD_FAILED;
+    }
+    chThdSleepMilliseconds(100);
+#else    
+    init_status_t return_code = init_status_t::INIT_SUCCESS;
+    if (!hackrf::cpld::load_sram()) {
+        if (lcd_fast_setup)
+            chDbgPanic("HACKRF CPLD FAILED");
 
         return_code = init_status_t::INIT_HACKRF_CPLD_FAILED;
     }
+#endif
 
     if (lcd_fast_setup)
         draw_splash_screen_icon(3, ui::bitmap_icon_hackrf);
-
+    else {
+        portapack::display.init();
+        portapack::backlight()->on();
+    }
     chThdSleepMilliseconds(10);  // This delay seems to solve white noise audio issues
 
     LPC_CREG->DMAMUX = portapack::gpdma_mux;
     gpdma::controller.enable();
-
     chThdSleepMilliseconds(10);
 
-#ifndef PRALINE
+    //USED TO DEBUG PRALINE BOARD
+    ui::Painter painter;
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: GDMA==="
+    );
+    chThdSleepMilliseconds(3000);
+
+/*
     audio::init(portapack_audio_codec());
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: AUDIO==="
+    );
+    chThdSleepMilliseconds(3000);
+*/
+
     battery::BatteryManagement::set_calc_override(persistent_memory::ui_override_batt_calc());
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: BTTRY==="
+    );
+    chThdSleepMilliseconds(3000);
+
     i2cdev::I2CDevManager::init();
-#endif
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: I2CDEV==="
+    );
+    chThdSleepMilliseconds(3000);
 
     if (lcd_fast_setup)
         draw_splash_screen_icon(4, ui::bitmap_icon_speaker);
@@ -648,6 +715,14 @@ init_status_t init() {
         portapack::display.init();
         portapack::backlight()->on();
     }
+
+    //USED TO DEBUG PRALINE BOARD
+    painter.draw_string(
+        {0, 0},// Coordinates (X, Y)
+        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
+        "DEBUG: RTRNTOMAIN==="
+    );
+    chThdSleepMilliseconds(3000);
 
     return return_code;
 }
