@@ -1,0 +1,5611 @@
+.
+├── build.sh
+├── CMakeLists.txt
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── docker-compose-nogit.yml
+├── docker-compose.yml
+├── dockerfile
+├── dockerfile-alpine
+├── dockerfile-nogit
+├── dockerfile-nogit-alpine
+├── dockerfile-nogit-arm
+├── dockerize.sh
+├── docs
+│   ├── favicon.ico
+│   ├── images
+│   │   ├── h2_cover.jpg
+│   │   └── h2_front.jpg
+│   └── index.html
+├── firmware
+│   ├── application
+│   │   ├── apps
+│   │   │   ├── ais_app.cpp
+│   │   │   ├── ais_app.hpp
+│   │   │   ├── analog_audio_app.cpp
+│   │   │   ├── analog_audio_app.hpp
+│   │   │   ├── ble_comm_app.cpp
+│   │   │   ├── ble_comm_app.hpp
+│   │   │   ├── ble_rx_app.cpp
+│   │   │   ├── ble_rx_app.hpp
+│   │   │   ├── ble_tx_app.cpp
+│   │   │   ├── ble_tx_app.hpp
+│   │   │   ├── capture_app.cpp
+│   │   │   ├── capture_app.hpp
+│   │   │   ├── dump1090.hpp
+│   │   │   ├── pocsag_app.cpp
+│   │   │   ├── pocsag_app.hpp
+│   │   │   ├── spectrum_analysis_app.cpp
+│   │   │   ├── spectrum_analysis_app.hpp
+│   │   │   ├── ui_about_simple.cpp
+│   │   │   ├── ui_about_simple.hpp
+│   │   │   ├── ui_adsb_rx.cpp
+│   │   │   ├── ui_adsb_rx.hpp
+│   │   │   ├── ui_aprs_rx.cpp
+│   │   │   ├── ui_aprs_rx.hpp
+│   │   │   ├── ui_aprs_tx.cpp
+│   │   │   ├── ui_aprs_tx.hpp
+│   │   │   ├── ui_battinfo.cpp
+│   │   │   ├── ui_battinfo.hpp
+│   │   │   ├── ui_bmp_file_viewer.cpp
+│   │   │   ├── ui_bmp_file_viewer.hpp
+│   │   │   ├── ui_btle_rx.cpp
+│   │   │   ├── ui_btle_rx.hpp
+│   │   │   ├── ui_debug.cpp
+│   │   │   ├── ui_debug.hpp
+│   │   │   ├── ui_debug_max17055.cpp
+│   │   │   ├── ui_debug_max17055.hpp
+│   │   │   ├── ui_dfu_menu.cpp
+│   │   │   ├── ui_dfu_menu.hpp
+│   │   │   ├── ui_encoders.cpp
+│   │   │   ├── ui_encoders.hpp
+│   │   │   ├── ui_external_module_view.cpp
+│   │   │   ├── ui_external_module_view.hpp
+│   │   │   ├── ui_fileman.cpp
+│   │   │   ├── ui_fileman.hpp
+│   │   │   ├── ui_flash_utility.cpp
+│   │   │   ├── ui_flash_utility.hpp
+│   │   │   ├── ui_freqman.cpp
+│   │   │   ├── ui_freqman.hpp
+│   │   │   ├── ui_iq_trim.cpp
+│   │   │   ├── ui_iq_trim.hpp
+│   │   │   ├── ui_looking_glass_app.cpp
+│   │   │   ├── ui_looking_glass_app.hpp
+│   │   │   ├── ui_mictx.cpp
+│   │   │   ├── ui_mictx.hpp
+│   │   │   ├── ui_modemsetup.cpp
+│   │   │   ├── ui_modemsetup.hpp
+│   │   │   ├── ui_playlist.cpp
+│   │   │   ├── ui_playlist.hpp
+│   │   │   ├── ui_pocsag_tx.cpp
+│   │   │   ├── ui_pocsag_tx.hpp
+│   │   │   ├── ui_rds.cpp
+│   │   │   ├── ui_rds.hpp
+│   │   │   ├── ui_recon.cpp
+│   │   │   ├── ui_recon.hpp
+│   │   │   ├── ui_recon_settings.cpp
+│   │   │   ├── ui_recon_settings.hpp
+│   │   │   ├── ui_search.cpp
+│   │   │   ├── ui_search.hpp
+│   │   │   ├── ui_settings.cpp
+│   │   │   ├── ui_settings.hpp
+│   │   │   ├── ui_sigfrx.cpp
+│   │   │   ├── ui_sigfrx.hpp
+│   │   │   ├── ui_sonde.cpp
+│   │   │   ├── ui_sonde.hpp
+│   │   │   ├── ui_ss_viewer.cpp
+│   │   │   ├── ui_ss_viewer.hpp
+│   │   │   ├── ui_standalone_view.cpp
+│   │   │   ├── ui_standalone_view.hpp
+│   │   │   ├── ui_subghzd.cpp
+│   │   │   ├── ui_subghzd.hpp
+│   │   │   ├── ui_test.cpp
+│   │   │   ├── ui_test.hpp
+│   │   │   ├── ui_text_editor.cpp
+│   │   │   ├── ui_text_editor.hpp
+│   │   │   ├── ui_touch_calibration.cpp
+│   │   │   ├── ui_touch_calibration.hpp
+│   │   │   ├── ui_touchtunes.cpp
+│   │   │   ├── ui_touchtunes.hpp
+│   │   │   ├── ui_weatherstation.cpp
+│   │   │   └── ui_weatherstation.hpp
+│   │   ├── app_settings.cpp
+│   │   ├── app_settings.hpp
+│   │   ├── audio.cpp
+│   │   ├── audio.hpp
+│   │   ├── baseband_api.cpp
+│   │   ├── baseband_api.hpp
+│   │   ├── binder.hpp
+│   │   ├── bitmap.hpp
+│   │   ├── capture_thread.cpp
+│   │   ├── capture_thread.hpp
+│   │   ├── chconf.h
+│   │   ├── clock_manager.cpp
+│   │   ├── clock_manager.hpp
+│   │   ├── CMakeLists.txt
+│   │   ├── config_mode.cpp
+│   │   ├── config_mode.hpp
+│   │   ├── core_control.cpp
+│   │   ├── core_control.hpp
+│   │   ├── database.cpp
+│   │   ├── database.hpp
+│   │   ├── debug.cpp
+│   │   ├── debug.hpp
+│   │   ├── demofont.hpp
+│   │   ├── dirty_registers.hpp
+│   │   ├── event_m0.cpp
+│   │   ├── event_m0.hpp
+│   │   ├── external
+│   │   │   ├── acars_rx
+│   │   │   │   ├── acars_app.cpp
+│   │   │   │   ├── acars_app.hpp
+│   │   │   │   └── main.cpp
+│   │   │   ├── adsbtx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_adsb_tx.cpp
+│   │   │   │   └── ui_adsb_tx.hpp
+│   │   │   ├── adult_toys_controller
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_adult_toys_controller.cpp
+│   │   │   │   └── ui_adult_toys_controller.hpp
+│   │   │   ├── afsk_rx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_afsk_rx.cpp
+│   │   │   │   └── ui_afsk_rx.hpp
+│   │   │   ├── analogtv
+│   │   │   │   ├── analog_tv_app.cpp
+│   │   │   │   ├── analog_tv_app.hpp
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_tv.cpp
+│   │   │   │   └── ui_tv.hpp
+│   │   │   ├── antenna_length
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_whipcalc.cpp
+│   │   │   │   └── ui_whipcalc.hpp
+│   │   │   ├── app_manager
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_app_manager.cpp
+│   │   │   │   └── ui_app_manager.hpp
+│   │   │   ├── audio_test
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_audio_test.cpp
+│   │   │   │   └── ui_audio_test.hpp
+│   │   │   ├── battleship
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_battleship.cpp
+│   │   │   │   └── ui_battleship.hpp
+│   │   │   ├── bht_tx
+│   │   │   │   ├── bht.cpp
+│   │   │   │   ├── bht.hpp
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_bht_tx.cpp
+│   │   │   │   └── ui_bht_tx.hpp
+│   │   │   ├── blackjack
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_blackjack.cpp
+│   │   │   │   └── ui_blackjack.hpp
+│   │   │   ├── blespam
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_blespam.cpp
+│   │   │   │   └── ui_blespam.hpp
+│   │   │   ├── breakout
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_breakout.cpp
+│   │   │   │   └── ui_breakout.hpp
+│   │   │   ├── calculator
+│   │   │   │   ├── ivt.hpp
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_calculator.cpp
+│   │   │   │   └── ui_calculator.hpp
+│   │   │   ├── coasterp
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_coasterp.cpp
+│   │   │   │   └── ui_coasterp.hpp
+│   │   │   ├── cvs_spam
+│   │   │   │   ├── cvs_spam.cpp
+│   │   │   │   ├── cvs_spam.hpp
+│   │   │   │   └── main.cpp
+│   │   │   ├── debug_pmem
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_debug_pmem.cpp
+│   │   │   │   └── ui_debug_pmem.hpp
+│   │   │   ├── detector_rx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_detector_rx.cpp
+│   │   │   │   └── ui_detector_rx.hpp
+│   │   │   ├── dinogame
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── sprites
+│   │   │   │   │   ├── dino.h
+│   │   │   │   │   └── pterodactyl.h
+│   │   │   │   ├── ui_dinogame.cpp
+│   │   │   │   └── ui_dinogame.hpp
+│   │   │   ├── doom
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_doom.cpp
+│   │   │   │   └── ui_doom.hpp
+│   │   │   ├── epirb_rx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_epirb_rx.cpp
+│   │   │   │   └── ui_epirb_rx.hpp
+│   │   │   ├── ert
+│   │   │   │   ├── ert_app.cpp
+│   │   │   │   ├── ert_app.hpp
+│   │   │   │   └── main.cpp
+│   │   │   ├── external.cmake
+│   │   │   ├── external.ld
+│   │   │   ├── extsensors
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_extsensors.cpp
+│   │   │   │   └── ui_extsensors.hpp
+│   │   │   ├── flex_rx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_flex_rx.cpp
+│   │   │   │   └── ui_flex_rx.hpp
+│   │   │   ├── flippertx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_flippertx.cpp
+│   │   │   │   └── ui_flippertx.hpp
+│   │   │   ├── fmradio
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_fmradio.cpp
+│   │   │   │   └── ui_fmradio.hpp
+│   │   │   ├── font_viewer
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_font_viewer.cpp
+│   │   │   │   └── ui_font_viewer.hpp
+│   │   │   ├── foxhunt
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_foxhunt_rx.cpp
+│   │   │   │   └── ui_foxhunt_rx.hpp
+│   │   │   ├── game2048
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_game2048.cpp
+│   │   │   │   └── ui_game2048.hpp
+│   │   │   ├── gfxeq
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_gfxeq.cpp
+│   │   │   │   └── ui_gfxeq.hpp
+│   │   │   ├── gpssim
+│   │   │   │   ├── gps_sim_app.cpp
+│   │   │   │   ├── gps_sim_app.hpp
+│   │   │   │   └── main.cpp
+│   │   │   ├── hopper
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_hopper.cpp
+│   │   │   │   └── ui_hopper.hpp
+│   │   │   ├── jammer
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_jammer.cpp
+│   │   │   │   └── ui_jammer.hpp
+│   │   │   ├── keyfob
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_keyfob.cpp
+│   │   │   │   └── ui_keyfob.hpp
+│   │   │   ├── lcr
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_lcr.cpp
+│   │   │   │   └── ui_lcr.hpp
+│   │   │   ├── level
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_level.cpp
+│   │   │   │   └── ui_level.hpp
+│   │   │   ├── lge
+│   │   │   │   ├── lge_app.cpp
+│   │   │   │   ├── lge_app.hpp
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── rfm69.cpp
+│   │   │   │   └── rfm69.hpp
+│   │   │   ├── mcu_temperature
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── mcu_temperature.cpp
+│   │   │   │   └── mcu_temperature.hpp
+│   │   │   ├── metronome
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_metronome.cpp
+│   │   │   │   └── ui_metronome.hpp
+│   │   │   ├── morse_practice
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── morsedecoder.hpp
+│   │   │   │   ├── ui_morse_practice.cpp
+│   │   │   │   └── ui_morse_practice.hpp
+│   │   │   ├── morse_radio
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── morsedecoder.hpp
+│   │   │   │   ├── ui_morse_radio.cpp
+│   │   │   │   └── ui_morse_radio.hpp
+│   │   │   ├── morse_tx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_morse.cpp
+│   │   │   │   └── ui_morse.hpp
+│   │   │   ├── noaaapt_rx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_noaaapt_rx.cpp
+│   │   │   │   └── ui_noaaapt_rx.hpp
+│   │   │   ├── nrf_rx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_nrf_rx.cpp
+│   │   │   │   └── ui_nrf_rx.hpp
+│   │   │   ├── ookbrute
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_ookbrute.cpp
+│   │   │   │   └── ui_ookbrute.hpp
+│   │   │   ├── ook_editor
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_ook_editor.cpp
+│   │   │   │   └── ui_ook_editor.hpp
+│   │   │   ├── playlist_editor
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_playlist_editor.cpp
+│   │   │   │   └── ui_playlist_editor.hpp
+│   │   │   ├── protoview
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_protoview.cpp
+│   │   │   │   └── ui_protoview.hpp
+│   │   │   ├── random_password
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── sha512.cpp
+│   │   │   │   ├── sha512.h
+│   │   │   │   ├── ui_random_password.cpp
+│   │   │   │   └── ui_random_password.hpp
+│   │   │   ├── remote
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_remote.cpp
+│   │   │   │   └── ui_remote.hpp
+│   │   │   ├── scanner
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_scanner.cpp
+│   │   │   │   └── ui_scanner.hpp
+│   │   │   ├── sdusb
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_sd_over_usb.cpp
+│   │   │   │   └── ui_sd_over_usb.hpp
+│   │   │   ├── sd_wipe
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_sd_wipe.cpp
+│   │   │   │   └── ui_sd_wipe.hpp
+│   │   │   ├── shoppingcart_lock
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── shoppingcart_lock.cpp
+│   │   │   │   └── shoppingcart_lock.hpp
+│   │   │   ├── siggen
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_siggen.cpp
+│   │   │   │   └── ui_siggen.hpp
+│   │   │   ├── snake
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_snake.cpp
+│   │   │   │   └── ui_snake.hpp
+│   │   │   ├── soundboard
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── soundboard_app.cpp
+│   │   │   │   └── soundboard_app.hpp
+│   │   │   ├── spaceinv
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_spaceinv.cpp
+│   │   │   │   └── ui_spaceinv.hpp
+│   │   │   ├── spainter
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_spectrum_painter.cpp
+│   │   │   │   ├── ui_spectrum_painter.hpp
+│   │   │   │   ├── ui_spectrum_painter_image.cpp
+│   │   │   │   ├── ui_spectrum_painter_image.hpp
+│   │   │   │   ├── ui_spectrum_painter_text.cpp
+│   │   │   │   └── ui_spectrum_painter_text.hpp
+│   │   │   ├── sstvrx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_sstvrx.cpp
+│   │   │   │   └── ui_sstvrx.hpp
+│   │   │   ├── sstvtx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_sstvtx.cpp
+│   │   │   │   └── ui_sstvtx.hpp
+│   │   │   ├── stopwatch
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_stopwatch.cpp
+│   │   │   │   └── ui_stopwatch.hpp
+│   │   │   ├── subcarrx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_subcar.cpp
+│   │   │   │   └── ui_subcar.hpp
+│   │   │   ├── tetris
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_tetris.cpp
+│   │   │   │   └── ui_tetris.hpp
+│   │   │   ├── tpmsrx
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── tpms_app.cpp
+│   │   │   │   └── tpms_app.hpp
+│   │   │   ├── tuner
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_tuner.cpp
+│   │   │   │   └── ui_tuner.hpp
+│   │   │   ├── wardrivemap
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_wardrivemap.cpp
+│   │   │   │   └── ui_wardrivemap.hpp
+│   │   │   ├── waterfall_designer
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_waterfall_designer.cpp
+│   │   │   │   └── ui_waterfall_designer.hpp
+│   │   │   ├── wav_view
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── ui_view_wav.cpp
+│   │   │   │   └── ui_view_wav.hpp
+│   │   │   └── wefax_rx
+│   │   │       ├── main.cpp
+│   │   │       ├── ui_wefax_rx.cpp
+│   │   │       └── ui_wefax_rx.hpp
+│   │   ├── field_binder.hpp
+│   │   ├── file.cpp
+│   │   ├── file.hpp
+│   │   ├── file_path.cpp
+│   │   ├── file_path.hpp
+│   │   ├── file_reader.cpp
+│   │   ├── file_reader.hpp
+│   │   ├── file_wrapper.hpp
+│   │   ├── firmware_info.c
+│   │   ├── flipper_subfile.cpp
+│   │   ├── flipper_subfile.hpp
+│   │   ├── freqman.cpp
+│   │   ├── freqman_db.cpp
+│   │   ├── freqman_db.hpp
+│   │   ├── freqman.hpp
+│   │   ├── gradient.cpp
+│   │   ├── gradient.hpp
+│   │   ├── halconf.h
+│   │   ├── hw
+│   │   │   ├── debounce.cpp
+│   │   │   ├── debounce.hpp
+│   │   │   ├── encoder.cpp
+│   │   │   ├── encoder.hpp
+│   │   │   ├── max2831.cpp
+│   │   │   ├── max2831.hpp
+│   │   │   ├── max2837.cpp
+│   │   │   ├── max2837.hpp
+│   │   │   ├── max2839.cpp
+│   │   │   ├── max2839.hpp
+│   │   │   ├── max283x.hpp
+│   │   │   ├── max5864.cpp
+│   │   │   ├── max5864.hpp
+│   │   │   ├── rffc507x.cpp
+│   │   │   ├── rffc507x.hpp
+│   │   │   ├── rffc507x_spi.cpp
+│   │   │   ├── rffc507x_spi.hpp
+│   │   │   ├── si5351.cpp
+│   │   │   ├── si5351.hpp
+│   │   │   ├── spi_arbiter.hpp
+│   │   │   ├── spi_pp.cpp
+│   │   │   ├── spi_pp.hpp
+│   │   │   ├── touch_adc.cpp
+│   │   │   └── touch_adc.hpp
+│   │   ├── i2c_device_to_host.c
+│   │   ├── i2c_device_to_host.h
+│   │   ├── io_convert.cpp
+│   │   ├── io_convert.hpp
+│   │   ├── io_file.cpp
+│   │   ├── io_file.hpp
+│   │   ├── io.hpp
+│   │   ├── io_wave.cpp
+│   │   ├── io_wave.hpp
+│   │   ├── iq_trim.cpp
+│   │   ├── iq_trim.hpp
+│   │   ├── irq_controls.cpp
+│   │   ├── irq_controls.hpp
+│   │   ├── irq_lcd_frame.cpp
+│   │   ├── irq_lcd_frame.hpp
+│   │   ├── irq_rtc.cpp
+│   │   ├── irq_rtc.hpp
+│   │   ├── log_file.cpp
+│   │   ├── log_file.hpp
+│   │   ├── lz4.h
+│   │   ├── lz4.S
+│   │   ├── main.cpp
+│   │   ├── mcuconf.h
+│   │   ├── metadata_file.cpp
+│   │   ├── metadata_file.hpp
+│   │   ├── ook_file.cpp
+│   │   ├── ook_file.hpp
+│   │   ├── portapack.cpp
+│   │   ├── portapack.hpp
+│   │   ├── protocols
+│   │   │   ├── aprs.cpp
+│   │   │   ├── aprs.hpp
+│   │   │   ├── ax25.cpp
+│   │   │   ├── ax25.hpp
+│   │   │   ├── dcs.cpp
+│   │   │   ├── dcs.hpp
+│   │   │   ├── encoders.cpp
+│   │   │   ├── encoders.hpp
+│   │   │   ├── modems.cpp
+│   │   │   ├── modems.hpp
+│   │   │   ├── rds.cpp
+│   │   │   └── rds.hpp
+│   │   ├── qrcodegen.cpp
+│   │   ├── qrcodegen.hpp
+│   │   ├── radio.cpp
+│   │   ├── radio.hpp
+│   │   ├── radio_state.hpp
+│   │   ├── receiver_model.cpp
+│   │   ├── receiver_model.hpp
+│   │   ├── recent_entries.cpp
+│   │   ├── recent_entries.hpp
+│   │   ├── replay_thread.cpp
+│   │   ├── replay_thread.hpp
+│   │   ├── rf_path.cpp
+│   │   ├── rf_path.hpp
+│   │   ├── rtc_time.cpp
+│   │   ├── rtc_time.hpp
+│   │   ├── sd_card.cpp
+│   │   ├── sd_card.hpp
+│   │   ├── serializer.cpp
+│   │   ├── serializer.hpp
+│   │   ├── shell.cpp
+│   │   ├── shell.hpp
+│   │   ├── signal.hpp
+│   │   ├── spectrum_color_lut.cpp
+│   │   ├── spectrum_color_lut.hpp
+│   │   ├── string_format.cpp
+│   │   ├── string_format.hpp
+│   │   ├── temperature_logger.cpp
+│   │   ├── temperature_logger.hpp
+│   │   ├── theme.cpp
+│   │   ├── theme.hpp
+│   │   ├── tone_key.cpp
+│   │   ├── tone_key.hpp
+│   │   ├── touch.cpp
+│   │   ├── touch.hpp
+│   │   ├── transmitter_model.cpp
+│   │   ├── transmitter_model.hpp
+│   │   ├── tuning.cpp
+│   │   ├── tuning.hpp
+│   │   ├── ui
+│   │   │   ├── external
+│   │   │   │   ├── readme.md
+│   │   │   │   ├── ui_grapheq.cpi
+│   │   │   │   └── ui_grapheq.hpp
+│   │   │   ├── ui_alphanum.cpp
+│   │   │   ├── ui_alphanum.hpp
+│   │   │   ├── ui_audio.cpp
+│   │   │   ├── ui_audio.hpp
+│   │   │   ├── ui_bmpview.cpp
+│   │   │   ├── ui_bmpview.hpp
+│   │   │   ├── ui_btngrid.cpp
+│   │   │   ├── ui_btngrid.hpp
+│   │   │   ├── ui_channel.cpp
+│   │   │   ├── ui_channel.hpp
+│   │   │   ├── ui_font_fixed_5x8.cpp
+│   │   │   ├── ui_font_fixed_5x8.hpp
+│   │   │   ├── ui_font_fixed_8x16.cpp
+│   │   │   ├── ui_font_fixed_8x16.hpp
+│   │   │   ├── ui_freq_field.hpp
+│   │   │   ├── ui_freqlist.cpp
+│   │   │   ├── ui_freqlist.hpp
+│   │   │   ├── ui_geomap.cpp
+│   │   │   ├── ui_geomap.hpp
+│   │   │   ├── ui_menu.cpp
+│   │   │   ├── ui_menu.hpp
+│   │   │   ├── ui_qrcode.cpp
+│   │   │   ├── ui_qrcode.hpp
+│   │   │   ├── ui_receiver.cpp
+│   │   │   ├── ui_receiver.hpp
+│   │   │   ├── ui_rssi.cpp
+│   │   │   ├── ui_rssi.hpp
+│   │   │   ├── ui_spectrum.cpp
+│   │   │   ├── ui_spectrum.hpp
+│   │   │   ├── ui_tabview.cpp
+│   │   │   ├── ui_tabview.hpp
+│   │   │   ├── ui_textentry.cpp
+│   │   │   ├── ui_textentry.hpp
+│   │   │   ├── ui_tone_key.cpp
+│   │   │   ├── ui_tone_key.hpp
+│   │   │   ├── ui_transmitter.cpp
+│   │   │   └── ui_transmitter.hpp
+│   │   ├── ui_baseband_stats_view.cpp
+│   │   ├── ui_baseband_stats_view.hpp
+│   │   ├── ui_external_items_menu_loader.cpp
+│   │   ├── ui_external_items_menu_loader.hpp
+│   │   ├── ui_navigation.cpp
+│   │   ├── ui_navigation.hpp
+│   │   ├── ui_record_view.cpp
+│   │   ├── ui_record_view.hpp
+│   │   ├── ui_sd_card_debug.cpp
+│   │   ├── ui_sd_card_debug.hpp
+│   │   ├── ui_sd_card_status_view.cpp
+│   │   ├── ui_sd_card_status_view.hpp
+│   │   ├── unistroke.hpp
+│   │   ├── usb_serial_asyncmsg.cpp
+│   │   ├── usb_serial_asyncmsg.hpp
+│   │   ├── usb_serial_cdc.c
+│   │   ├── usb_serial_cdc.h
+│   │   ├── usb_serial.cpp
+│   │   ├── usb_serial_descriptor.c
+│   │   ├── usb_serial_descriptor.h
+│   │   ├── usb_serial_device_to_host.c
+│   │   ├── usb_serial_device_to_host.h
+│   │   ├── usb_serial_endpoints.c
+│   │   ├── usb_serial_endpoints.h
+│   │   ├── usb_serial_event.cpp
+│   │   ├── usb_serial_event.hpp
+│   │   ├── usb_serial_host_to_device.cpp
+│   │   ├── usb_serial_host_to_device.hpp
+│   │   ├── usb_serial.hpp
+│   │   ├── usb_serial_shell.cpp
+│   │   ├── usb_serial_shell_filesystem.cpp
+│   │   ├── usb_serial_shell_filesystem.hpp
+│   │   ├── usb_serial_shell.hpp
+│   │   ├── usb_serial_thread.cpp
+│   │   ├── usb_serial_thread.hpp
+│   │   ├── view_factory_base.cpp
+│   │   ├── view_factory_base.hpp
+│   │   ├── view_factory.hpp
+│   │   └── ymdata.hpp
+│   ├── baseband
+│   │   ├── audio_compressor.cpp
+│   │   ├── audio_compressor.hpp
+│   │   ├── audio_dma.cpp
+│   │   ├── audio_dma.hpp
+│   │   ├── audio_input.cpp
+│   │   ├── audio_input.hpp
+│   │   ├── audio_output.cpp
+│   │   ├── audio_output.hpp
+│   │   ├── audio_stats_collector.cpp
+│   │   ├── audio_stats_collector.hpp
+│   │   ├── baseband.cpp
+│   │   ├── baseband_dma.cpp
+│   │   ├── baseband_dma.hpp
+│   │   ├── baseband_processor.cpp
+│   │   ├── baseband_processor.hpp
+│   │   ├── baseband_stats_collector.cpp
+│   │   ├── baseband_stats_collector.hpp
+│   │   ├── baseband_thread.cpp
+│   │   ├── baseband_thread.hpp
+│   │   ├── block_decimator.hpp
+│   │   ├── channel_decimator.cpp
+│   │   ├── channel_decimator.hpp
+│   │   ├── channel_stats_collector.hpp
+│   │   ├── chconf.h
+│   │   ├── clock_recovery.cpp
+│   │   ├── clock_recovery.hpp
+│   │   ├── CMakeLists.txt
+│   │   ├── debug.cpp
+│   │   ├── debug.hpp
+│   │   ├── description
+│   │   ├── dsp_decimate.cpp
+│   │   ├── dsp_decimate.hpp
+│   │   ├── dsp_demodulate.cpp
+│   │   ├── dsp_demodulate.hpp
+│   │   ├── dsp_goertzel.cpp
+│   │   ├── dsp_goertzel.hpp
+│   │   ├── dsp_hilbert.cpp
+│   │   ├── dsp_hilbert.hpp
+│   │   ├── dsp_modulate.cpp
+│   │   ├── dsp_modulate.hpp
+│   │   ├── dsp_squelch.cpp
+│   │   ├── dsp_squelch.hpp
+│   │   ├── event_m4.cpp
+│   │   ├── event_m4.hpp
+│   │   ├── fprotos
+│   │   │   ├── c-bmw_v0.hpp
+│   │   │   ├── c-fiat_v0.hpp
+│   │   │   ├── c-ford_v0.hpp
+│   │   │   ├── c-kia_v0.hpp
+│   │   │   ├── c-kia_v1.hpp
+│   │   │   ├── c-kia_v2.hpp
+│   │   │   ├── c-kia_v3v4.hpp
+│   │   │   ├── c-kia_v5.hpp
+│   │   │   ├── c-subaru.hpp
+│   │   │   ├── c-suzuki.hpp
+│   │   │   ├── c-vw.hpp
+│   │   │   ├── fprotogeneral.hpp
+│   │   │   ├── fprotolistgeneral.hpp
+│   │   │   ├── s-bett.hpp
+│   │   │   ├── s-came_atomo.hpp
+│   │   │   ├── s-came.hpp
+│   │   │   ├── s-came_twee.hpp
+│   │   │   ├── s-chambcode.hpp
+│   │   │   ├── s-clemsa.hpp
+│   │   │   ├── s-doitrand.hpp
+│   │   │   ├── s-dooya.hpp
+│   │   │   ├── s-faac.hpp
+│   │   │   ├── s-gangqi.hpp
+│   │   │   ├── s-gate_tx.hpp
+│   │   │   ├── s-holtek.hpp
+│   │   │   ├── s-holtek_ht12x.hpp
+│   │   │   ├── s-holtek_ht6p20b.hpp
+│   │   │   ├── s-honeywell.hpp
+│   │   │   ├── s-honeywellwdb.hpp
+│   │   │   ├── s-hormannbisecure.hpp
+│   │   │   ├── s-hormann.hpp
+│   │   │   ├── s-ido.hpp
+│   │   │   ├── s-intertechnov3.hpp
+│   │   │   ├── s-keeloq.hpp
+│   │   │   ├── s-kinggates_stylo_4k.hpp
+│   │   │   ├── s-legrand.hpp
+│   │   │   ├── s-linear_delta3.hpp
+│   │   │   ├── s-linear.hpp
+│   │   │   ├── s-magellan.hpp
+│   │   │   ├── s-marantec24.hpp
+│   │   │   ├── s-marantec.hpp
+│   │   │   ├── s-mastercode.hpp
+│   │   │   ├── s-megacode.hpp
+│   │   │   ├── s-neroradio.hpp
+│   │   │   ├── s-nero_sketch.hpp
+│   │   │   ├── s-nice_flo.hpp
+│   │   │   ├── s-nice_flors.hpp
+│   │   │   ├── s-phoenix_v2.hpp
+│   │   │   ├── s-power_smart.hpp
+│   │   │   ├── s-princeton.hpp
+│   │   │   ├── s-secplus_v1.hpp
+│   │   │   ├── s-secplus_v2.hpp
+│   │   │   ├── s-smc5326.hpp
+│   │   │   ├── s-somify_keytis.hpp
+│   │   │   ├── s-somify_telis.hpp
+│   │   │   ├── s-star_line.hpp
+│   │   │   ├── subcarbase.hpp
+│   │   │   ├── subcarprotos.hpp
+│   │   │   ├── subcartypes.hpp
+│   │   │   ├── subghzdbase.hpp
+│   │   │   ├── subghzdprotos.hpp
+│   │   │   ├── subghztypes.hpp
+│   │   │   ├── s-x10.hpp
+│   │   │   ├── w-acurite592txr.hpp
+│   │   │   ├── w-acurite5in1.hpp
+│   │   │   ├── w-acurite606tx.hpp
+│   │   │   ├── w-acurite609tx.hpp
+│   │   │   ├── w-acurite986.hpp
+│   │   │   ├── w-ambient.hpp
+│   │   │   ├── w-auriol-ahfl.hpp
+│   │   │   ├── w-auriol-th.hpp
+│   │   │   ├── w-bresser_3ch.hpp
+│   │   │   ├── weatherbase.hpp
+│   │   │   ├── weatherprotos.hpp
+│   │   │   ├── weathertypes.hpp
+│   │   │   ├── w-emose601x.hpp
+│   │   │   ├── w-gt-wt-02.hpp
+│   │   │   ├── w-gt-wt-03.hpp
+│   │   │   ├── w-infactory.hpp
+│   │   │   ├── w-kedsum.hpp
+│   │   │   ├── w-lacrosse-tx141thbv2.hpp
+│   │   │   ├── w-lacrosse-tx.hpp
+│   │   │   ├── w-nexus-th.hpp
+│   │   │   ├── w-oregon2.hpp
+│   │   │   ├── w-oregon3.hpp
+│   │   │   ├── w-oregonv1.hpp
+│   │   │   ├── w-solight_te44.hpp
+│   │   │   ├── w-thermoprotx4.hpp
+│   │   │   ├── w-tx8300.hpp
+│   │   │   ├── w-vauno_en8822.hpp
+│   │   │   └── w-wendox-w6726.hpp
+│   │   ├── fxpt_atan2.cpp
+│   │   ├── fxpt_atan2.hpp
+│   │   ├── gpdma_lli.hpp
+│   │   ├── halconf.h
+│   │   ├── linear_resampler.hpp
+│   │   ├── main.cpp.unused
+│   │   ├── matched_filter.cpp
+│   │   ├── matched_filter.hpp
+│   │   ├── mcuconf.h
+│   │   ├── name
+│   │   ├── ook.hpp
+│   │   ├── packet_builder.cpp
+│   │   ├── packet_builder.hpp
+│   │   ├── phase_accumulator.hpp
+│   │   ├── phase_detector.hpp
+│   │   ├── proc_acars.cpp
+│   │   ├── proc_acars.hpp
+│   │   ├── proc_adsbrx.cpp
+│   │   ├── proc_adsbrx.hpp
+│   │   ├── proc_adsbtx.cpp
+│   │   ├── proc_adsbtx.hpp
+│   │   ├── proc_afsk.cpp
+│   │   ├── proc_afsk.hpp
+│   │   ├── proc_afskrx.cpp
+│   │   ├── proc_afskrx.hpp
+│   │   ├── proc_ais.cpp
+│   │   ├── proc_ais.hpp
+│   │   ├── proc_am_audio.cpp
+│   │   ├── proc_am_audio.hpp
+│   │   ├── proc_am_tv.cpp
+│   │   ├── proc_am_tv.hpp
+│   │   ├── proc_aprsrx.cpp
+│   │   ├── proc_aprsrx.hpp
+│   │   ├── proc_audio_beep.cpp
+│   │   ├── proc_audio_beep.hpp
+│   │   ├── proc_audiotx.cpp
+│   │   ├── proc_audiotx.hpp
+│   │   ├── proc_ble_tx.cpp
+│   │   ├── proc_ble_tx.hpp
+│   │   ├── proc_btlerx.cpp
+│   │   ├── proc_btlerx.hpp
+│   │   ├── proc_capture.cpp
+│   │   ├── proc_capture.hpp
+│   │   ├── proc_epirb.cpp
+│   │   ├── proc_epirb.hpp
+│   │   ├── proc_ert.cpp
+│   │   ├── proc_ert.hpp
+│   │   ├── proc_flash_utility.cpp
+│   │   ├── proc_flex.cpp
+│   │   ├── proc_flex.hpp
+│   │   ├── proc_fsk.cpp
+│   │   ├── proc_fsk.hpp
+│   │   ├── proc_fsk_rx.cpp
+│   │   ├── proc_fsk_rx.hpp
+│   │   ├── proc_gps_sim.cpp
+│   │   ├── proc_gps_sim.hpp
+│   │   ├── proc_jammer.cpp
+│   │   ├── proc_jammer.hpp
+│   │   ├── proc_mictx.cpp
+│   │   ├── proc_mictx.hpp
+│   │   ├── proc_morse.cpp
+│   │   ├── proc_morse.hpp
+│   │   ├── proc_nfm_audio.cpp
+│   │   ├── proc_nfm_audio.hpp
+│   │   ├── proc_noaaapt_rx.cpp
+│   │   ├── proc_noaaapt_rx.hpp
+│   │   ├── proc_nrfrx.cpp
+│   │   ├── proc_nrfrx.hpp
+│   │   ├── proc_ook.cpp
+│   │   ├── proc_ook.hpp
+│   │   ├── proc_ook_stream_tx.cpp
+│   │   ├── proc_ook_stream_tx.hpp
+│   │   ├── proc_pocsag2.cpp
+│   │   ├── proc_pocsag2.hpp
+│   │   ├── proc_protoview.cpp
+│   │   ├── proc_protoview.hpp
+│   │   ├── proc_rds.cpp
+│   │   ├── proc_rds.hpp
+│   │   ├── proc_replay.cpp
+│   │   ├── proc_replay.hpp
+│   │   ├── proc_sigfrx.cpp
+│   │   ├── proc_sigfrx.hpp
+│   │   ├── proc_siggen.cpp
+│   │   ├── proc_siggen.hpp
+│   │   ├── proc_sonde.cpp
+│   │   ├── proc_sonde.hpp
+│   │   ├── proc_spectrum_painter.cpp
+│   │   ├── proc_spectrum_painter.hpp
+│   │   ├── proc_sstvrx.cpp
+│   │   ├── proc_sstvrx.hpp
+│   │   ├── proc_sstvtx.cpp
+│   │   ├── proc_sstvtx.hpp
+│   │   ├── proc_subcar.cpp
+│   │   ├── proc_subcar.hpp
+│   │   ├── proc_subghzd.cpp
+│   │   ├── proc_subghzd.hpp
+│   │   ├── proc_test.cpp
+│   │   ├── proc_test.hpp
+│   │   ├── proc_tones.cpp
+│   │   ├── proc_tones.hpp
+│   │   ├── proc_tpms.cpp
+│   │   ├── proc_tpms.hpp
+│   │   ├── proc_weather.cpp
+│   │   ├── proc_weather.hpp
+│   │   ├── proc_wefaxrx.cpp
+│   │   ├── proc_wefaxrx.hpp
+│   │   ├── proc_wfm_audio.cpp
+│   │   ├── proc_wfm_audio.hpp
+│   │   ├── proc_wideband_spectrum.cpp
+│   │   ├── proc_wideband_spectrum.hpp
+│   │   ├── rssi.cpp
+│   │   ├── rssi_dma.cpp
+│   │   ├── rssi_dma.hpp
+│   │   ├── rssi.hpp
+│   │   ├── rssi_stats_collector.hpp
+│   │   ├── rssi_thread.cpp
+│   │   ├── rssi_thread.hpp
+│   │   ├── sd_over_usb
+│   │   │   ├── diskio.c
+│   │   │   ├── diskio.h
+│   │   │   ├── hackrf_core.c
+│   │   │   ├── proc_sd_over_usb.cpp
+│   │   │   ├── scsi.c
+│   │   │   ├── scsi.h
+│   │   │   ├── sd_over_usb.c
+│   │   │   ├── sd_over_usb.h
+│   │   │   ├── usb_bulk_buffer.h
+│   │   │   ├── usb_descriptor.c
+│   │   │   └── usb_descriptor.h
+│   │   ├── spectrum_collector.cpp
+│   │   ├── spectrum_collector.hpp
+│   │   ├── stream_input.cpp
+│   │   ├── stream_input.hpp
+│   │   ├── stream_output.cpp
+│   │   ├── stream_output.hpp
+│   │   ├── symbol_coding.hpp
+│   │   ├── tone_gen.cpp
+│   │   ├── tone_gen.hpp
+│   │   ├── touch_dma.cpp
+│   │   ├── touch_dma.hpp
+│   │   ├── tv_collector.cpp
+│   │   ├── tv_collector.hpp
+│   │   ├── w25q80bv.cpp
+│   │   └── w25q80bv.hpp
+│   ├── bootstrap
+│   │   ├── bootstrap.bin
+│   │   └── bootstrap_pad.bin
+│   ├── chibios
+│   │   ├── boards
+│   │   │   ├── ARDUINO_MEGA
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── EA_LPCXPRESSO_BB_1114
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── EA_LPCXPRESSO_BB_11U14
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── EA_LPCXPRESSO_BB_1343
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── EA_LPCXPRESSO_LPC812
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── MAPLEMINI_STM32_F103
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── NGX_BB_LPC11U14
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── NONSTANDARD_STM32F4_BARTHESS1
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_AVR_CAN
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_AVR_MT_128
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_LPC-P1227
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_LPC_P1343
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_LPC_P2148
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   ├── buzzer.c
+│   │   │   │   └── buzzer.h
+│   │   │   ├── OLIMEX_MSP430_P1611
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_SAM7_EX256
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_SAM7_P256
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_STM32_103STK
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_STM32_E407
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── OLIMEX_STM32_E407_REV_D
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── OLIMEX_STM32_H103
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_STM32_H407
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── OLIMEX_STM32_LCD
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_STM32_P103
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_STM32_P107
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── OLIMEX_STM32_P407
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── readme.txt
+│   │   │   ├── simulator
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_EVB_SPC560BC
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_EVB_SPC560P
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_EVB_SPC563M
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_EVB_SPC564A
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_EVB_SPC56EL
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_INEMO_M1_DISCOVERY
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_NUCLEO_F030R8
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── ST_NUCLEO_F103RB
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_NUCLEO_F401RE
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── ST_NUCLEO_L152RE
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── ST_STM3210C_EVAL
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_STM3210E_EVAL
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_STM3220G_EVAL
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_STM32373C_EVAL
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── ST_STM32F0_DISCOVERY
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── ST_STM32F3_DISCOVERY
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── ST_STM32F401C_DISCOVERY
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   ├── ST_STM32F429I_DISCOVERY
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── ST_STM32F4_DISCOVERY
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── ST_STM32L_DISCOVERY
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   └── cfg
+│   │   │   │       └── board.chcfg
+│   │   │   ├── ST_STM32VL_DISCOVERY
+│   │   │   │   ├── board.c
+│   │   │   │   ├── board.h
+│   │   │   │   └── board.mk
+│   │   │   └── STUDIEL_AT91SAM7A3_EK
+│   │   │       ├── board.c
+│   │   │       └── board.h
+│   │   ├── demos
+│   │   │   ├── ARM7-AT91SAM7X-FATFS-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── ffconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARM7-AT91SAM7X-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARM7-AT91SAM7X-LWIP-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── lwipopts.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   ├── readme.txt
+│   │   │   │   └── web
+│   │   │   │       ├── web.c
+│   │   │   │       └── web.h
+│   │   │   ├── ARM7-AT91SAM7X-UIP-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   ├── readme.txt
+│   │   │   │   └── web
+│   │   │   │       ├── cc-arch.h
+│   │   │   │       ├── clock-arch.h
+│   │   │   │       ├── uip-conf.h
+│   │   │   │       ├── webthread.c
+│   │   │   │       └── webthread.h
+│   │   │   ├── ARM7-LPC214x-FATFS-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── ffconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARM7-LPC214x-G++
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARM7-LPC214x-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM0-LPC1114-LPCXPRESSO
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── iar
+│   │   │   │   │   ├── ch.ewp
+│   │   │   │   │   ├── ch.eww
+│   │   │   │   │   └── ch.icf
+│   │   │   │   ├── keil
+│   │   │   │   │   └── ch.uvproj
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   ├── ARMCM0-LPC11U14-LPCXPRESSO
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   ├── ARMCM0P-LPC812-LPCXPRESSO
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── lpc8xx_isp.py
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   ├── ARMCM0-STM32F030R8-NUCLEO
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM0-STM32F051-DISCOVERY
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-GENERIC-KERNEL
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-LPC1343-LPCXPRESSO
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── iar
+│   │   │   │   │   ├── ch.ewp
+│   │   │   │   │   ├── ch.eww
+│   │   │   │   │   └── ch.icf
+│   │   │   │   ├── keil
+│   │   │   │   │   └── ch.uvproj
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   ├── ARMCM3-LPC1343-OLIMEX
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   ├── ARMCM3-STM32F100-DISCOVERY
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── iar
+│   │   │   │   │   ├── ch.ewp
+│   │   │   │   │   ├── ch.eww
+│   │   │   │   │   └── ch.icf
+│   │   │   │   ├── keil
+│   │   │   │   │   └── ch.uvproj
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32F103
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── iar
+│   │   │   │   │   ├── ch.ewp
+│   │   │   │   │   ├── ch.eww
+│   │   │   │   │   └── ch.icf
+│   │   │   │   ├── keil
+│   │   │   │   │   └── ch.uvproj
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32F103-FATFS
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── ffconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32F103-G++
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32F103_INEMO_DISCOVERY
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32F103RB-NUCLEO
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32F103ZG-FATFS
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── ffconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32F107
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── iar
+│   │   │   │   │   ├── ch.ewp
+│   │   │   │   │   ├── ch.eww
+│   │   │   │   │   └── ch.icf
+│   │   │   │   ├── keil
+│   │   │   │   │   └── ch.uvproj
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32F107-FATFS
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── ffconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32F107-LWIP
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── lwipopts.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   ├── readme.txt
+│   │   │   │   └── web
+│   │   │   │       ├── web.c
+│   │   │   │       └── web.h
+│   │   │   ├── ARMCM3-STM32L152-DISCOVERY
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── iar
+│   │   │   │   │   ├── ch.ewp
+│   │   │   │   │   ├── ch.eww
+│   │   │   │   │   └── ch.icf
+│   │   │   │   ├── keil
+│   │   │   │   │   └── ch.uvproj
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM3-STM32L152RE-NUCLEO
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM4-SAM4L
+│   │   │   │   └── ARMCM4-SAM4L.7z
+│   │   │   ├── ARMCM4-STM32F303-DISCOVERY
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM4-STM32F373-STM32373C_EVAL
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM4-STM32F401C-DISCOVERY
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   ├── readme.txt
+│   │   │   │   ├── usbcfg.c
+│   │   │   │   └── usbcfg.h
+│   │   │   ├── ARMCM4-STM32F401RE-NUCLEO
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM4-STM32F407-DISCOVERY
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── iar
+│   │   │   │   │   ├── ch.ewp
+│   │   │   │   │   ├── ch.eww
+│   │   │   │   │   └── ch.icf
+│   │   │   │   ├── keil
+│   │   │   │   │   └── ch.uvproj
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM4-STM32F407-DISCOVERY-G++
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.cpp
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── ARMCM4-STM32F407-DISCOVERY-MEMS
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   ├── readme.txt
+│   │   │   │   ├── usbcfg.c
+│   │   │   │   └── usbcfg.h
+│   │   │   ├── ARMCM4-STM32F407-LWIP
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── lwipopts.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   ├── readme.txt
+│   │   │   │   └── web
+│   │   │   │       ├── web.c
+│   │   │   │       └── web.h
+│   │   │   ├── ARMCM4-STM32F407-LWIP-FATFS-USB
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── ffconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── lwipopts.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   ├── readme.txt
+│   │   │   │   └── web
+│   │   │   │       ├── web.c
+│   │   │   │       └── web.h
+│   │   │   ├── ARMCM4-STM32F429-DISCOVERY
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   ├── readme.txt
+│   │   │   │   ├── usbcfg.c
+│   │   │   │   └── usbcfg.h
+│   │   │   ├── AVR-ArduinoMega-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── AVR-AT90CANx-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── AVR-ATmega128-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── lcd.c
+│   │   │   │   ├── lcd.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   └── readme.txt
+│   │   │   ├── MSP430-MSP430x1611-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── mcuconf.h
+│   │   │   │   ├── memory.x
+│   │   │   │   ├── msp430.x
+│   │   │   │   ├── periph.x
+│   │   │   │   └── readme.txt
+│   │   │   ├── Posix-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── readme.txt
+│   │   │   ├── PPC-SPC560B-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   ├── PPC-SPC560P-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   ├── PPC-SPC563M-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   ├── PPC-SPC564A-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   ├── PPC-SPC56EL-GCC
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── mcuconf.h
+│   │   │   └── Win32-MinGW
+│   │   │       ├── chconf.h
+│   │   │       ├── halconf.h
+│   │   │       ├── main.c
+│   │   │       ├── Makefile
+│   │   │       └── readme.txt
+│   │   ├── docs
+│   │   │   ├── Doxyfile_chm
+│   │   │   ├── Doxyfile_html
+│   │   │   ├── html
+│   │   │   │   └── logo_small.png
+│   │   │   ├── index.html
+│   │   │   ├── readme.txt
+│   │   │   ├── reports
+│   │   │   │   ├── AT91SAM7X-48-ARM.txt
+│   │   │   │   ├── AT91SAM7X-48-THUMB.txt
+│   │   │   │   ├── ATmega128-16.txt
+│   │   │   │   ├── build.txt
+│   │   │   │   ├── coverage.txt
+│   │   │   │   ├── kernel.txt
+│   │   │   │   ├── LPC1114-48-GCC.txt
+│   │   │   │   ├── LPC1114-48-RVCT.txt
+│   │   │   │   ├── LPC1343-72-GCC.txt
+│   │   │   │   ├── LPC1343-72-IAR.txt
+│   │   │   │   ├── LPC1343-72-RVCT.txt
+│   │   │   │   ├── LPC2148-48-ARM.txt
+│   │   │   │   ├── LPC2148-48-THUMB.txt
+│   │   │   │   ├── MSP430F1611-0.75.txt
+│   │   │   │   ├── MSP430F1611-8.txt
+│   │   │   │   ├── SPC560B50-64.txt
+│   │   │   │   ├── SPC560P50-64.txt
+│   │   │   │   ├── SPC563M64-80.txt
+│   │   │   │   ├── SPC564A64-150.txt
+│   │   │   │   ├── SPC56EL60-120.txt
+│   │   │   │   ├── STM32F051-48-GCC.txt
+│   │   │   │   ├── STM32F100-24-GCC.txt
+│   │   │   │   ├── STM32F100-24-IAR.txt
+│   │   │   │   ├── STM32F100-24-RVCT.txt
+│   │   │   │   ├── STM32F103-48-GCC.txt
+│   │   │   │   ├── STM32F103-72-GCC-compact.txt
+│   │   │   │   ├── STM32F103-72-GCC.txt
+│   │   │   │   ├── STM32F103-72-IAR-compact.txt
+│   │   │   │   ├── STM32F103-72-IAR.txt
+│   │   │   │   ├── STM32F103-72-RVCT-compact.txt
+│   │   │   │   ├── STM32F103-72-RVCT.txt
+│   │   │   │   ├── STM32F107-72-GCC.txt
+│   │   │   │   ├── STM32F303-72-GCC.txt
+│   │   │   │   ├── STM32F373-72-GCC.txt
+│   │   │   │   ├── STM32F407-168-GCC-FPU.txt
+│   │   │   │   ├── STM32F407-168-GCC.txt
+│   │   │   │   ├── STM32F407-168-IAR.txt
+│   │   │   │   ├── STM32F407-168-RVCT.txt
+│   │   │   │   ├── STM32L152-32-GCC.txt
+│   │   │   │   ├── STM32L152-32-IAR.txt
+│   │   │   │   └── STM32L152-32-RVCT.txt
+│   │   │   ├── rsc
+│   │   │   │   ├── custom.css
+│   │   │   │   ├── footer_chm.html
+│   │   │   │   ├── footer_html.html
+│   │   │   │   ├── header_chm.html
+│   │   │   │   ├── header_html.html
+│   │   │   │   ├── layout.xml
+│   │   │   │   ├── logo.png
+│   │   │   │   ├── workspace.eps
+│   │   │   │   ├── workspace.png
+│   │   │   │   └── workspace.svg
+│   │   │   └── src
+│   │   │       ├── concepts.dox
+│   │   │       └── main.dox
+│   │   ├── documentation.html
+│   │   ├── exception.txt
+│   │   ├── ext
+│   │   │   ├── ext.dox
+│   │   │   ├── fatfs-0.9-patched.zip
+│   │   │   ├── lwip-1.4.1_patched.zip
+│   │   │   ├── readme.txt
+│   │   │   ├── uip-1.0.patches.zip
+│   │   │   └── uip-1.0.tar.gz
+│   │   ├── license.txt
+│   │   ├── os
+│   │   │   ├── hal
+│   │   │   │   ├── dox
+│   │   │   │   │   ├── adc.dox
+│   │   │   │   │   ├── can.dox
+│   │   │   │   │   ├── ext.dox
+│   │   │   │   │   ├── gpt.dox
+│   │   │   │   │   ├── hal.dox
+│   │   │   │   │   ├── i2c.dox
+│   │   │   │   │   ├── i2s.dox
+│   │   │   │   │   ├── icu.dox
+│   │   │   │   │   ├── io_block.dox
+│   │   │   │   │   ├── io_channel.dox
+│   │   │   │   │   ├── mac.dox
+│   │   │   │   │   ├── mmcsd.dox
+│   │   │   │   │   ├── mmc_spi.dox
+│   │   │   │   │   ├── pal.dox
+│   │   │   │   │   ├── pwm.dox
+│   │   │   │   │   ├── rtc.dox
+│   │   │   │   │   ├── sdc.dox
+│   │   │   │   │   ├── serial.dox
+│   │   │   │   │   ├── serial_usb.dox
+│   │   │   │   │   ├── spi.dox
+│   │   │   │   │   ├── tm.dox
+│   │   │   │   │   ├── uart.dox
+│   │   │   │   │   └── usb.dox
+│   │   │   │   ├── hal.cmake
+│   │   │   │   ├── hal.dox
+│   │   │   │   ├── hal.mk
+│   │   │   │   ├── include
+│   │   │   │   │   ├── adc.h
+│   │   │   │   │   ├── can.h
+│   │   │   │   │   ├── ext.h
+│   │   │   │   │   ├── gpt.h
+│   │   │   │   │   ├── hal.h
+│   │   │   │   │   ├── i2c.h
+│   │   │   │   │   ├── icu.h
+│   │   │   │   │   ├── io_block.h
+│   │   │   │   │   ├── io_channel.h
+│   │   │   │   │   ├── mac.h
+│   │   │   │   │   ├── mii.h
+│   │   │   │   │   ├── mmcsd.h
+│   │   │   │   │   ├── mmc_spi.h
+│   │   │   │   │   ├── pal.h
+│   │   │   │   │   ├── pwm.h
+│   │   │   │   │   ├── rtc.h
+│   │   │   │   │   ├── sdc.h
+│   │   │   │   │   ├── serial.h
+│   │   │   │   │   ├── serial_usb.h
+│   │   │   │   │   ├── spi.h
+│   │   │   │   │   ├── tm.h
+│   │   │   │   │   ├── uart.h
+│   │   │   │   │   └── usb.h
+│   │   │   │   ├── platforms
+│   │   │   │   │   ├── AT91SAM7
+│   │   │   │   │   │   ├── adc_lld.c
+│   │   │   │   │   │   ├── adc_lld.h
+│   │   │   │   │   │   ├── at91lib
+│   │   │   │   │   │   │   ├── aic.c
+│   │   │   │   │   │   │   ├── aic.h
+│   │   │   │   │   │   │   ├── AT91SAM7A3.h
+│   │   │   │   │   │   │   ├── AT91SAM7S128.h
+│   │   │   │   │   │   │   ├── AT91SAM7S256.h
+│   │   │   │   │   │   │   ├── AT91SAM7S512.h
+│   │   │   │   │   │   │   ├── AT91SAM7S64.h
+│   │   │   │   │   │   │   ├── AT91SAM7X128.h
+│   │   │   │   │   │   │   ├── AT91SAM7X256.h
+│   │   │   │   │   │   │   └── AT91SAM7X512.h
+│   │   │   │   │   │   ├── at91sam7.h
+│   │   │   │   │   │   ├── at91sam7_mii.c
+│   │   │   │   │   │   ├── at91sam7_mii.h
+│   │   │   │   │   │   ├── ext_lld.c
+│   │   │   │   │   │   ├── ext_lld.h
+│   │   │   │   │   │   ├── gpt_lld.c
+│   │   │   │   │   │   ├── gpt_lld.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── i2c_lld.c
+│   │   │   │   │   │   ├── i2c_lld.h
+│   │   │   │   │   │   ├── mac_lld.c
+│   │   │   │   │   │   ├── mac_lld.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── pwm_lld.c
+│   │   │   │   │   │   ├── pwm_lld.h
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   ├── serial_lld.h
+│   │   │   │   │   │   ├── spi_lld.c
+│   │   │   │   │   │   └── spi_lld.h
+│   │   │   │   │   ├── AVR
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── i2c_lld.c
+│   │   │   │   │   │   ├── i2c_lld.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   └── serial_lld.h
+│   │   │   │   │   ├── LPC11Uxx
+│   │   │   │   │   │   ├── ext_lld.c
+│   │   │   │   │   │   ├── ext_lld.h
+│   │   │   │   │   │   ├── ext_lld_isr.c
+│   │   │   │   │   │   ├── ext_lld_isr.h
+│   │   │   │   │   │   ├── gpt_lld.c
+│   │   │   │   │   │   ├── gpt_lld.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── LPC11Uxx.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   ├── serial_lld.h
+│   │   │   │   │   │   ├── spi_lld.c
+│   │   │   │   │   │   ├── spi_lld.h
+│   │   │   │   │   │   └── system_LPC11Uxx.h
+│   │   │   │   │   ├── LPC11xx
+│   │   │   │   │   │   ├── gpt_lld.c
+│   │   │   │   │   │   ├── gpt_lld.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── LPC11xx.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   ├── serial_lld.h
+│   │   │   │   │   │   ├── spi_lld.c
+│   │   │   │   │   │   ├── spi_lld.h
+│   │   │   │   │   │   └── system_LPC11xx.h
+│   │   │   │   │   ├── LPC122x
+│   │   │   │   │   │   ├── gpt_lld.c
+│   │   │   │   │   │   ├── gpt_lld.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── LPC122x.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   ├── serial_lld.h
+│   │   │   │   │   │   ├── spi_lld.c
+│   │   │   │   │   │   ├── spi_lld.h
+│   │   │   │   │   │   └── system_LPC122x.h
+│   │   │   │   │   ├── LPC13xx
+│   │   │   │   │   │   ├── gpt_lld.c
+│   │   │   │   │   │   ├── gpt_lld.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── LPC13xx.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   ├── serial_lld.h
+│   │   │   │   │   │   ├── spi_lld.c
+│   │   │   │   │   │   ├── spi_lld.h
+│   │   │   │   │   │   └── system_LPC13xx.h
+│   │   │   │   │   ├── LPC214x
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── lpc214x.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   ├── serial_lld.h
+│   │   │   │   │   │   ├── spi_lld.c
+│   │   │   │   │   │   ├── spi_lld.h
+│   │   │   │   │   │   ├── vic.c
+│   │   │   │   │   │   └── vic.h
+│   │   │   │   │   ├── LPC8xx
+│   │   │   │   │   │   ├── ext_lld.c
+│   │   │   │   │   │   ├── ext_lld.h
+│   │   │   │   │   │   ├── ext_lld_isr.c
+│   │   │   │   │   │   ├── ext_lld_isr.h
+│   │   │   │   │   │   ├── gpt_lld.c
+│   │   │   │   │   │   ├── gpt_lld.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── LPC8xx.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   ├── serial_lld.h
+│   │   │   │   │   │   ├── spi_lld.c
+│   │   │   │   │   │   ├── spi_lld.h
+│   │   │   │   │   │   └── system_LPC8xx.h
+│   │   │   │   │   ├── MSP430
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   └── serial_lld.h
+│   │   │   │   │   ├── platforms.dox
+│   │   │   │   │   ├── Posix
+│   │   │   │   │   │   ├── console.c
+│   │   │   │   │   │   ├── console.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   ├── pal_lld.h
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   └── serial_lld.h
+│   │   │   │   │   ├── SPC560BCxx
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── spc560bc_registry.h
+│   │   │   │   │   │   ├── typedefs.h
+│   │   │   │   │   │   └── xpc560bc.h
+│   │   │   │   │   ├── SPC560Pxx
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── spc560p_registry.h
+│   │   │   │   │   │   ├── typedefs.h
+│   │   │   │   │   │   └── xpc560p.h
+│   │   │   │   │   ├── SPC563Mxx
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── spc563m_registry.h
+│   │   │   │   │   │   ├── typedefs.h
+│   │   │   │   │   │   └── xpc563m.h
+│   │   │   │   │   ├── SPC564Axx
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── spc564a_registry.h
+│   │   │   │   │   │   ├── typedefs.h
+│   │   │   │   │   │   └── xpc564a.h
+│   │   │   │   │   ├── SPC56ELxx
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── spc56el_registry.h
+│   │   │   │   │   │   ├── typedefs.h
+│   │   │   │   │   │   └── xpc56el.h
+│   │   │   │   │   ├── SPC5xx
+│   │   │   │   │   │   ├── EDMA_v1
+│   │   │   │   │   │   │   ├── spc5_edma.c
+│   │   │   │   │   │   │   └── spc5_edma.h
+│   │   │   │   │   │   ├── EQADC_v1
+│   │   │   │   │   │   │   ├── adc_lld.c
+│   │   │   │   │   │   │   └── adc_lld.h
+│   │   │   │   │   │   ├── ESCI_v1
+│   │   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   │   └── serial_lld.h
+│   │   │   │   │   │   ├── eTimer_v1
+│   │   │   │   │   │   │   ├── icu_lld.c
+│   │   │   │   │   │   │   ├── icu_lld.h
+│   │   │   │   │   │   │   └── spc5_etimer.h
+│   │   │   │   │   │   ├── FlexPWM_v1
+│   │   │   │   │   │   │   ├── pwm_lld.c
+│   │   │   │   │   │   │   ├── pwm_lld.h
+│   │   │   │   │   │   │   └── spc5_flexpwm.h
+│   │   │   │   │   │   ├── LINFlex_v1
+│   │   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   │   └── serial_lld.h
+│   │   │   │   │   │   ├── SIUL_v1
+│   │   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   │   └── pal_lld.h
+│   │   │   │   │   │   └── SIU_v1
+│   │   │   │   │   │       ├── pal_lld.c
+│   │   │   │   │   │       └── pal_lld.h
+│   │   │   │   │   ├── STM32
+│   │   │   │   │   │   ├── can_lld.c
+│   │   │   │   │   │   ├── can_lld.h
+│   │   │   │   │   │   ├── ext_lld.c
+│   │   │   │   │   │   ├── ext_lld.h
+│   │   │   │   │   │   ├── GPIOv1
+│   │   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   │   └── pal_lld.h
+│   │   │   │   │   │   ├── GPIOv2
+│   │   │   │   │   │   │   ├── pal_lld.c
+│   │   │   │   │   │   │   └── pal_lld.h
+│   │   │   │   │   │   ├── I2Cv1
+│   │   │   │   │   │   │   ├── i2c_lld.c
+│   │   │   │   │   │   │   └── i2c_lld.h
+│   │   │   │   │   │   ├── I2Cv2
+│   │   │   │   │   │   │   ├── i2c_lld.c
+│   │   │   │   │   │   │   └── i2c_lld.h
+│   │   │   │   │   │   ├── mac_lld.c
+│   │   │   │   │   │   ├── mac_lld.h
+│   │   │   │   │   │   ├── OTGv1
+│   │   │   │   │   │   │   ├── stm32_otg.h
+│   │   │   │   │   │   │   ├── usb_lld.c
+│   │   │   │   │   │   │   └── usb_lld.h
+│   │   │   │   │   │   ├── RTCv1
+│   │   │   │   │   │   │   ├── rtc_lld.c
+│   │   │   │   │   │   │   └── rtc_lld.h
+│   │   │   │   │   │   ├── RTCv2
+│   │   │   │   │   │   │   ├── rtc_lld.c
+│   │   │   │   │   │   │   └── rtc_lld.h
+│   │   │   │   │   │   ├── sdc_lld.c
+│   │   │   │   │   │   ├── sdc_lld.h
+│   │   │   │   │   │   ├── SPIv1
+│   │   │   │   │   │   │   ├── spi_lld.c
+│   │   │   │   │   │   │   └── spi_lld.h
+│   │   │   │   │   │   ├── SPIv2
+│   │   │   │   │   │   │   ├── spi_lld.c
+│   │   │   │   │   │   │   └── spi_lld.h
+│   │   │   │   │   │   ├── stm32.h
+│   │   │   │   │   │   ├── TIMv1
+│   │   │   │   │   │   │   ├── gpt_lld.c
+│   │   │   │   │   │   │   ├── gpt_lld.h
+│   │   │   │   │   │   │   ├── icu_lld.c
+│   │   │   │   │   │   │   ├── icu_lld.h
+│   │   │   │   │   │   │   ├── pwm_lld.c
+│   │   │   │   │   │   │   ├── pwm_lld.h
+│   │   │   │   │   │   │   └── stm32_tim.h
+│   │   │   │   │   │   ├── USARTv1
+│   │   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   │   ├── serial_lld.h
+│   │   │   │   │   │   │   ├── uart_lld.c
+│   │   │   │   │   │   │   └── uart_lld.h
+│   │   │   │   │   │   ├── USARTv2
+│   │   │   │   │   │   │   ├── serial_lld.c
+│   │   │   │   │   │   │   ├── serial_lld.h
+│   │   │   │   │   │   │   ├── uart_lld.c
+│   │   │   │   │   │   │   └── uart_lld.h
+│   │   │   │   │   │   └── USBv1
+│   │   │   │   │   │       ├── stm32_usb.h
+│   │   │   │   │   │       ├── usb_lld.c
+│   │   │   │   │   │       └── usb_lld.h
+│   │   │   │   │   ├── STM32F0xx
+│   │   │   │   │   │   ├── adc_lld.c
+│   │   │   │   │   │   ├── adc_lld.h
+│   │   │   │   │   │   ├── ext_lld_isr.c
+│   │   │   │   │   │   ├── ext_lld_isr.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── stm32_dma.c
+│   │   │   │   │   │   ├── stm32_dma.h
+│   │   │   │   │   │   ├── stm32f0xx.h
+│   │   │   │   │   │   ├── stm32_isr.h
+│   │   │   │   │   │   ├── stm32_rcc.h
+│   │   │   │   │   │   └── stm32_registry.h
+│   │   │   │   │   ├── STM32F1xx
+│   │   │   │   │   │   ├── adc_lld.c
+│   │   │   │   │   │   ├── adc_lld.h
+│   │   │   │   │   │   ├── ext_lld_isr.c
+│   │   │   │   │   │   ├── ext_lld_isr.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld_f100.h
+│   │   │   │   │   │   ├── hal_lld_f103.h
+│   │   │   │   │   │   ├── hal_lld_f105_f107.h
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform_f105_f107.mk
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── stm32_dma.c
+│   │   │   │   │   │   ├── stm32_dma.h
+│   │   │   │   │   │   ├── stm32f10x.h
+│   │   │   │   │   │   ├── stm32_isr.h
+│   │   │   │   │   │   └── stm32_rcc.h
+│   │   │   │   │   ├── STM32F30x
+│   │   │   │   │   │   ├── adc_lld.c
+│   │   │   │   │   │   ├── adc_lld.h
+│   │   │   │   │   │   ├── ext_lld_isr.c
+│   │   │   │   │   │   ├── ext_lld_isr.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── stm32_dma.c
+│   │   │   │   │   │   ├── stm32_dma.h
+│   │   │   │   │   │   ├── stm32f30x.h
+│   │   │   │   │   │   ├── stm32_isr.h
+│   │   │   │   │   │   ├── stm32_rcc.h
+│   │   │   │   │   │   └── stm32_registry.h
+│   │   │   │   │   ├── STM32F37x
+│   │   │   │   │   │   ├── adc_lld.c
+│   │   │   │   │   │   ├── adc_lld.h
+│   │   │   │   │   │   ├── ext_lld_isr.c
+│   │   │   │   │   │   ├── ext_lld_isr.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── stm32_dma.c
+│   │   │   │   │   │   ├── stm32_dma.h
+│   │   │   │   │   │   ├── stm32f37x.h
+│   │   │   │   │   │   ├── stm32_isr.h
+│   │   │   │   │   │   ├── stm32_rcc.h
+│   │   │   │   │   │   └── stm32_registry.h
+│   │   │   │   │   ├── STM32F4xx
+│   │   │   │   │   │   ├── adc_lld.c
+│   │   │   │   │   │   ├── adc_lld.h
+│   │   │   │   │   │   ├── ext_lld_isr.c
+│   │   │   │   │   │   ├── ext_lld_isr.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── stm32_dma.c
+│   │   │   │   │   │   ├── stm32_dma.h
+│   │   │   │   │   │   ├── stm32f2xx.h
+│   │   │   │   │   │   ├── stm32f4xx.h
+│   │   │   │   │   │   ├── stm32_isr.h
+│   │   │   │   │   │   └── stm32_rcc.h
+│   │   │   │   │   ├── STM32L1xx
+│   │   │   │   │   │   ├── adc_lld.c
+│   │   │   │   │   │   ├── adc_lld.h
+│   │   │   │   │   │   ├── ext_lld_isr.c
+│   │   │   │   │   │   ├── ext_lld_isr.h
+│   │   │   │   │   │   ├── hal_lld.c
+│   │   │   │   │   │   ├── hal_lld.h
+│   │   │   │   │   │   ├── platform.dox
+│   │   │   │   │   │   ├── platform.mk
+│   │   │   │   │   │   ├── stm32_dma.c
+│   │   │   │   │   │   ├── stm32_dma.h
+│   │   │   │   │   │   ├── stm32_isr.h
+│   │   │   │   │   │   ├── stm32l1xx.h
+│   │   │   │   │   │   ├── stm32_rcc.h
+│   │   │   │   │   │   └── stm32_registry.h
+│   │   │   │   │   └── Win32
+│   │   │   │   │       ├── console.c
+│   │   │   │   │       ├── console.h
+│   │   │   │   │       ├── hal_lld.c
+│   │   │   │   │       ├── hal_lld.h
+│   │   │   │   │       ├── pal_lld.c
+│   │   │   │   │       ├── pal_lld.h
+│   │   │   │   │       ├── platform.mk
+│   │   │   │   │       ├── serial_lld.c
+│   │   │   │   │       └── serial_lld.h
+│   │   │   │   ├── src
+│   │   │   │   │   ├── adc.c
+│   │   │   │   │   ├── can.c
+│   │   │   │   │   ├── ext.c
+│   │   │   │   │   ├── gpt.c
+│   │   │   │   │   ├── hal.c
+│   │   │   │   │   ├── i2c.c
+│   │   │   │   │   ├── icu.c
+│   │   │   │   │   ├── mac.c
+│   │   │   │   │   ├── mmcsd.c
+│   │   │   │   │   ├── mmc_spi.c
+│   │   │   │   │   ├── pal.c
+│   │   │   │   │   ├── pwm.c
+│   │   │   │   │   ├── rtc.c
+│   │   │   │   │   ├── sdc.c
+│   │   │   │   │   ├── serial.c
+│   │   │   │   │   ├── serial_usb.c
+│   │   │   │   │   ├── spi.c
+│   │   │   │   │   ├── tm.c
+│   │   │   │   │   ├── uart.c
+│   │   │   │   │   └── usb.c
+│   │   │   │   └── templates
+│   │   │   │       ├── adc_lld.c
+│   │   │   │       ├── adc_lld.h
+│   │   │   │       ├── can_lld.c
+│   │   │   │       ├── can_lld.h
+│   │   │   │       ├── ext_lld.c
+│   │   │   │       ├── ext_lld.h
+│   │   │   │       ├── gpt_lld.c
+│   │   │   │       ├── gpt_lld.h
+│   │   │   │       ├── halconf.h
+│   │   │   │       ├── hal_lld.c
+│   │   │   │       ├── hal_lld.h
+│   │   │   │       ├── i2c_lld.c
+│   │   │   │       ├── i2c_lld.h
+│   │   │   │       ├── icu_lld.c
+│   │   │   │       ├── icu_lld.h
+│   │   │   │       ├── mac_lld.c
+│   │   │   │       ├── mac_lld.h
+│   │   │   │       ├── mcuconf.h
+│   │   │   │       ├── meta
+│   │   │   │       │   ├── driver.c
+│   │   │   │       │   ├── driver.h
+│   │   │   │       │   ├── driver_lld.c
+│   │   │   │       │   └── driver_lld.h
+│   │   │   │       ├── pal_lld.c
+│   │   │   │       ├── pal_lld.h
+│   │   │   │       ├── platform.mk
+│   │   │   │       ├── pwm_lld.c
+│   │   │   │       ├── pwm_lld.h
+│   │   │   │       ├── sdc_lld.c
+│   │   │   │       ├── sdc_lld.h
+│   │   │   │       ├── serial_lld.c
+│   │   │   │       ├── serial_lld.h
+│   │   │   │       ├── spi_lld.c
+│   │   │   │       ├── spi_lld.h
+│   │   │   │       ├── uart_lld.c
+│   │   │   │       ├── uart_lld.h
+│   │   │   │       ├── usb_lld.c
+│   │   │   │       └── usb_lld.h
+│   │   │   ├── kernel
+│   │   │   │   ├── include
+│   │   │   │   │   ├── chbsem.h
+│   │   │   │   │   ├── chcond.h
+│   │   │   │   │   ├── chdebug.h
+│   │   │   │   │   ├── chdynamic.h
+│   │   │   │   │   ├── chevents.h
+│   │   │   │   │   ├── chfiles.h
+│   │   │   │   │   ├── ch.h
+│   │   │   │   │   ├── chheap.h
+│   │   │   │   │   ├── chinline.h
+│   │   │   │   │   ├── chlists.h
+│   │   │   │   │   ├── chmboxes.h
+│   │   │   │   │   ├── chmemcore.h
+│   │   │   │   │   ├── chmempools.h
+│   │   │   │   │   ├── chmsg.h
+│   │   │   │   │   ├── chmtx.h
+│   │   │   │   │   ├── chqueues.h
+│   │   │   │   │   ├── chregistry.h
+│   │   │   │   │   ├── chschd.h
+│   │   │   │   │   ├── chsem.h
+│   │   │   │   │   ├── chstreams.h
+│   │   │   │   │   ├── chsys.h
+│   │   │   │   │   ├── chthreads.h
+│   │   │   │   │   └── chvt.h
+│   │   │   │   ├── kernel.cmake
+│   │   │   │   ├── kernel.dox
+│   │   │   │   ├── kernel.mk
+│   │   │   │   ├── src
+│   │   │   │   │   ├── chcond.c
+│   │   │   │   │   ├── chdebug.c
+│   │   │   │   │   ├── chdynamic.c
+│   │   │   │   │   ├── chevents.c
+│   │   │   │   │   ├── chheap.c
+│   │   │   │   │   ├── chlists.c
+│   │   │   │   │   ├── chmboxes.c
+│   │   │   │   │   ├── chmemcore.c
+│   │   │   │   │   ├── chmempools.c
+│   │   │   │   │   ├── chmsg.c
+│   │   │   │   │   ├── chmtx.c
+│   │   │   │   │   ├── chqueues.c
+│   │   │   │   │   ├── chregistry.c
+│   │   │   │   │   ├── chschd.c
+│   │   │   │   │   ├── chsem.c
+│   │   │   │   │   ├── chsys.c
+│   │   │   │   │   ├── chthreads.c
+│   │   │   │   │   └── chvt.c
+│   │   │   │   └── templates
+│   │   │   │       ├── chconf.h
+│   │   │   │       ├── chcore.c
+│   │   │   │       ├── chcore.h
+│   │   │   │       └── chtypes.h
+│   │   │   ├── ports
+│   │   │   │   ├── common
+│   │   │   │   │   └── ARMCMx
+│   │   │   │   │       ├── CMSIS
+│   │   │   │   │       │   ├── include
+│   │   │   │   │       │   │   ├── arm_common_tables.h
+│   │   │   │   │       │   │   ├── arm_math.h
+│   │   │   │   │       │   │   ├── core_cm0.h
+│   │   │   │   │       │   │   ├── core_cm0plus.h
+│   │   │   │   │       │   │   ├── core_cm3.h
+│   │   │   │   │       │   │   ├── core_cm4.h
+│   │   │   │   │       │   │   ├── core_cm4_simd.h
+│   │   │   │   │       │   │   ├── core_cmFunc.h
+│   │   │   │   │       │   │   └── core_cmInstr.h
+│   │   │   │   │       │   └── readme.txt
+│   │   │   │   │       ├── nvic.c
+│   │   │   │   │       ├── nvic.h
+│   │   │   │   │       └── port.dox
+│   │   │   │   ├── GCC
+│   │   │   │   │   ├── ARM
+│   │   │   │   │   │   ├── AT91SAM7
+│   │   │   │   │   │   │   ├── armparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── AT91SAM7A3.ld
+│   │   │   │   │   │   │   │   ├── AT91SAM7S256.ld
+│   │   │   │   │   │   │   │   └── AT91SAM7X256.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   ├── vectors.s
+│   │   │   │   │   │   │   └── wfi.h
+│   │   │   │   │   │   ├── chcoreasm.s
+│   │   │   │   │   │   ├── chcore.c
+│   │   │   │   │   │   ├── chcore.h
+│   │   │   │   │   │   ├── chtypes.h
+│   │   │   │   │   │   ├── crt0.s
+│   │   │   │   │   │   ├── LPC214x
+│   │   │   │   │   │   │   ├── armparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   └── LPC2148.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   ├── vectors.s
+│   │   │   │   │   │   │   └── wfi.h
+│   │   │   │   │   │   ├── port.dox
+│   │   │   │   │   │   └── rules.mk
+│   │   │   │   │   ├── ARMCMx
+│   │   │   │   │   │   ├── chcore.c
+│   │   │   │   │   │   ├── chcore.h
+│   │   │   │   │   │   ├── chcore_v6m.c
+│   │   │   │   │   │   ├── chcore_v6m.h
+│   │   │   │   │   │   ├── chcore_v7m.c
+│   │   │   │   │   │   ├── chcore_v7m.h
+│   │   │   │   │   │   ├── chtypes.h
+│   │   │   │   │   │   ├── crt0.c
+│   │   │   │   │   │   ├── LPC11xx
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── LPC1114.ld
+│   │   │   │   │   │   │   │   └── LPC11U14.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   ├── LPC122x
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   └── LPC1227.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   ├── LPC13xx
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   └── LPC1343.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   ├── LPC8xx
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   └── LPC812.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   ├── port.dox
+│   │   │   │   │   │   ├── rules.cmake
+│   │   │   │   │   │   ├── rules.mk
+│   │   │   │   │   │   ├── SAM4L
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   └── ATSAM4LC4C.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   ├── STM32F0xx
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── STM32F030x8.ld
+│   │   │   │   │   │   │   │   └── STM32F051x8.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   ├── STM32F1xx
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── STM32F100xB.ld
+│   │   │   │   │   │   │   │   ├── STM32F103xB.ld
+│   │   │   │   │   │   │   │   ├── STM32F103xD.ld
+│   │   │   │   │   │   │   │   ├── STM32F103xE.ld
+│   │   │   │   │   │   │   │   ├── STM32F103xG.ld
+│   │   │   │   │   │   │   │   └── STM32F107xC.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   ├── STM32F2xx
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── STM32F205xB.ld
+│   │   │   │   │   │   │   │   └── STM32F207xG.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   ├── STM32F3xx
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── STM32F303xC.ld
+│   │   │   │   │   │   │   │   └── STM32F373xC.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   ├── STM32F4xx
+│   │   │   │   │   │   │   ├── cmparams.h
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── STM32F401xC.ld
+│   │   │   │   │   │   │   │   ├── STM32F401xE.ld
+│   │   │   │   │   │   │   │   ├── STM32F405xG.ld
+│   │   │   │   │   │   │   │   ├── STM32F407xG_CCM.ld
+│   │   │   │   │   │   │   │   ├── STM32F407xG.ld
+│   │   │   │   │   │   │   │   └── STM32F429xI.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   └── vectors.c
+│   │   │   │   │   │   └── STM32L1xx
+│   │   │   │   │   │       ├── cmparams.h
+│   │   │   │   │   │       ├── ld
+│   │   │   │   │   │       │   ├── STM32L152xB.ld
+│   │   │   │   │   │       │   └── STM32L152xE.ld
+│   │   │   │   │   │       ├── port.mk
+│   │   │   │   │   │       └── vectors.c
+│   │   │   │   │   ├── AVR
+│   │   │   │   │   │   ├── chcore.c
+│   │   │   │   │   │   ├── chcore.h
+│   │   │   │   │   │   ├── chtypes.h
+│   │   │   │   │   │   ├── port.dox
+│   │   │   │   │   │   └── port.mk
+│   │   │   │   │   ├── MSP430
+│   │   │   │   │   │   ├── chcoreasm.s
+│   │   │   │   │   │   ├── chcore.h
+│   │   │   │   │   │   ├── chtypes.h
+│   │   │   │   │   │   ├── port.dox
+│   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   └── rules.mk
+│   │   │   │   │   ├── PPC
+│   │   │   │   │   │   ├── chcore.c
+│   │   │   │   │   │   ├── chcore.h
+│   │   │   │   │   │   ├── chtypes.h
+│   │   │   │   │   │   ├── crt0.s
+│   │   │   │   │   │   ├── ivor.s
+│   │   │   │   │   │   ├── port.dox
+│   │   │   │   │   │   ├── rules.mk
+│   │   │   │   │   │   ├── SPC560BCxx
+│   │   │   │   │   │   │   ├── bam.s
+│   │   │   │   │   │   │   ├── core.s
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── SPC560B44.ld
+│   │   │   │   │   │   │   │   └── SPC560B50.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   ├── ppcparams.h
+│   │   │   │   │   │   │   ├── vectors.h
+│   │   │   │   │   │   │   └── vectors.s
+│   │   │   │   │   │   ├── SPC560Bxx
+│   │   │   │   │   │   │   ├── bam.s
+│   │   │   │   │   │   │   ├── core.s
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   └── SPC560B64.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   ├── ppcparams.h
+│   │   │   │   │   │   │   ├── vectors.h
+│   │   │   │   │   │   │   └── vectors.s
+│   │   │   │   │   │   ├── SPC560Dxx
+│   │   │   │   │   │   │   ├── bam.s
+│   │   │   │   │   │   │   ├── core.s
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── SPC560D30.ld
+│   │   │   │   │   │   │   │   └── SPC560D40.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   ├── ppcparams.h
+│   │   │   │   │   │   │   ├── vectors.h
+│   │   │   │   │   │   │   └── vectors.s
+│   │   │   │   │   │   ├── SPC560Pxx
+│   │   │   │   │   │   │   ├── bam.s
+│   │   │   │   │   │   │   ├── core.s
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── SPC560P44.ld
+│   │   │   │   │   │   │   │   └── SPC560P50.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   ├── ppcparams.h
+│   │   │   │   │   │   │   ├── vectors.h
+│   │   │   │   │   │   │   └── vectors.s
+│   │   │   │   │   │   ├── SPC563Mxx
+│   │   │   │   │   │   │   ├── bam.s
+│   │   │   │   │   │   │   ├── core.s
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   └── SPC563M64.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   ├── ppcparams.h
+│   │   │   │   │   │   │   ├── vectors.h
+│   │   │   │   │   │   │   └── vectors.s
+│   │   │   │   │   │   ├── SPC564Axx
+│   │   │   │   │   │   │   ├── bam.s
+│   │   │   │   │   │   │   ├── core.s
+│   │   │   │   │   │   │   ├── ld
+│   │   │   │   │   │   │   │   ├── SPC564A70.ld
+│   │   │   │   │   │   │   │   └── SPC564A80.ld
+│   │   │   │   │   │   │   ├── port.mk
+│   │   │   │   │   │   │   ├── ppcparams.h
+│   │   │   │   │   │   │   ├── vectors.h
+│   │   │   │   │   │   │   └── vectors.s
+│   │   │   │   │   │   ├── SPC56ECxx
+│   │   │   │   │   │   │   ├── ppcparams.h
+│   │   │   │   │   │   │   ├── vectors.h
+│   │   │   │   │   │   │   └── vectors.s
+│   │   │   │   │   │   └── SPC56ELxx
+│   │   │   │   │   │       ├── bam.s
+│   │   │   │   │   │       ├── core.s
+│   │   │   │   │   │       ├── ld
+│   │   │   │   │   │       │   ├── SPC56EL54_LSM.ld
+│   │   │   │   │   │       │   ├── SPC56EL60_LSM.ld
+│   │   │   │   │   │       │   └── SPC56EL70_LSM.ld
+│   │   │   │   │   │       ├── port.mk
+│   │   │   │   │   │       ├── ppcparams.h
+│   │   │   │   │   │       ├── vectors.h
+│   │   │   │   │   │       └── vectors.s
+│   │   │   │   │   └── SIMIA32
+│   │   │   │   │       ├── chcore.c
+│   │   │   │   │       ├── chcore.h
+│   │   │   │   │       ├── chtypes.h
+│   │   │   │   │       └── port.mk
+│   │   │   │   ├── IAR
+│   │   │   │   │   └── ARMCMx
+│   │   │   │   │       ├── chcoreasm_v6m.s
+│   │   │   │   │       ├── chcoreasm_v7m.s
+│   │   │   │   │       ├── chcore.c
+│   │   │   │   │       ├── chcore.h
+│   │   │   │   │       ├── chcore_v6m.c
+│   │   │   │   │       ├── chcore_v6m.h
+│   │   │   │   │       ├── chcore_v7m.c
+│   │   │   │   │       ├── chcore_v7m.h
+│   │   │   │   │       ├── chtypes.h
+│   │   │   │   │       ├── cstartup.s
+│   │   │   │   │       ├── LPC11xx
+│   │   │   │   │       │   ├── cmparams.h
+│   │   │   │   │       │   └── vectors.s
+│   │   │   │   │       ├── LPC13xx
+│   │   │   │   │       │   ├── cmparams.h
+│   │   │   │   │       │   └── vectors.s
+│   │   │   │   │       ├── port.dox
+│   │   │   │   │       ├── STM32F1xx
+│   │   │   │   │       │   ├── cmparams.h
+│   │   │   │   │       │   └── vectors.s
+│   │   │   │   │       ├── STM32F4xx
+│   │   │   │   │       │   ├── cmparams.h
+│   │   │   │   │       │   └── vectors.s
+│   │   │   │   │       └── STM32L1xx
+│   │   │   │   │           ├── cmparams.h
+│   │   │   │   │           └── vectors.s
+│   │   │   │   ├── ports.dox
+│   │   │   │   └── RVCT
+│   │   │   │       └── ARMCMx
+│   │   │   │           ├── chcoreasm_v6m.s
+│   │   │   │           ├── chcoreasm_v7m.s
+│   │   │   │           ├── chcore.c
+│   │   │   │           ├── chcore.h
+│   │   │   │           ├── chcore_v6m.c
+│   │   │   │           ├── chcore_v6m.h
+│   │   │   │           ├── chcore_v7m.c
+│   │   │   │           ├── chcore_v7m.h
+│   │   │   │           ├── chtypes.h
+│   │   │   │           ├── cstartup.s
+│   │   │   │           ├── LPC11xx
+│   │   │   │           │   ├── cmparams.h
+│   │   │   │           │   └── vectors.s
+│   │   │   │           ├── LPC13xx
+│   │   │   │           │   ├── cmparams.h
+│   │   │   │           │   └── vectors.s
+│   │   │   │           ├── port.dox
+│   │   │   │           ├── STM32F1xx
+│   │   │   │           │   ├── cmparams.h
+│   │   │   │           │   └── vectors.s
+│   │   │   │           ├── STM32F4xx
+│   │   │   │           │   ├── cmparams.h
+│   │   │   │           │   └── vectors.s
+│   │   │   │           └── STM32L1xx
+│   │   │   │               ├── cmparams.h
+│   │   │   │               └── vectors.s
+│   │   │   └── various
+│   │   │       ├── chprintf.c
+│   │   │       ├── chprintf.h
+│   │   │       ├── chrtclib.c
+│   │   │       ├── chrtclib.h
+│   │   │       ├── cpp_wrappers
+│   │   │       │   ├── ch.cpp
+│   │   │       │   ├── ch.hpp
+│   │   │       │   └── kernel.mk
+│   │   │       ├── devices_lib
+│   │   │       │   └── accel
+│   │   │       │       ├── lis302dl.c
+│   │   │       │       ├── lis302dl.dox
+│   │   │       │       └── lis302dl.h
+│   │   │       ├── evtimer.c
+│   │   │       ├── evtimer.h
+│   │   │       ├── fatfs_bindings
+│   │   │       │   ├── fatfs_diskio.c
+│   │   │       │   ├── fatfs.mk
+│   │   │       │   ├── fatfs_syscall.c
+│   │   │       │   └── readme.txt
+│   │   │       ├── lwip_bindings
+│   │   │       │   ├── arch
+│   │   │       │   │   ├── cc.h
+│   │   │       │   │   ├── perf.h
+│   │   │       │   │   ├── sys_arch.c
+│   │   │       │   │   └── sys_arch.h
+│   │   │       │   ├── lwip.mk
+│   │   │       │   ├── lwipthread.c
+│   │   │       │   ├── lwipthread.h
+│   │   │       │   └── readme.txt
+│   │   │       ├── memstreams.c
+│   │   │       ├── memstreams.h
+│   │   │       ├── shell.c
+│   │   │       ├── shell.h
+│   │   │       ├── syscalls.c
+│   │   │       └── various.dox
+│   │   ├── readme.txt
+│   │   ├── test
+│   │   │   ├── coverage
+│   │   │   │   ├── chconf.h
+│   │   │   │   ├── halconf.h
+│   │   │   │   ├── main.c
+│   │   │   │   ├── Makefile
+│   │   │   │   └── readme.txt
+│   │   │   ├── testbmk.c
+│   │   │   ├── testbmk.h
+│   │   │   ├── test.c
+│   │   │   ├── test.cmake
+│   │   │   ├── test.dox
+│   │   │   ├── testdyn.c
+│   │   │   ├── testdyn.h
+│   │   │   ├── testevt.c
+│   │   │   ├── testevt.h
+│   │   │   ├── test.h
+│   │   │   ├── testheap.c
+│   │   │   ├── testheap.h
+│   │   │   ├── testmbox.c
+│   │   │   ├── testmbox.h
+│   │   │   ├── test.mk
+│   │   │   ├── testmsg.c
+│   │   │   ├── testmsg.h
+│   │   │   ├── testmtx.c
+│   │   │   ├── testmtx.h
+│   │   │   ├── testpools.c
+│   │   │   ├── testpools.h
+│   │   │   ├── testqueues.c
+│   │   │   ├── testqueues.h
+│   │   │   ├── testsem.c
+│   │   │   ├── testsem.h
+│   │   │   ├── testthd.c
+│   │   │   └── testthd.h
+│   │   └── testhal
+│   │       ├── common
+│   │       │   └── testbuild
+│   │       │       ├── board.h
+│   │       │       ├── chconf.h
+│   │       │       ├── main.c
+│   │       │       └── Makefile
+│   │       ├── LPC11xx
+│   │       │   └── IRQ_STORM
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── LPC122x
+│   │       │   └── IRQ_STORM
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── LPC13xx
+│   │       │   └── IRQ_STORM
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── SPC560Pxx
+│   │       │   └── PWM-ICU
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── SPC563Mxx
+│   │       │   └── ADC
+│   │       │       ├── adc_cfg.c
+│   │       │       ├── adc_cfg.h
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── SPC56ELxx
+│   │       │   └── PWM-ICU
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── STM32F0xx
+│   │       │   ├── ADC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── EXT
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── IRQ_STORM
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── PWM-ICU
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── SPI
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   └── UART
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── STM32F1xx
+│   │       │   ├── ADC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── CAN
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── EXT
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── GPT
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── I2C
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── fake.c
+│   │       │   │   ├── fake.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── i2c_pns.c
+│   │       │   │   ├── i2c_pns.h
+│   │       │   │   ├── lis3.c
+│   │       │   │   ├── lis3.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   ├── tmp75.c
+│   │       │   │   └── tmp75.h
+│   │       │   ├── IRQ_STORM
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── PWM-ICU
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── RTC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   └── mcuconf.h
+│   │       │   ├── RTC_FATTIME
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── ffconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── SDC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── SPI
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── UART
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── USB_CDC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   └── USB_CDC_F107
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── STM32F30x
+│   │       │   ├── ADC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── ADC_DUAL
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── CAN
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── EXT
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── IRQ_STORM
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── PWM-ICU
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── SPI
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── UART
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   └── USB_CDC
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── STM32F37x
+│   │       │   ├── ADC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── CAN
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── EXT
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── I2C
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── IRQ_STORM
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── PWM-ICU
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── SDADC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── SPI
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── UART
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   └── USB_CDC
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       ├── STM32F4xx
+│   │       │   ├── ADC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── CAN
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── DMA_STORM
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   └── mcuconf.h
+│   │       │   ├── EXT
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── GPT
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── I2C
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   └── mcuconf.h
+│   │       │   ├── IRQ_STORM
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── iar
+│   │       │   │   │   ├── ch.ewp
+│   │       │   │   │   ├── ch.eww
+│   │       │   │   │   └── ch.icf
+│   │       │   │   ├── keil
+│   │       │   │   │   └── ch.uvproj
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── IRQ_STORM_FPU
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── extfunc.c
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── iar
+│   │       │   │   │   ├── ch.ewp
+│   │       │   │   │   ├── ch.eww
+│   │       │   │   │   └── ch.icf
+│   │       │   │   ├── keil
+│   │       │   │   │   └── ch.uvproj
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── PWM-ICU
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── RTC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   └── mcuconf.h
+│   │       │   ├── RTC_FATTIME
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── ffconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── SDC
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── csd.txt
+│   │       │   │   ├── ffconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── SPI
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   ├── UART
+│   │       │   │   ├── chconf.h
+│   │       │   │   ├── halconf.h
+│   │       │   │   ├── main.c
+│   │       │   │   ├── Makefile
+│   │       │   │   ├── mcuconf.h
+│   │       │   │   └── readme.txt
+│   │       │   └── USB_CDC
+│   │       │       ├── chconf.h
+│   │       │       ├── halconf.h
+│   │       │       ├── main.c
+│   │       │       ├── Makefile
+│   │       │       ├── mcuconf.h
+│   │       │       └── readme.txt
+│   │       └── STM32L1xx
+│   │           ├── ADC
+│   │           │   ├── chconf.h
+│   │           │   ├── halconf.h
+│   │           │   ├── main.c
+│   │           │   ├── Makefile
+│   │           │   ├── mcuconf.h
+│   │           │   └── readme.txt
+│   │           ├── EXT
+│   │           │   ├── chconf.h
+│   │           │   ├── halconf.h
+│   │           │   ├── main.c
+│   │           │   ├── Makefile
+│   │           │   ├── mcuconf.h
+│   │           │   └── readme.txt
+│   │           ├── IRQ_STORM
+│   │           │   ├── chconf.h
+│   │           │   ├── halconf.h
+│   │           │   ├── main.c
+│   │           │   ├── Makefile
+│   │           │   ├── mcuconf.h
+│   │           │   └── readme.txt
+│   │           ├── PWM-ICU
+│   │           │   ├── chconf.h
+│   │           │   ├── halconf.h
+│   │           │   ├── main.c
+│   │           │   ├── Makefile
+│   │           │   ├── mcuconf.h
+│   │           │   └── readme.txt
+│   │           ├── SPI
+│   │           │   ├── chconf.h
+│   │           │   ├── halconf.h
+│   │           │   ├── main.c
+│   │           │   ├── Makefile
+│   │           │   ├── mcuconf.h
+│   │           │   └── readme.txt
+│   │           └── UART
+│   │               ├── chconf.h
+│   │               ├── halconf.h
+│   │               ├── main.c
+│   │               ├── Makefile
+│   │               ├── mcuconf.h
+│   │               └── readme.txt
+│   ├── chibios-portapack
+│   │   ├── boards
+│   │   │   ├── PORTAPACK_APPLICATION
+│   │   │   │   ├── board.cmake
+│   │   │   │   ├── board.cpp
+│   │   │   │   ├── board.h
+│   │   │   │   ├── board.mk
+│   │   │   │   ├── fpga_bridge.c
+│   │   │   │   └── fpga_bridge.h
+│   │   │   └── PORTAPACK_BASEBAND
+│   │   │       ├── board.c
+│   │   │       ├── board.cmake
+│   │   │       ├── board.h
+│   │   │       └── board.mk
+│   │   ├── ext
+│   │   │   └── fatfs
+│   │   │       ├── doc
+│   │   │       │   ├── 00index_e.html
+│   │   │       │   ├── 00index_j.html
+│   │   │       │   ├── css_e.css
+│   │   │       │   ├── css_j.css
+│   │   │       │   ├── en
+│   │   │       │   │   ├── appnote.html
+│   │   │       │   │   ├── chdir.html
+│   │   │       │   │   ├── chdrive.html
+│   │   │       │   │   ├── chmod.html
+│   │   │       │   │   ├── closedir.html
+│   │   │       │   │   ├── close.html
+│   │   │       │   │   ├── config.html
+│   │   │       │   │   ├── dinit.html
+│   │   │       │   │   ├── dioctl.html
+│   │   │       │   │   ├── dread.html
+│   │   │       │   │   ├── dstat.html
+│   │   │       │   │   ├── dwrite.html
+│   │   │       │   │   ├── eof.html
+│   │   │       │   │   ├── error.html
+│   │   │       │   │   ├── expand.html
+│   │   │       │   │   ├── fattime.html
+│   │   │       │   │   ├── fdisk.html
+│   │   │       │   │   ├── filename.html
+│   │   │       │   │   ├── findfirst.html
+│   │   │       │   │   ├── findnext.html
+│   │   │       │   │   ├── forward.html
+│   │   │       │   │   ├── getcwd.html
+│   │   │       │   │   ├── getfree.html
+│   │   │       │   │   ├── getlabel.html
+│   │   │       │   │   ├── gets.html
+│   │   │       │   │   ├── lseek.html
+│   │   │       │   │   ├── mkdir.html
+│   │   │       │   │   ├── mkfs.html
+│   │   │       │   │   ├── mount.html
+│   │   │       │   │   ├── opendir.html
+│   │   │       │   │   ├── open.html
+│   │   │       │   │   ├── printf.html
+│   │   │       │   │   ├── putc.html
+│   │   │       │   │   ├── puts.html
+│   │   │       │   │   ├── rc.html
+│   │   │       │   │   ├── readdir.html
+│   │   │       │   │   ├── read.html
+│   │   │       │   │   ├── rename.html
+│   │   │       │   │   ├── sdir.html
+│   │   │       │   │   ├── setlabel.html
+│   │   │       │   │   ├── sfatfs.html
+│   │   │       │   │   ├── sfile.html
+│   │   │       │   │   ├── sfileinfo.html
+│   │   │       │   │   ├── size.html
+│   │   │       │   │   ├── stat.html
+│   │   │       │   │   ├── sync.html
+│   │   │       │   │   ├── tell.html
+│   │   │       │   │   ├── truncate.html
+│   │   │       │   │   ├── unlink.html
+│   │   │       │   │   ├── utime.html
+│   │   │       │   │   └── write.html
+│   │   │       │   ├── ja
+│   │   │       │   │   ├── appnote.html
+│   │   │       │   │   ├── chdir.html
+│   │   │       │   │   ├── chdrive.html
+│   │   │       │   │   ├── chmod.html
+│   │   │       │   │   ├── closedir.html
+│   │   │       │   │   ├── close.html
+│   │   │       │   │   ├── config.html
+│   │   │       │   │   ├── dinit.html
+│   │   │       │   │   ├── dioctl.html
+│   │   │       │   │   ├── dread.html
+│   │   │       │   │   ├── dstat.html
+│   │   │       │   │   ├── dwrite.html
+│   │   │       │   │   ├── eof.html
+│   │   │       │   │   ├── error.html
+│   │   │       │   │   ├── expand.html
+│   │   │       │   │   ├── fattime.html
+│   │   │       │   │   ├── fdisk.html
+│   │   │       │   │   ├── filename.html
+│   │   │       │   │   ├── findfirst.html
+│   │   │       │   │   ├── findnext.html
+│   │   │       │   │   ├── forward.html
+│   │   │       │   │   ├── getcwd.html
+│   │   │       │   │   ├── getfree.html
+│   │   │       │   │   ├── getlabel.html
+│   │   │       │   │   ├── gets.html
+│   │   │       │   │   ├── lseek.html
+│   │   │       │   │   ├── mkdir.html
+│   │   │       │   │   ├── mkfs.html
+│   │   │       │   │   ├── mount.html
+│   │   │       │   │   ├── opendir.html
+│   │   │       │   │   ├── open.html
+│   │   │       │   │   ├── printf.html
+│   │   │       │   │   ├── putc.html
+│   │   │       │   │   ├── puts.html
+│   │   │       │   │   ├── rc.html
+│   │   │       │   │   ├── readdir.html
+│   │   │       │   │   ├── read.html
+│   │   │       │   │   ├── rename.html
+│   │   │       │   │   ├── sdir.html
+│   │   │       │   │   ├── setlabel.html
+│   │   │       │   │   ├── sfatfs.html
+│   │   │       │   │   ├── sfile.html
+│   │   │       │   │   ├── sfileinfo.html
+│   │   │       │   │   ├── size.html
+│   │   │       │   │   ├── stat.html
+│   │   │       │   │   ├── sync.html
+│   │   │       │   │   ├── tell.html
+│   │   │       │   │   ├── truncate.html
+│   │   │       │   │   ├── unlink.html
+│   │   │       │   │   ├── utime.html
+│   │   │       │   │   └── write.html
+│   │   │       │   ├── res
+│   │   │       │   │   ├── app1.c
+│   │   │       │   │   ├── app2.c
+│   │   │       │   │   ├── app3.c
+│   │   │       │   │   ├── app4.c
+│   │   │       │   │   ├── f1.png
+│   │   │       │   │   ├── f2.png
+│   │   │       │   │   ├── f3.png
+│   │   │       │   │   ├── f4.png
+│   │   │       │   │   ├── f5.png
+│   │   │       │   │   ├── f6.png
+│   │   │       │   │   ├── f7.png
+│   │   │       │   │   ├── funcs.png
+│   │   │       │   │   ├── layers1.png
+│   │   │       │   │   ├── layers2.png
+│   │   │       │   │   ├── layers.png
+│   │   │       │   │   ├── mkfatimg.zip
+│   │   │       │   │   ├── mkfs.xls
+│   │   │       │   │   ├── modules.png
+│   │   │       │   │   ├── rwtest1.png
+│   │   │       │   │   ├── rwtest2.png
+│   │   │       │   │   └── rwtest3.png
+│   │   │       │   └── updates.txt
+│   │   │       └── src
+│   │   │           ├── 00history.txt
+│   │   │           ├── 00readme.txt
+│   │   │           ├── diskio.c
+│   │   │           ├── diskio.h
+│   │   │           ├── ff.c
+│   │   │           ├── ff.h
+│   │   │           ├── integer.h
+│   │   │           └── option
+│   │   │               ├── cc932.c
+│   │   │               ├── cc936.c
+│   │   │               ├── cc949.c
+│   │   │               ├── cc950.c
+│   │   │               ├── ccsbcs.c
+│   │   │               ├── syscall.c
+│   │   │               └── unicode.c
+│   │   ├── LICENSE-2.0.txt
+│   │   └── os
+│   │       ├── hal
+│   │       │   └── platforms
+│   │       │       ├── LPC43xx
+│   │       │       │   ├── adc_lld.c
+│   │       │       │   ├── adc_lld.h
+│   │       │       │   ├── gpt_lld.c
+│   │       │       │   ├── gpt_lld.h
+│   │       │       │   ├── i2c_lld.c
+│   │       │       │   ├── i2c_lld.h
+│   │       │       │   ├── lpc43xx.c
+│   │       │       │   ├── lpc43xx.h
+│   │       │       │   ├── lpc43xx.inc
+│   │       │       │   ├── pal_lld.c
+│   │       │       │   ├── pal_lld.h
+│   │       │       │   ├── rtc_lld.c
+│   │       │       │   ├── rtc_lld.h
+│   │       │       │   ├── sdc_lld.c
+│   │       │       │   ├── sdc_lld.h
+│   │       │       │   ├── serial_lld.c
+│   │       │       │   ├── serial_lld.h
+│   │       │       │   ├── spi_lld.c
+│   │       │       │   └── spi_lld.h
+│   │       │       ├── LPC43xx_M0
+│   │       │       │   ├── hal_lld.c
+│   │       │       │   ├── hal_lld.h
+│   │       │       │   ├── lpc43xx_m0.h
+│   │       │       │   ├── platform.cmake
+│   │       │       │   └── platform.mk
+│   │       │       └── LPC43xx_M4
+│   │       │           ├── hal_lld.c
+│   │       │           ├── hal_lld.h
+│   │       │           ├── lpc43xx_m4.h
+│   │       │           ├── platform.cmake
+│   │       │           └── platform.mk
+│   │       ├── ports
+│   │       │   └── GCC
+│   │       │       └── ARMCMx
+│   │       │           ├── LPC43xx_M0
+│   │       │           │   ├── cmparams.h
+│   │       │           │   ├── ld
+│   │       │           │   │   └── LPC43xx_M0.ld
+│   │       │           │   ├── port.cmake
+│   │       │           │   ├── port.mk
+│   │       │           │   └── vectors.c
+│   │       │           └── LPC43xx_M4
+│   │       │               ├── cmparams.h
+│   │       │               ├── ld
+│   │       │               │   ├── LPC43xx_M4.ld
+│   │       │               │   └── LPC43xx_M4_ram.ld
+│   │       │               ├── port.cmake
+│   │       │               ├── port.mk
+│   │       │               └── vectors.c
+│   │       └── various
+│   │           └── fatfs_bindings
+│   │               ├── fatfs.cmake
+│   │               ├── fatfs_diskio.c
+│   │               ├── fatfs.mk
+│   │               ├── fatfs_syscall.c
+│   │               └── readme.txt
+│   ├── CMakeLists.txt
+│   ├── common
+│   │   ├── adc.hpp
+│   │   ├── adsb.cpp
+│   │   ├── adsb_frame.cpp
+│   │   ├── adsb_frame.hpp
+│   │   ├── adsb.hpp
+│   │   ├── ais_baseband.cpp
+│   │   ├── ais_baseband.hpp
+│   │   ├── ais_packet.cpp
+│   │   ├── ais_packet.hpp
+│   │   ├── ak4951.cpp
+│   │   ├── ak4951.hpp
+│   │   ├── aprs_packet.cpp
+│   │   ├── aprs_packet.hpp
+│   │   ├── backlight.cpp
+│   │   ├── backlight.hpp
+│   │   ├── baseband_cpld.cpp
+│   │   ├── baseband_cpld.hpp
+│   │   ├── baseband.hpp
+│   │   ├── baseband_packet.hpp
+│   │   ├── baseband_sgpio.cpp
+│   │   ├── baseband_sgpio.hpp
+│   │   ├── battery.cpp
+│   │   ├── battery.hpp
+│   │   ├── bch_code.cpp
+│   │   ├── bch_code.hpp
+│   │   ├── bit_pattern.hpp
+│   │   ├── bmpfile.cpp
+│   │   ├── bmpfile.hpp
+│   │   ├── bmp.hpp
+│   │   ├── buffer.cpp
+│   │   ├── buffer_exchange.cpp
+│   │   ├── buffer_exchange.hpp
+│   │   ├── buffer.hpp
+│   │   ├── chibios_cpp.cpp
+│   │   ├── chibios_cpp.hpp
+│   │   ├── circular_buffer.hpp
+│   │   ├── complex.hpp
+│   │   ├── convert.hpp
+│   │   ├── cpld_max5.cpp
+│   │   ├── cpld_max5.hpp
+│   │   ├── cpld_update.cpp
+│   │   ├── cpld_update.hpp
+│   │   ├── cpld_xilinx.cpp
+│   │   ├── cpld_xilinx.hpp
+│   │   ├── crc.hpp
+│   │   ├── dsp_fft.cpp
+│   │   ├── dsp_fft.hpp
+│   │   ├── dsp_fir_taps.cpp
+│   │   ├── dsp_fir_taps.hpp
+│   │   ├── dsp_iir_config.hpp
+│   │   ├── dsp_iir.cpp
+│   │   ├── dsp_iir.hpp
+│   │   ├── dsp_sos_config.hpp
+│   │   ├── dsp_sos.cpp
+│   │   ├── dsp_sos.hpp
+│   │   ├── dsp_types.hpp
+│   │   ├── ert_packet.cpp
+│   │   ├── ert_packet.hpp
+│   │   ├── event.cpp
+│   │   ├── event.hpp
+│   │   ├── external_app.hpp
+│   │   ├── ffconf.h
+│   │   ├── field_reader.hpp
+│   │   ├── fifo.hpp
+│   │   ├── flex_defs.hpp
+│   │   ├── gcc.cpp
+│   │   ├── gcc.hpp
+│   │   ├── gpdma.cpp
+│   │   ├── gpdma.hpp
+│   │   ├── gpio.hpp
+│   │   ├── hackrf_cpld_data.hpp
+│   │   ├── hackrf_gpio.hpp
+│   │   ├── hackrf_hal.cpp
+│   │   ├── hackrf_hal.hpp
+│   │   ├── i2cdev_ads1110.cpp
+│   │   ├── i2cdev_ads1110.hpp
+│   │   ├── i2cdev_bh1750.cpp
+│   │   ├── i2cdev_bh1750.hpp
+│   │   ├── i2cdev_bmx280.cpp
+│   │   ├── i2cdev_bmx280.hpp
+│   │   ├── i2cdevlist.hpp
+│   │   ├── i2cdevmanager_c_api.h
+│   │   ├── i2cdevmanager.cpp
+│   │   ├── i2cdevmanager.hpp
+│   │   ├── i2cdev_max17055.cpp
+│   │   ├── i2cdev_max17055.hpp
+│   │   ├── i2cdev_ppmod.cpp
+│   │   ├── i2cdev_ppmod_helper.hpp
+│   │   ├── i2cdev_ppmod.hpp
+│   │   ├── i2cdev_sht3x.cpp
+│   │   ├── i2cdev_sht3x.hpp
+│   │   ├── i2cdev_sht4x.cpp
+│   │   ├── i2cdev_sht4x.hpp
+│   │   ├── i2c_pp.cpp
+│   │   ├── i2c_pp.hpp
+│   │   ├── i2s.hpp
+│   │   ├── jammer.cpp
+│   │   ├── jammer.hpp
+│   │   ├── jtag.cpp
+│   │   ├── jtag.hpp
+│   │   ├── jtag_tap.cpp
+│   │   ├── jtag_tap.hpp
+│   │   ├── jtag_target_gpio.hpp
+│   │   ├── jtag_target.hpp
+│   │   ├── lcd_ili9341.cpp
+│   │   ├── lcd_ili9341.hpp
+│   │   ├── led.hpp
+│   │   ├── lfsr_random.cpp
+│   │   ├── lfsr_random.hpp
+│   │   ├── lpc43xx_cpp.hpp
+│   │   ├── manchester.cpp
+│   │   ├── manchester.hpp
+│   │   ├── mathdef.hpp
+│   │   ├── memory_map.hpp
+│   │   ├── message.hpp
+│   │   ├── message_queue.cpp
+│   │   ├── message_queue.hpp
+│   │   ├── morse.cpp
+│   │   ├── morse.hpp
+│   │   ├── msgpack.cpp
+│   │   ├── msgpack.hpp
+│   │   ├── optional.hpp
+│   │   ├── oversample.hpp
+│   │   ├── performance_counter.cpp
+│   │   ├── performance_counter.hpp
+│   │   ├── pins.hpp
+│   │   ├── platform.hpp
+│   │   ├── png_writer.cpp
+│   │   ├── png_writer.hpp
+│   │   ├── pocsag.cpp
+│   │   ├── pocsag.hpp
+│   │   ├── pocsag_packet.cpp
+│   │   ├── pocsag_packet.hpp
+│   │   ├── portapack_adc.hpp
+│   │   ├── portapack_cpld_data.hpp
+│   │   ├── portapack_dma.hpp
+│   │   ├── portapack_hal.hpp
+│   │   ├── portapack_io.cpp
+│   │   ├── portapack_io.hpp
+│   │   ├── portapack_persistent_memory.cpp
+│   │   ├── portapack_persistent_memory.hpp
+│   │   ├── portapack_shared_memory.cpp
+│   │   ├── portapack_shared_memory.hpp
+│   │   ├── random.cpp
+│   │   ├── random.hpp
+│   │   ├── result.hpp
+│   │   ├── simd.hpp
+│   │   ├── sine_table.hpp
+│   │   ├── sine_table_int8.hpp
+│   │   ├── sonde_packet.cpp
+│   │   ├── sonde_packet.hpp
+│   │   ├── spi_image.hpp
+│   │   ├── sstv.hpp
+│   │   ├── standalone_app.hpp
+│   │   ├── test_packet.cpp
+│   │   ├── test_packet.hpp
+│   │   ├── thread_base.hpp
+│   │   ├── thread_wait.cpp
+│   │   ├── thread_wait.hpp
+│   │   ├── tonesets.hpp
+│   │   ├── tpms_packet.cpp
+│   │   ├── tpms_packet.hpp
+│   │   ├── ui.cpp
+│   │   ├── ui_focus.cpp
+│   │   ├── ui_focus.hpp
+│   │   ├── ui.hpp
+│   │   ├── ui_language.cpp
+│   │   ├── ui_language.hpp
+│   │   ├── ui_painter.cpp
+│   │   ├── ui_painter.hpp
+│   │   ├── ui_text.cpp
+│   │   ├── ui_text.hpp
+│   │   ├── ui_widget.cpp
+│   │   ├── ui_widget.hpp
+│   │   ├── units.hpp
+│   │   ├── untar.hpp
+│   │   ├── utility.cpp
+│   │   ├── utility.hpp
+│   │   ├── utility_m4.hpp
+│   │   ├── volume.hpp
+│   │   ├── wm8731.cpp
+│   │   └── wm8731.hpp
+│   ├── flashsize.h
+│   ├── graphics
+│   │   ├── arrow_left.png
+│   │   ├── arrow_right.png
+│   │   ├── bulb_ignore.png
+│   │   ├── bulb_off.png
+│   │   ├── bulb_on.png
+│   │   ├── icon_add.png
+│   │   ├── icon_adsb.png
+│   │   ├── icon_adulttoys.png
+│   │   ├── icon_ais.png
+│   │   ├── icon_aprs.png
+│   │   ├── icon_back.png
+│   │   ├── icon_batt_icon.png
+│   │   ├── icon_batt_text.png
+│   │   ├── icon_bht.png
+│   │   ├── icon_biast_off.png
+│   │   ├── icon_biast_on.png
+│   │   ├── icon_breakout.png
+│   │   ├── icon_brightness.png
+│   │   ├── icon_btle.png
+│   │   ├── icon_burger.png
+│   │   ├── icon_camera.png
+│   │   ├── icon_capture.png
+│   │   ├── icon_clean.png
+│   │   ├── icon_clk_ext.png
+│   │   ├── icon_clk_int.png
+│   │   ├── icon_codetx.png
+│   │   ├── icon_controls.png
+│   │   ├── icon_copy.png
+│   │   ├── icon_cut.png
+│   │   ├── icon_cwgen.png
+│   │   ├── icon_debug.png
+│   │   ├── icon_delete.png
+│   │   ├── icon_dir.png
+│   │   ├── icon_dmr.png
+│   │   ├── icon_doom.png
+│   │   ├── icon_downconvert.png
+│   │   ├── icon_ert.png
+│   │   ├── icon_file_image.png
+│   │   ├── icon_file_iq.png
+│   │   ├── icon_file.png
+│   │   ├── icon_file_text.png
+│   │   ├── icon_file_wav.png
+│   │   ├── icon_font_viewer.png
+│   │   ├── icon_fox.png
+│   │   ├── icon_freqman.png
+│   │   ├── icon_games.png
+│   │   ├── icon_gps_sim.png
+│   │   ├── icon_hackrf.png
+│   │   ├── icon_hide.png
+│   │   ├── icon_jammer.png
+│   │   ├── icon_lcr.png
+│   │   ├── icon_lge.png
+│   │   ├── icon_load.png
+│   │   ├── icon_looking.png
+│   │   ├── icon_lora.png
+│   │   ├── icon_memory.png
+│   │   ├── icon_microphone.png
+│   │   ├── icon_modem.png
+│   │   ├── icon_morse.png
+│   │   ├── icon_new_category.png
+│   │   ├── icon_new_dir.png
+│   │   ├── icon_new_file.png
+│   │   ├── icon_noaa.png
+│   │   ├── icon_notepad.png
+│   │   ├── icon_nrf.png
+│   │   ├── icon_nuoptix.png
+│   │   ├── icon_options_datetime.png
+│   │   ├── icon_options_radio.png
+│   │   ├── icon_options_touch.png
+│   │   ├── icon_options_ui.png
+│   │   ├── icon_paint.png
+│   │   ├── icon_paste.png
+│   │   ├── icon_peripherals_details.png
+│   │   ├── icon_peripherals.png
+│   │   ├── icon_pocsag.png
+│   │   ├── icon_previous.png
+│   │   ├── icon_protoview.png
+│   │   ├── icon_qr_code.png
+│   │   ├── icon_rds.png
+│   │   ├── icon_receivers.png
+│   │   ├── icon_remote.png
+│   │   ├── icon_rename_numeric.png
+│   │   ├── icon_rename.png
+│   │   ├── icon_replay.png
+│   │   ├── icon_save.png
+│   │   ├── icon_scanner.png
+│   │   ├── icon_script.png
+│   │   ├── icon_sdcard.png
+│   │   ├── icon_sd.png
+│   │   ├── icon_search.png
+│   │   ├── icon_setup.png
+│   │   ├── icon_shift.png
+│   │   ├── icon_sleep.png
+│   │   ├── icon_snake.png
+│   │   ├── icon_sonde.png
+│   │   ├── icon_soundboard.png
+│   │   ├── icon_speaker_and_headphones_mute.png
+│   │   ├── icon_speaker_and_headphones.png
+│   │   ├── icon_speaker_mute.png
+│   │   ├── icon_speaker.png
+│   │   ├── icon_sstv.png
+│   │   ├── icon_stealth.png
+│   │   ├── icon_temperature.png
+│   │   ├── icon_tetra.png
+│   │   ├── icon_tetris.png
+│   │   ├── icon_thermometer.png
+│   │   ├── icon_tools_antenna.png
+│   │   ├── icon_tools_wipesd.png
+│   │   ├── icon_touchtunes.png
+│   │   ├── icon_tpms.png
+│   │   ├── icon_tranceivers.png
+│   │   ├── icon_transmit.png
+│   │   ├── icon_trash.png
+│   │   ├── icon_trim.png
+│   │   ├── icon_tune_fork.png
+│   │   ├── icon_upconvert.png
+│   │   ├── icon_utilities.png
+│   │   ├── key.png
+│   │   ├── more.png
+│   │   ├── play.png
+│   │   ├── record.png
+│   │   ├── rssipwm.png
+│   │   ├── sd_card_error.png
+│   │   ├── sd_card_ok.png
+│   │   ├── sd_card_unknown.png
+│   │   ├── sig_cw.png
+│   │   ├── sig_noise.png
+│   │   ├── sig_saw_down.png
+│   │   ├── sig_saw_up.png
+│   │   ├── sig_sine.png
+│   │   ├── sig_square.png
+│   │   ├── sig_tri.png
+│   │   ├── stop.png
+│   │   ├── stopwatch.png
+│   │   ├── stripes.png
+│   │   ├── tab_edge.png
+│   │   ├── target_calibrate.png
+│   │   ├── target.png
+│   │   ├── target_verify.png
+│   │   ├── temperature.png
+│   │   └── titlebar_image.png
+│   ├── standalone
+│   │   ├── CMakeLists.txt
+│   │   ├── common
+│   │   │   └── ui
+│   │   │       ├── bmpfile.cpp
+│   │   │       ├── bmpfile.hpp
+│   │   │       ├── bmp.hpp
+│   │   │       ├── circular_buffer.hpp
+│   │   │       ├── complex.hpp
+│   │   │       ├── file.cpp
+│   │   │       ├── file.hpp
+│   │   │       ├── file_path.cpp
+│   │   │       ├── file_path.hpp
+│   │   │       ├── file_reader.cpp
+│   │   │       ├── file_reader.hpp
+│   │   │       ├── file_wrapper.hpp
+│   │   │       ├── mathdef.hpp
+│   │   │       ├── optional.hpp
+│   │   │       ├── result.hpp
+│   │   │       ├── sine_table.hpp
+│   │   │       ├── standalone_application.hpp
+│   │   │       ├── string_format.cpp
+│   │   │       ├── string_format.hpp
+│   │   │       ├── theme.cpp
+│   │   │       ├── theme.hpp
+│   │   │       ├── ui.cpp
+│   │   │       ├── ui_focus.cpp
+│   │   │       ├── ui_focus.hpp
+│   │   │       ├── ui_font_fixed_5x8.cpp
+│   │   │       ├── ui_font_fixed_5x8.hpp
+│   │   │       ├── ui_font_fixed_8x16.cpp
+│   │   │       ├── ui_font_fixed_8x16.hpp
+│   │   │       ├── ui_geomap.cpp
+│   │   │       ├── ui_geomap.hpp
+│   │   │       ├── ui.hpp
+│   │   │       ├── ui_painter.cpp
+│   │   │       ├── ui_painter.hpp
+│   │   │       ├── ui_text.cpp
+│   │   │       ├── ui_text.hpp
+│   │   │       ├── ui_widget.cpp
+│   │   │       ├── ui_widget.hpp
+│   │   │       ├── utility.cpp
+│   │   │       └── utility.hpp
+│   │   ├── digitalrain
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── digitalrain.cpp
+│   │   │   ├── digitalrain.hpp
+│   │   │   ├── external.ld
+│   │   │   ├── ffconf.h
+│   │   │   ├── ff.h
+│   │   │   ├── fileext.hpp
+│   │   │   ├── integer.h
+│   │   │   └── main.cpp
+│   │   └── pacman
+│   │       ├── CMakeLists.txt
+│   │       ├── crntsc.h
+│   │       ├── crpal.h
+│   │       ├── DrawIndexedMap.h
+│   │       ├── external.ld
+│   │       ├── ffconf.h
+│   │       ├── ff.h
+│   │       ├── fileext.hpp
+│   │       ├── integer.h
+│   │       ├── main.cpp
+│   │       ├── pacman.cpp
+│   │       ├── pacman.hpp
+│   │       ├── PacmanTiles.h
+│   │       └── playfield.hpp
+│   ├── test
+│   │   ├── application
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── linker_stubs.cpp
+│   │   │   ├── main.cpp
+│   │   │   ├── mock_file.hpp
+│   │   │   ├── test_basics.cpp
+│   │   │   ├── test_circular_buffer.cpp
+│   │   │   ├── test_convert.cpp
+│   │   │   ├── test_file_reader.cpp
+│   │   │   ├── test_file_wrapper.cpp
+│   │   │   ├── test_freqman_db.cpp
+│   │   │   ├── test_mock_file.cpp
+│   │   │   ├── test_optional.cpp
+│   │   │   ├── test_string_format.cpp
+│   │   │   └── test_utility.cpp
+│   │   ├── baseband
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── dsp_fft_test.cpp
+│   │   │   └── main.cpp
+│   │   ├── CMakeLists.txt
+│   │   └── include
+│   │       └── doctest.h
+│   ├── toolchain-arm-cortex-m.cmake
+│   └── tools
+│       ├── append_fpga_bitstream.py
+│       ├── bitmap_tools
+│       │   ├── bitmap_arr_reverse_decode.py
+│       │   ├── make_bitmap2.py
+│       │   ├── make_bitmap.py
+│       │   ├── pp_bitmap_parser.py
+│       │   ├── pp_png2hpp.py
+│       │   └── README.md
+│       ├── bmp_tools
+│       │   ├── bmp_to_hex_cpp_arr.py
+│       │   ├── hex_cpp_arr_to_bmp.py
+│       │   └── README.md
+│       ├── check_bitmap_usage.sh
+│       ├── check_external_app_linker_script_correct.py
+│       ├── check_for_shared_external_code.py
+│       ├── check_gcc_version_from_elf.py
+│       ├── color_bitmap_decode.py
+│       ├── convert_C16_to_complex.grc
+│       ├── copy_external_apps.sh
+│       ├── decoded_modal_warning.png
+│       ├── decoded.png
+│       ├── docker-entrypoint.sh
+│       ├── enter_mode.sh
+│       ├── export_external_apps.py
+│       ├── external_app_info.py
+│       ├── extract_cpld_data.py
+│       ├── fast_flash_pp_and_copy_apps.py
+│       ├── fir_lpf.py
+│       ├── generate_ui-about-simple.cpp.py
+│       ├── generate_world_map.bin.py
+│       ├── make_airlines_db
+│       │   ├── airlinecodes.txt
+│       │   ├── make_airlines_db.py
+│       │   └── README.md
+│       ├── make_dcs.py
+│       ├── make_icao24_db
+│       │   ├── aircraftDatabase.csv
+│       │   ├── make_icao24_db.py
+│       │   └── README.md
+│       ├── make_image_chunk.py
+│       ├── make_macaddress_db
+│       │   └── make_macaddress_db.py
+│       ├── make_mids_db
+│       │   ├── make_mid_db.py
+│       │   ├── MaritimeIdentificationDigits.csv
+│       │   └── README.md
+│       ├── make_spi_image.py
+│       ├── __pycache__
+│       │   └── external_app_info.cpython-312.pyc
+│       ├── simple_checksum.py
+│       └── widget_preview.py
+├── flashing
+│   ├── Check for firmware updates.url
+│   ├── dfu_hackrf_one.bat
+│   ├── driver
+│   │   ├── amd64
+│   │   │   ├── WdfCoInstaller01011.dll
+│   │   │   └── winusbcoinstaller2.dll
+│   │   ├── dpinst.exe
+│   │   ├── dpinst.xml
+│   │   ├── hackrf_one_amd64.cat
+│   │   ├── hackrf_one.inf
+│   │   ├── lpc_dfu_amd64.cat
+│   │   └── lpc_dfu.inf
+│   ├── flash_portapack_mayhem.bat
+│   ├── How to update the firmware.url
+│   ├── README.txt
+│   └── utils
+│       ├── dfu-util-static.exe
+│       ├── flash_hackrf_one.bat
+│       ├── hackrf_update.exe
+│       ├── msvcp120.dll
+│       └── msvcr120.dll
+├── flash.sh
+├── flashsize.h.in
+├── format-code.sh
+├── hackrf
+│   ├── ci-scripts
+│   │   ├── hackrf_test.py
+│   │   ├── install-firmware.sh
+│   │   ├── install-host.sh
+│   │   ├── test-debug.py
+│   │   ├── test-firmware-flash.sh
+│   │   ├── test-firmware-program.sh
+│   │   ├── test-host.sh
+│   │   ├── test-sgpio-debug.py
+│   │   └── test-transfer.py
+│   ├── CODE_OF_CONDUCT.md
+│   ├── COPYING
+│   ├── Dockerfile
+│   ├── docs
+│   │   ├── doxygen
+│   │   │   └── Doxyfile
+│   │   ├── images
+│   │   │   ├── block-diagram.png
+│   │   │   ├── block-diagram-pro.png
+│   │   │   ├── block-diagram-pro.svg
+│   │   │   ├── block-diagram-r9.png
+│   │   │   ├── block-diagram-r9.svg
+│   │   │   ├── block-diagram.svg
+│   │   │   ├── dc_spike_example_plot.png
+│   │   │   ├── dc_spike_example_spectrum.png
+│   │   │   ├── dc_spike_grc.png
+│   │   │   ├── grc-hw-sync-streaming.png
+│   │   │   ├── HackRF-One-fd0-0009.jpeg
+│   │   │   ├── hackrf-pro-preliminary-photo.jpg
+│   │   │   ├── jawbreaker.JPG
+│   │   │   ├── max2837-1m75bw-at-2m.png
+│   │   │   ├── max2837-1m75bw-at-8m.png
+│   │   │   ├── noisereducingcable.jpeg
+│   │   │   ├── noisereducingcablescreenshot.jpeg
+│   │   │   ├── operacake-block-diagram.png
+│   │   │   ├── operacake-block-diagram.svg
+│   │   │   ├── operacake.jpeg
+│   │   │   ├── rad1o_8.jpg
+│   │   │   ├── rf_shield_1.jpeg
+│   │   │   ├── rf_shield_2.jpg
+│   │   │   ├── rf_shield_3.jpg
+│   │   │   ├── rf_shield_4.jpg
+│   │   │   ├── rf_shield_5.jpg
+│   │   │   ├── rf_shield_6.jpg
+│   │   │   ├── rf_shield_7.jpg
+│   │   │   ├── rf_shield_8.jpg
+│   │   │   ├── rf_shield_9.jpg
+│   │   │   └── trigger-pins.png
+│   │   ├── make.bat
+│   │   ├── Makefile
+│   │   ├── requirements.txt
+│   │   └── source
+│   │       ├── conf.py
+│   │       ├── enclosure_options.rst
+│   │       ├── expansion_interface.rst
+│   │       ├── external_clock_interface.rst
+│   │       ├── firmware_development_setup.rst
+│   │       ├── getting_help.rst
+│   │       ├── hackrf_connectors.rst
+│   │       ├── hackrf_minimum_requirements.rst
+│   │       ├── hackrf_one.rst
+│   │       ├── hackrf_projects_mentions.rst
+│   │       ├── hackrf_pro.rst
+│   │       ├── hackrfs_buttons.rst
+│   │       ├── hackrf_tools.rst
+│   │       ├── hardware_components.rst
+│   │       ├── hardware_triggering.rst
+│   │       ├── index.rst
+│   │       ├── installing_hackrf_software.rst
+│   │       ├── jawbreaker.rst
+│   │       ├── leds.rst
+│   │       ├── list_of_hardware_revisions.rst
+│   │       ├── LPC43XX_Debugging.rst
+│   │       ├── LPC43XX_SGPIO_Configuration.rst
+│   │       ├── opera_cake_board_addressing.rst
+│   │       ├── opera_cake_faq.rst
+│   │       ├── opera_cake_hardware.rst
+│   │       ├── opera_cake_modes_of_operation.rst
+│   │       ├── opera_cake_port_configuration.rst
+│   │       ├── opera_cake.rst
+│   │       ├── rad1o.rst
+│   │       ├── rf_shield_installation.rst
+│   │       ├── sampling_rate.rst
+│   │       ├── setting_gain.rst
+│   │       ├── software_support.rst
+│   │       ├── synchronization_checklist.rst
+│   │       ├── troubleshooting.rst
+│   │       ├── updating_firmware.rst
+│   │       ├── usb_cables.rst
+│   │       └── virtual_machines.rst
+│   ├── firmware
+│   │   ├── appveyor.sh
+│   │   ├── blinky
+│   │   │   ├── blinky.c
+│   │   │   ├── CMakeLists.txt
+│   │   │   └── README
+│   │   ├── CMakeLists.txt
+│   │   ├── common
+│   │   │   ├── adc.c
+│   │   │   ├── adc.h
+│   │   │   ├── bitband.c
+│   │   │   ├── bitband.h
+│   │   │   ├── clkin.c
+│   │   │   ├── clkin.h
+│   │   │   ├── configure_file.cmake
+│   │   │   ├── cpld_jtag.c
+│   │   │   ├── cpld_jtag.h
+│   │   │   ├── cpld_xc2c.c
+│   │   │   ├── cpld_xc2c.h
+│   │   │   ├── crc.c
+│   │   │   ├── crc.h
+│   │   │   ├── fault_handler.c
+│   │   │   ├── fault_handler.h
+│   │   │   ├── firmware_info.c
+│   │   │   ├── firmware_info.h
+│   │   │   ├── fpga.c
+│   │   │   ├── fpga.h
+│   │   │   ├── fpga_image.c
+│   │   │   ├── fpga_regs.def
+│   │   │   ├── fpga_selftest.c
+│   │   │   ├── gpdma.c
+│   │   │   ├── gpdma.h
+│   │   │   ├── gpio.h
+│   │   │   ├── gpio_lpc.c
+│   │   │   ├── gpio_lpc.h
+│   │   │   ├── hackrf_core.c
+│   │   │   ├── hackrf_core.h
+│   │   │   ├── hackrf_ui.c
+│   │   │   ├── hackrf_ui.h
+│   │   │   ├── i2c_bus.c
+│   │   │   ├── i2c_bus.h
+│   │   │   ├── i2c_lpc.c
+│   │   │   ├── i2c_lpc.h
+│   │   │   ├── ice40_spi.c
+│   │   │   ├── ice40_spi.h
+│   │   │   ├── locking.h
+│   │   │   ├── LPC4320_M4_memory.ld
+│   │   │   ├── LPC4330_M4_memory.ld
+│   │   │   ├── LPC43xx_M0_memory.ld
+│   │   │   ├── LPC43xx_M4_M0_image_from_text.ld
+│   │   │   ├── LPC43xx_M4_memory.ld
+│   │   │   ├── LPC43xx_M4_memory_rom_only.ld
+│   │   │   ├── lz4_blk.c
+│   │   │   ├── lz4_blk.h
+│   │   │   ├── m0_bin.s.cmake
+│   │   │   ├── m0_sleep.c
+│   │   │   ├── m0_state.c
+│   │   │   ├── m0_state.h
+│   │   │   ├── max2831.c
+│   │   │   ├── max2831.h
+│   │   │   ├── max2831_regs.def
+│   │   │   ├── max2831_target.c
+│   │   │   ├── max2831_target.h
+│   │   │   ├── max2837.c
+│   │   │   ├── max2837.h
+│   │   │   ├── max2837_regs.def
+│   │   │   ├── max2837_target.c
+│   │   │   ├── max2837_target.h
+│   │   │   ├── max2839.c
+│   │   │   ├── max2839.h
+│   │   │   ├── max2839_regs.def
+│   │   │   ├── max2839_target.c
+│   │   │   ├── max2839_target.h
+│   │   │   ├── max283x.c
+│   │   │   ├── max283x.h
+│   │   │   ├── max2871.c
+│   │   │   ├── max2871.h
+│   │   │   ├── max2871_regs.c
+│   │   │   ├── max2871_regs.h
+│   │   │   ├── max5864.c
+│   │   │   ├── max5864.h
+│   │   │   ├── max5864_target.c
+│   │   │   ├── max5864_target.h
+│   │   │   ├── mixer.c
+│   │   │   ├── mixer.h
+│   │   │   ├── operacake.c
+│   │   │   ├── operacake.h
+│   │   │   ├── operacake_sctimer.c
+│   │   │   ├── operacake_sctimer.h
+│   │   │   ├── platform_detect.c
+│   │   │   ├── platform_detect.h
+│   │   │   ├── portapack.c
+│   │   │   ├── portapack.h
+│   │   │   ├── rad1o
+│   │   │   │   ├── decoder.c
+│   │   │   │   ├── decoder.h
+│   │   │   │   ├── display.c
+│   │   │   │   ├── display.h
+│   │   │   │   ├── draw.c
+│   │   │   │   ├── draw.h
+│   │   │   │   ├── fonts.h
+│   │   │   │   ├── print.c
+│   │   │   │   ├── print.h
+│   │   │   │   ├── render.c
+│   │   │   │   ├── render.h
+│   │   │   │   ├── smallfonts.c
+│   │   │   │   ├── smallfonts.h
+│   │   │   │   ├── ubuntu18.c
+│   │   │   │   └── ubuntu18.h
+│   │   │   ├── radio.c
+│   │   │   ├── radio.h
+│   │   │   ├── README
+│   │   │   ├── rffc5071.c
+│   │   │   ├── rffc5071.h
+│   │   │   ├── rffc5071_regs.def
+│   │   │   ├── rffc5071_spi.c
+│   │   │   ├── rffc5071_spi.h
+│   │   │   ├── rf_path.c
+│   │   │   ├── rf_path.h
+│   │   │   ├── rom_iap.c
+│   │   │   ├── rom_iap.h
+│   │   │   ├── sct.h
+│   │   │   ├── selftest.c
+│   │   │   ├── selftest.h
+│   │   │   ├── sgpio.c
+│   │   │   ├── sgpio.h
+│   │   │   ├── si5351c.c
+│   │   │   ├── si5351c.h
+│   │   │   ├── spi_bus.c
+│   │   │   ├── spi_bus.h
+│   │   │   ├── spi_ssp.c
+│   │   │   ├── spi_ssp.h
+│   │   │   ├── streaming.c
+│   │   │   ├── streaming.h
+│   │   │   ├── tune_config.h
+│   │   │   ├── tuning.c
+│   │   │   ├── tuning.h
+│   │   │   ├── ui_portapack.c
+│   │   │   ├── ui_portapack.h
+│   │   │   ├── ui_rad1o.c
+│   │   │   ├── ui_rad1o.h
+│   │   │   ├── usb.c
+│   │   │   ├── usb.h
+│   │   │   ├── usb_queue.c
+│   │   │   ├── usb_queue.h
+│   │   │   ├── usb_request.c
+│   │   │   ├── usb_request.h
+│   │   │   ├── usb_standard_request.c
+│   │   │   ├── usb_standard_request.h
+│   │   │   ├── usb_type.h
+│   │   │   ├── user_config.c
+│   │   │   ├── user_config.h
+│   │   │   ├── w25q80bv.c
+│   │   │   ├── w25q80bv.h
+│   │   │   ├── w25q80bv_target.c
+│   │   │   ├── w25q80bv_target.h
+│   │   │   └── xapp058
+│   │   │       ├── lenval.c
+│   │   │       ├── lenval.h
+│   │   │       ├── micro.c
+│   │   │       ├── micro.h
+│   │   │       ├── ports.c
+│   │   │       ├── ports.h
+│   │   │       └── README
+│   │   ├── cpld
+│   │   │   ├── README
+│   │   │   ├── sgpio_debug
+│   │   │   │   ├── batch_svf
+│   │   │   │   ├── batch_xsvf
+│   │   │   │   ├── default.xsvf
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── README.md
+│   │   │   │   ├── sgpio_debug.xise
+│   │   │   │   ├── top.jed
+│   │   │   │   ├── top_tb.vhd
+│   │   │   │   ├── top.ucf
+│   │   │   │   └── top.vhd
+│   │   │   └── sgpio_if
+│   │   │       ├── batch_svf
+│   │   │       ├── batch_xsvf
+│   │   │       ├── default.xsvf
+│   │   │       ├── Makefile
+│   │   │       ├── README.md
+│   │   │       ├── sgpio_if.xise
+│   │   │       ├── top.jed
+│   │   │       ├── top_tb.vhd
+│   │   │       ├── top.ucf
+│   │   │       └── top.vhd
+│   │   ├── dfu.py
+│   │   ├── dfu-util.cmake
+│   │   ├── fpga
+│   │   │   ├── amaranth_future
+│   │   │   │   └── fixed.py
+│   │   │   ├── board.py
+│   │   │   ├── build
+│   │   │   │   └── praline_fpga.bin
+│   │   │   ├── build.py
+│   │   │   ├── dsp
+│   │   │   │   ├── cic.py
+│   │   │   │   ├── dc_block.py
+│   │   │   │   ├── fir_mac16.py
+│   │   │   │   ├── fir.py
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── mcm.py
+│   │   │   │   ├── nco.py
+│   │   │   │   ├── quarter_shift.py
+│   │   │   │   ├── round.py
+│   │   │   │   └── sb_mac16.py
+│   │   │   ├── interface
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── max586x.py
+│   │   │   │   ├── sgpio.py
+│   │   │   │   └── spi.py
+│   │   │   ├── requirements.txt
+│   │   │   ├── top
+│   │   │   │   ├── ext_precision_rx.py
+│   │   │   │   ├── ext_precision_tx.py
+│   │   │   │   ├── half_precision.py
+│   │   │   │   └── standard.py
+│   │   │   └── util
+│   │   │       ├── __init__.py
+│   │   │       ├── lfsr.py
+│   │   │       └── _stream.py
+│   │   ├── hackrf-common.cmake
+│   │   ├── hackrf_usb
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── hackrf_usb.c
+│   │   │   ├── sgpio_m0.s
+│   │   │   ├── usb_api_adc.c
+│   │   │   ├── usb_api_adc.h
+│   │   │   ├── usb_api_board_info.c
+│   │   │   ├── usb_api_board_info.h
+│   │   │   ├── usb_api_cpld.c
+│   │   │   ├── usb_api_cpld.h
+│   │   │   ├── usb_api_m0_state.c
+│   │   │   ├── usb_api_m0_state.h
+│   │   │   ├── usb_api_operacake.c
+│   │   │   ├── usb_api_operacake.h
+│   │   │   ├── usb_api_praline.c
+│   │   │   ├── usb_api_praline.h
+│   │   │   ├── usb_api_register.c
+│   │   │   ├── usb_api_register.h
+│   │   │   ├── usb_api_selftest.c
+│   │   │   ├── usb_api_selftest.h
+│   │   │   ├── usb_api_spiflash.c
+│   │   │   ├── usb_api_spiflash.h
+│   │   │   ├── usb_api_sweep.c
+│   │   │   ├── usb_api_sweep.h
+│   │   │   ├── usb_api_transceiver.c
+│   │   │   ├── usb_api_transceiver.h
+│   │   │   ├── usb_api_ui.c
+│   │   │   ├── usb_api_ui.h
+│   │   │   ├── usb_bulk_buffer.h
+│   │   │   ├── usb_descriptor.c
+│   │   │   ├── usb_descriptor.h
+│   │   │   ├── usb_device.c
+│   │   │   ├── usb_device.h
+│   │   │   ├── usb_endpoint.c
+│   │   │   └── usb_endpoint.h
+│   │   ├── libopencm3
+│   │   │   ├── COPYING.GPL3
+│   │   │   ├── COPYING.LGPL3
+│   │   │   ├── doc
+│   │   │   │   ├── cm3
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   └── DoxygenLayout_cm3.xml
+│   │   │   │   ├── Doxyfile
+│   │   │   │   ├── Doxyfile_common
+│   │   │   │   ├── DoxygenLayout.xml
+│   │   │   │   ├── efm32g
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_efm32g.xml
+│   │   │   │   │   └── header_efm32g.tex
+│   │   │   │   ├── efm32gg
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_efm32gg.xml
+│   │   │   │   │   └── header_efm32gg.tex
+│   │   │   │   ├── efm32lg
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_efm32lg.xml
+│   │   │   │   │   └── header_efm32lg.tex
+│   │   │   │   ├── efm32tg
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_efm32tg.xml
+│   │   │   │   │   └── header_efm32tg.tex
+│   │   │   │   ├── HACKING
+│   │   │   │   ├── index.html
+│   │   │   │   ├── lm3s
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_lm3s.xml
+│   │   │   │   │   └── header_lm3s.tex
+│   │   │   │   ├── lm4f
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_lm4f.xml
+│   │   │   │   │   └── header_lm4f.tex
+│   │   │   │   ├── lpc13xx
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_lpc13xx.xml
+│   │   │   │   │   └── header_lpc13xx.tex
+│   │   │   │   ├── lpc17xx
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_lpc17xx.xml
+│   │   │   │   │   └── header_lpc17xx.tex
+│   │   │   │   ├── lpc43xx
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_lpc43xx.xml
+│   │   │   │   │   └── header_lpc43xx.tex
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── README
+│   │   │   │   ├── stm32f0
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_stm32f0.xml
+│   │   │   │   │   ├── header_stm32f0.tex
+│   │   │   │   │   └── index.html
+│   │   │   │   ├── stm32f1
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_stm32f1.xml
+│   │   │   │   │   ├── header_stm32f1.tex
+│   │   │   │   │   └── index.html
+│   │   │   │   ├── stm32f2
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_stm32f2.xml
+│   │   │   │   │   ├── header_stm32f2.tex
+│   │   │   │   │   └── index.html
+│   │   │   │   ├── stm32f3
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_stm32f3.xml
+│   │   │   │   │   ├── header_stm32f3.tex
+│   │   │   │   │   └── index.html
+│   │   │   │   ├── stm32f4
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_stm32f4.xml
+│   │   │   │   │   ├── header_stm32f4.tex
+│   │   │   │   │   └── index.html
+│   │   │   │   ├── stm32l1
+│   │   │   │   │   ├── Doxyfile
+│   │   │   │   │   ├── Doxyfile_latex
+│   │   │   │   │   ├── DoxygenLayout_stm32l1.xml
+│   │   │   │   │   ├── header_stm32l1.tex
+│   │   │   │   │   └── index.html
+│   │   │   │   └── usb
+│   │   │   │       ├── Doxyfile
+│   │   │   │       ├── Doxyfile_latex
+│   │   │   │       ├── DoxygenLayout_usb.xml
+│   │   │   │       └── header_usb.tex
+│   │   │   ├── HACKING
+│   │   │   ├── HACKING_COMMON_DOC
+│   │   │   ├── include
+│   │   │   │   ├── libopencm3
+│   │   │   │   │   ├── cm3
+│   │   │   │   │   │   ├── assert.h
+│   │   │   │   │   │   ├── common.h
+│   │   │   │   │   │   ├── cortex.h
+│   │   │   │   │   │   ├── doc-cm3.h
+│   │   │   │   │   │   ├── fpb.h
+│   │   │   │   │   │   ├── itm.h
+│   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   ├── mpu.h
+│   │   │   │   │   │   ├── nvic.h
+│   │   │   │   │   │   ├── scb.h
+│   │   │   │   │   │   ├── scs.h
+│   │   │   │   │   │   ├── sync.h
+│   │   │   │   │   │   ├── systick.h
+│   │   │   │   │   │   ├── tpiu.h
+│   │   │   │   │   │   └── vector.h
+│   │   │   │   │   ├── dispatch
+│   │   │   │   │   │   └── nvic.h
+│   │   │   │   │   ├── docmain.dox
+│   │   │   │   │   ├── efm32
+│   │   │   │   │   │   ├── efm32g
+│   │   │   │   │   │   │   ├── doc-efm32g.h
+│   │   │   │   │   │   │   └── irq.yaml
+│   │   │   │   │   │   ├── efm32gg
+│   │   │   │   │   │   │   ├── doc-efm32gg.h
+│   │   │   │   │   │   │   └── irq.yaml
+│   │   │   │   │   │   ├── efm32lg
+│   │   │   │   │   │   │   ├── doc-efm32lg.h
+│   │   │   │   │   │   │   └── irq.yaml
+│   │   │   │   │   │   ├── efm32tg
+│   │   │   │   │   │   │   ├── doc-efm32tg.h
+│   │   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   │   └── memorymap.h
+│   │   │   │   │   │   └── memorymap.h
+│   │   │   │   │   ├── license.dox
+│   │   │   │   │   ├── lm3s
+│   │   │   │   │   │   ├── doc-lm3s.h
+│   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   └── systemcontrol.h
+│   │   │   │   │   ├── lm4f
+│   │   │   │   │   │   ├── doc-lm4f.h
+│   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   ├── nvic.h
+│   │   │   │   │   │   ├── rcc.h
+│   │   │   │   │   │   ├── systemcontrol.h
+│   │   │   │   │   │   ├── uart.h
+│   │   │   │   │   │   └── usb.h
+│   │   │   │   │   ├── lpc13xx
+│   │   │   │   │   │   ├── doc-lpc13xx.h
+│   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   └── memorymap.h
+│   │   │   │   │   ├── lpc17xx
+│   │   │   │   │   │   ├── doc-lpc17xx.h
+│   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   └── memorymap.h
+│   │   │   │   │   ├── lpc43xx
+│   │   │   │   │   │   ├── adc.h
+│   │   │   │   │   │   ├── atimer.h
+│   │   │   │   │   │   ├── ccu.h
+│   │   │   │   │   │   ├── cgu.h
+│   │   │   │   │   │   ├── creg.h
+│   │   │   │   │   │   ├── doc-lpc43xx.h
+│   │   │   │   │   │   ├── eventrouter.h
+│   │   │   │   │   │   ├── gima.h
+│   │   │   │   │   │   ├── gpdma.h
+│   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   ├── i2c.h
+│   │   │   │   │   │   ├── i2s.h
+│   │   │   │   │   │   ├── ipc.h
+│   │   │   │   │   │   ├── m0
+│   │   │   │   │   │   │   └── irq.yaml
+│   │   │   │   │   │   ├── m4
+│   │   │   │   │   │   │   └── irq.yaml
+│   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   ├── rgu.h
+│   │   │   │   │   │   ├── ritimer.h
+│   │   │   │   │   │   ├── rtc.h
+│   │   │   │   │   │   ├── scu.h
+│   │   │   │   │   │   ├── sdio.h
+│   │   │   │   │   │   ├── sgpio.h
+│   │   │   │   │   │   ├── spifi.h
+│   │   │   │   │   │   ├── spi.h
+│   │   │   │   │   │   ├── ssp.h
+│   │   │   │   │   │   ├── timer.h
+│   │   │   │   │   │   ├── uart.h
+│   │   │   │   │   │   ├── usb.h
+│   │   │   │   │   │   └── wwdt.h
+│   │   │   │   │   ├── sam
+│   │   │   │   │   │   ├── 3n
+│   │   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   │   └── memorymap.h
+│   │   │   │   │   │   ├── 3x
+│   │   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   │   └── memorymap.h
+│   │   │   │   │   │   ├── eefc.h
+│   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   ├── pio.h
+│   │   │   │   │   │   ├── pmc.h
+│   │   │   │   │   │   ├── pwm.h
+│   │   │   │   │   │   ├── tc.h
+│   │   │   │   │   │   ├── uart.h
+│   │   │   │   │   │   ├── usart.h
+│   │   │   │   │   │   └── wdt.h
+│   │   │   │   │   ├── stm32
+│   │   │   │   │   │   ├── adc.h
+│   │   │   │   │   │   ├── can.h
+│   │   │   │   │   │   ├── cec.h
+│   │   │   │   │   │   ├── common
+│   │   │   │   │   │   │   ├── crc_common_all.h
+│   │   │   │   │   │   │   ├── crypto_common_f24.h
+│   │   │   │   │   │   │   ├── dac_common_all.h
+│   │   │   │   │   │   │   ├── dma_common_f24.h
+│   │   │   │   │   │   │   ├── dma_common_l1f013.h
+│   │   │   │   │   │   │   ├── exti_common_all.h
+│   │   │   │   │   │   │   ├── exti_common_l1f24.h
+│   │   │   │   │   │   │   ├── flash_common_f234.h
+│   │   │   │   │   │   │   ├── flash_common_f24.h
+│   │   │   │   │   │   │   ├── gpio_common_all.h
+│   │   │   │   │   │   │   ├── gpio_common_f234.h
+│   │   │   │   │   │   │   ├── gpio_common_f24.h
+│   │   │   │   │   │   │   ├── hash_common_f24.h
+│   │   │   │   │   │   │   ├── i2c_common_all.h
+│   │   │   │   │   │   │   ├── i2c_common_f24.h
+│   │   │   │   │   │   │   ├── iwdg_common_all.h
+│   │   │   │   │   │   │   ├── pwr_common_all.h
+│   │   │   │   │   │   │   ├── rng_common_f24.h
+│   │   │   │   │   │   │   ├── rtc_common_l1f024.h
+│   │   │   │   │   │   │   ├── spi_common_all.h
+│   │   │   │   │   │   │   ├── spi_common_f124.h
+│   │   │   │   │   │   │   ├── spi_common_f24.h
+│   │   │   │   │   │   │   ├── syscfg_common_l1f234.h
+│   │   │   │   │   │   │   ├── timer_common_all.h
+│   │   │   │   │   │   │   ├── timer_common_f24.h
+│   │   │   │   │   │   │   ├── usart_common_all.h
+│   │   │   │   │   │   │   ├── usart_common_f124.h
+│   │   │   │   │   │   │   └── usart_common_f24.h
+│   │   │   │   │   │   ├── comparator.h
+│   │   │   │   │   │   ├── crc.h
+│   │   │   │   │   │   ├── crypto.h
+│   │   │   │   │   │   ├── dac.h
+│   │   │   │   │   │   ├── dbgmcu.h
+│   │   │   │   │   │   ├── desig.h
+│   │   │   │   │   │   ├── dma.h
+│   │   │   │   │   │   ├── exti.h
+│   │   │   │   │   │   ├── f0
+│   │   │   │   │   │   │   ├── adc.h
+│   │   │   │   │   │   │   ├── cec.h
+│   │   │   │   │   │   │   ├── comparator.h
+│   │   │   │   │   │   │   ├── crc.h
+│   │   │   │   │   │   │   ├── dac.h
+│   │   │   │   │   │   │   ├── dma.h
+│   │   │   │   │   │   │   ├── doc-stm32f0.h
+│   │   │   │   │   │   │   ├── exti.h
+│   │   │   │   │   │   │   ├── flash.h
+│   │   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   │   ├── i2c.h
+│   │   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   │   ├── iwdg.h
+│   │   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   │   ├── pwr.h
+│   │   │   │   │   │   │   ├── rcc.h
+│   │   │   │   │   │   │   ├── rtc.h
+│   │   │   │   │   │   │   ├── spi.h
+│   │   │   │   │   │   │   ├── syscfg.h
+│   │   │   │   │   │   │   ├── timer.h
+│   │   │   │   │   │   │   ├── tsc.h
+│   │   │   │   │   │   │   └── usart.h
+│   │   │   │   │   │   ├── f1
+│   │   │   │   │   │   │   ├── adc.h
+│   │   │   │   │   │   │   ├── bkp.h
+│   │   │   │   │   │   │   ├── crc.h
+│   │   │   │   │   │   │   ├── dac.h
+│   │   │   │   │   │   │   ├── dma.h
+│   │   │   │   │   │   │   ├── doc-stm32f1.h
+│   │   │   │   │   │   │   ├── ethernet.h
+│   │   │   │   │   │   │   ├── exti.h
+│   │   │   │   │   │   │   ├── flash.h
+│   │   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   │   ├── i2c.h
+│   │   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   │   ├── iwdg.h
+│   │   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   │   ├── pwr.h
+│   │   │   │   │   │   │   ├── rcc.h
+│   │   │   │   │   │   │   ├── rtc.h
+│   │   │   │   │   │   │   ├── spi.h
+│   │   │   │   │   │   │   ├── timer.h
+│   │   │   │   │   │   │   └── usart.h
+│   │   │   │   │   │   ├── f2
+│   │   │   │   │   │   │   ├── crc.h
+│   │   │   │   │   │   │   ├── crypto.h
+│   │   │   │   │   │   │   ├── dac.h
+│   │   │   │   │   │   │   ├── dma.h
+│   │   │   │   │   │   │   ├── doc-stm32f2.h
+│   │   │   │   │   │   │   ├── exti.h
+│   │   │   │   │   │   │   ├── flash.h
+│   │   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   │   ├── hash.h
+│   │   │   │   │   │   │   ├── i2c.h
+│   │   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   │   ├── iwdg.h
+│   │   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   │   ├── pwr.h
+│   │   │   │   │   │   │   ├── rcc.h
+│   │   │   │   │   │   │   ├── rng.h
+│   │   │   │   │   │   │   ├── rtc.h
+│   │   │   │   │   │   │   ├── spi.h
+│   │   │   │   │   │   │   ├── syscfg.h
+│   │   │   │   │   │   │   ├── timer.h
+│   │   │   │   │   │   │   └── usart.h
+│   │   │   │   │   │   ├── f3
+│   │   │   │   │   │   │   ├── adc.h
+│   │   │   │   │   │   │   ├── crc.h
+│   │   │   │   │   │   │   ├── dac.h
+│   │   │   │   │   │   │   ├── dma.h
+│   │   │   │   │   │   │   ├── doc-stm32f3.h
+│   │   │   │   │   │   │   ├── exti.h
+│   │   │   │   │   │   │   ├── flash.h
+│   │   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   │   ├── i2c.h
+│   │   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   │   ├── iwdg.h
+│   │   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   │   ├── pwr.h
+│   │   │   │   │   │   │   ├── rcc.h
+│   │   │   │   │   │   │   ├── spi.h
+│   │   │   │   │   │   │   ├── syscfg.h
+│   │   │   │   │   │   │   ├── timer.h
+│   │   │   │   │   │   │   └── usart.h
+│   │   │   │   │   │   ├── f4
+│   │   │   │   │   │   │   ├── adc.h
+│   │   │   │   │   │   │   ├── crc.h
+│   │   │   │   │   │   │   ├── crypto.h
+│   │   │   │   │   │   │   ├── dac.h
+│   │   │   │   │   │   │   ├── dma.h
+│   │   │   │   │   │   │   ├── doc-stm32f4.h
+│   │   │   │   │   │   │   ├── exti.h
+│   │   │   │   │   │   │   ├── flash.h
+│   │   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   │   ├── hash.h
+│   │   │   │   │   │   │   ├── i2c.h
+│   │   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   │   ├── iwdg.h
+│   │   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   │   ├── pwr.h
+│   │   │   │   │   │   │   ├── rcc.h
+│   │   │   │   │   │   │   ├── rng.h
+│   │   │   │   │   │   │   ├── rtc.h
+│   │   │   │   │   │   │   ├── spi.h
+│   │   │   │   │   │   │   ├── syscfg.h
+│   │   │   │   │   │   │   ├── timer.h
+│   │   │   │   │   │   │   └── usart.h
+│   │   │   │   │   │   ├── flash.h
+│   │   │   │   │   │   ├── fsmc.h
+│   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   ├── hash.h
+│   │   │   │   │   │   ├── i2c.h
+│   │   │   │   │   │   ├── iwdg.h
+│   │   │   │   │   │   ├── l1
+│   │   │   │   │   │   │   ├── crc.h
+│   │   │   │   │   │   │   ├── dac.h
+│   │   │   │   │   │   │   ├── dma.h
+│   │   │   │   │   │   │   ├── doc-stm32l1.h
+│   │   │   │   │   │   │   ├── exti.h
+│   │   │   │   │   │   │   ├── flash.h
+│   │   │   │   │   │   │   ├── gpio.h
+│   │   │   │   │   │   │   ├── i2c.h
+│   │   │   │   │   │   │   ├── irq.yaml
+│   │   │   │   │   │   │   ├── iwdg.h
+│   │   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   │   ├── pwr.h
+│   │   │   │   │   │   │   ├── rcc.h
+│   │   │   │   │   │   │   ├── rtc.h
+│   │   │   │   │   │   │   ├── spi.h
+│   │   │   │   │   │   │   ├── syscfg.h
+│   │   │   │   │   │   │   ├── timer.h
+│   │   │   │   │   │   │   └── usart.h
+│   │   │   │   │   │   ├── memorymap.h
+│   │   │   │   │   │   ├── otg_fs.h
+│   │   │   │   │   │   ├── otg_hs.h
+│   │   │   │   │   │   ├── pwr.h
+│   │   │   │   │   │   ├── rcc.h
+│   │   │   │   │   │   ├── rtc.h
+│   │   │   │   │   │   ├── sdio.h
+│   │   │   │   │   │   ├── spi.h
+│   │   │   │   │   │   ├── syscfg.h
+│   │   │   │   │   │   ├── timer.h
+│   │   │   │   │   │   ├── tools.h
+│   │   │   │   │   │   ├── tsc.h
+│   │   │   │   │   │   ├── usart.h
+│   │   │   │   │   │   ├── usb_desc.h
+│   │   │   │   │   │   ├── usb.h
+│   │   │   │   │   │   └── wwdg.h
+│   │   │   │   │   └── usb
+│   │   │   │   │       ├── cdc.h
+│   │   │   │   │       ├── dfu.h
+│   │   │   │   │       ├── doc-usb.h
+│   │   │   │   │       ├── hid.h
+│   │   │   │   │       ├── usbd.h
+│   │   │   │   │       └── usbstd.h
+│   │   │   │   └── libopencmsis
+│   │   │   │       ├── core_cm3.h
+│   │   │   │       └── dispatch
+│   │   │   │           └── irqhandlers.h
+│   │   │   ├── ld
+│   │   │   │   └── devices.data
+│   │   │   ├── lib
+│   │   │   │   ├── cm3
+│   │   │   │   │   ├── assert.c
+│   │   │   │   │   ├── nvic.c
+│   │   │   │   │   ├── scb.c
+│   │   │   │   │   ├── sync.c
+│   │   │   │   │   ├── systick.c
+│   │   │   │   │   └── vector.c
+│   │   │   │   ├── dispatch
+│   │   │   │   │   ├── vector_chipset.c
+│   │   │   │   │   └── vector_nvic.c
+│   │   │   │   ├── efm32
+│   │   │   │   │   ├── efm32g
+│   │   │   │   │   │   ├── libopencm3_efm32g880f128.ld
+│   │   │   │   │   │   ├── libopencm3_efm32g.ld
+│   │   │   │   │   │   └── Makefile
+│   │   │   │   │   ├── efm32gg
+│   │   │   │   │   │   ├── libopencm3_efm32gg990f1024.ld
+│   │   │   │   │   │   ├── libopencm3_efm32gg.ld
+│   │   │   │   │   │   └── Makefile
+│   │   │   │   │   ├── efm32lg
+│   │   │   │   │   │   ├── libopencm3_efm32lg.ld
+│   │   │   │   │   │   └── Makefile
+│   │   │   │   │   └── efm32tg
+│   │   │   │   │       ├── libopencm3_efm32tg840f32.ld
+│   │   │   │   │       ├── libopencm3_efm32tg.ld
+│   │   │   │   │       └── Makefile
+│   │   │   │   ├── linker.ld.S
+│   │   │   │   ├── lm3s
+│   │   │   │   │   ├── gpio.c
+│   │   │   │   │   ├── libopencm3_lm3s.ld
+│   │   │   │   │   └── Makefile
+│   │   │   │   ├── lm4f
+│   │   │   │   │   ├── gpio.c
+│   │   │   │   │   ├── libopencm3_lm4f.ld
+│   │   │   │   │   ├── Makefile
+│   │   │   │   │   ├── rcc.c
+│   │   │   │   │   ├── systemcontrol.c
+│   │   │   │   │   ├── uart.c
+│   │   │   │   │   └── usb_lm4f.c
+│   │   │   │   ├── lpc13xx
+│   │   │   │   │   ├── gpio.c
+│   │   │   │   │   ├── libopencm3_lpc13xx.ld
+│   │   │   │   │   └── Makefile
+│   │   │   │   ├── lpc17xx
+│   │   │   │   │   ├── gpio.c
+│   │   │   │   │   ├── libopencm3_lpc17xx.ld
+│   │   │   │   │   └── Makefile
+│   │   │   │   ├── lpc43xx
+│   │   │   │   │   ├── gpio.c
+│   │   │   │   │   ├── i2c.c
+│   │   │   │   │   ├── ipc.c
+│   │   │   │   │   ├── m0
+│   │   │   │   │   │   ├── libopencm3_lpc43xx_m0.ld
+│   │   │   │   │   │   └── Makefile
+│   │   │   │   │   ├── m4
+│   │   │   │   │   │   ├── libopencm3_lpc43xx.ld
+│   │   │   │   │   │   ├── libopencm3_lpc43xx_ram_only.ld
+│   │   │   │   │   │   ├── libopencm3_lpc43xx_rom_to_ram.ld
+│   │   │   │   │   │   ├── Makefile
+│   │   │   │   │   │   └── vector_chipset.c
+│   │   │   │   │   ├── scu.c
+│   │   │   │   │   ├── ssp.c
+│   │   │   │   │   ├── timer.c
+│   │   │   │   │   ├── uart.c
+│   │   │   │   │   └── wwdt.c
+│   │   │   │   ├── lpc43xx_m0
+│   │   │   │   │   ├── Makefile
+│   │   │   │   │   └── vector.c
+│   │   │   │   ├── Makefile.include
+│   │   │   │   ├── sam
+│   │   │   │   │   ├── 3n
+│   │   │   │   │   │   ├── libopencm3_sam3n.ld
+│   │   │   │   │   │   └── Makefile
+│   │   │   │   │   ├── 3x
+│   │   │   │   │   │   ├── libopencm3_sam3x.ld
+│   │   │   │   │   │   └── Makefile
+│   │   │   │   │   └── common
+│   │   │   │   │       ├── gpio.c
+│   │   │   │   │       ├── pmc.c
+│   │   │   │   │       └── usart.c
+│   │   │   │   ├── stm32
+│   │   │   │   │   ├── can.c
+│   │   │   │   │   ├── common
+│   │   │   │   │   │   ├── crc_common_all.c
+│   │   │   │   │   │   ├── crypto_common_f24.c
+│   │   │   │   │   │   ├── dac_common_all.c
+│   │   │   │   │   │   ├── dma_common_f24.c
+│   │   │   │   │   │   ├── dma_common_l1f013.c
+│   │   │   │   │   │   ├── exti_common_all.c
+│   │   │   │   │   │   ├── flash_common_f234.c
+│   │   │   │   │   │   ├── flash_common_f24.c
+│   │   │   │   │   │   ├── gpio_common_all.c
+│   │   │   │   │   │   ├── gpio_common_f0234.c
+│   │   │   │   │   │   ├── hash_common_f24.c
+│   │   │   │   │   │   ├── i2c_common_all.c
+│   │   │   │   │   │   ├── iwdg_common_all.c
+│   │   │   │   │   │   ├── pwr_common_all.c
+│   │   │   │   │   │   ├── rtc_common_l1f024.c
+│   │   │   │   │   │   ├── spi_common_all.c
+│   │   │   │   │   │   ├── spi_common_f124.c
+│   │   │   │   │   │   ├── timer_common_all.c
+│   │   │   │   │   │   ├── timer_common_f234.c
+│   │   │   │   │   │   ├── timer_common_f24.c
+│   │   │   │   │   │   ├── usart_common_all.c
+│   │   │   │   │   │   └── usart_common_f124.c
+│   │   │   │   │   ├── desig.c
+│   │   │   │   │   ├── f0
+│   │   │   │   │   │   ├── adc.c
+│   │   │   │   │   │   ├── comparator.c
+│   │   │   │   │   │   ├── crc.c
+│   │   │   │   │   │   ├── dac.c
+│   │   │   │   │   │   ├── dma.c
+│   │   │   │   │   │   ├── flash.c
+│   │   │   │   │   │   ├── gpio.c
+│   │   │   │   │   │   ├── i2c.c
+│   │   │   │   │   │   ├── iwdg.c
+│   │   │   │   │   │   ├── libopencm3_stm32f0.ld
+│   │   │   │   │   │   ├── Makefile
+│   │   │   │   │   │   ├── pwr.c
+│   │   │   │   │   │   ├── rcc.c
+│   │   │   │   │   │   ├── rtc.c
+│   │   │   │   │   │   ├── spi.c
+│   │   │   │   │   │   ├── syscfg.c
+│   │   │   │   │   │   ├── timer.c
+│   │   │   │   │   │   └── usart.c
+│   │   │   │   │   ├── f1
+│   │   │   │   │   │   ├── adc.c
+│   │   │   │   │   │   ├── crc.c
+│   │   │   │   │   │   ├── dac.c
+│   │   │   │   │   │   ├── dma.c
+│   │   │   │   │   │   ├── ethernet.c
+│   │   │   │   │   │   ├── flash.c
+│   │   │   │   │   │   ├── gpio.c
+│   │   │   │   │   │   ├── i2c.c
+│   │   │   │   │   │   ├── iwdg.c
+│   │   │   │   │   │   ├── libopencm3_stm32f1.ld
+│   │   │   │   │   │   ├── Makefile
+│   │   │   │   │   │   ├── pwr.c
+│   │   │   │   │   │   ├── rcc.c
+│   │   │   │   │   │   ├── rtc.c
+│   │   │   │   │   │   ├── spi.c
+│   │   │   │   │   │   ├── stm32f100x4.ld
+│   │   │   │   │   │   ├── stm32f100x6.ld
+│   │   │   │   │   │   ├── stm32f100x8.ld
+│   │   │   │   │   │   ├── stm32f100xb.ld
+│   │   │   │   │   │   ├── stm32f100xc.ld
+│   │   │   │   │   │   ├── stm32f100xd.ld
+│   │   │   │   │   │   ├── stm32f100xe.ld
+│   │   │   │   │   │   ├── timer.c
+│   │   │   │   │   │   └── usart.c
+│   │   │   │   │   ├── f2
+│   │   │   │   │   │   ├── crc.c
+│   │   │   │   │   │   ├── dac.c
+│   │   │   │   │   │   ├── dma.c
+│   │   │   │   │   │   ├── gpio.c
+│   │   │   │   │   │   ├── i2c.c
+│   │   │   │   │   │   ├── iwdg.c
+│   │   │   │   │   │   ├── libopencm3_stm32f2.ld
+│   │   │   │   │   │   ├── Makefile
+│   │   │   │   │   │   ├── rcc.c
+│   │   │   │   │   │   ├── rtc.c
+│   │   │   │   │   │   ├── spi.c
+│   │   │   │   │   │   ├── timer.c
+│   │   │   │   │   │   └── usart.c
+│   │   │   │   │   ├── f3
+│   │   │   │   │   │   ├── adc.c
+│   │   │   │   │   │   ├── crc.c
+│   │   │   │   │   │   ├── dac.c
+│   │   │   │   │   │   ├── dma.c
+│   │   │   │   │   │   ├── flash.c
+│   │   │   │   │   │   ├── gpio.c
+│   │   │   │   │   │   ├── i2c.c
+│   │   │   │   │   │   ├── iwdg.c
+│   │   │   │   │   │   ├── libopencm3_stm32f3.ld
+│   │   │   │   │   │   ├── Makefile
+│   │   │   │   │   │   ├── pwr.c
+│   │   │   │   │   │   ├── rcc.c
+│   │   │   │   │   │   ├── spi.c
+│   │   │   │   │   │   ├── timer.c
+│   │   │   │   │   │   ├── usart.c
+│   │   │   │   │   │   └── vector_chipset.c
+│   │   │   │   │   ├── f4
+│   │   │   │   │   │   ├── adc.c
+│   │   │   │   │   │   ├── crc.c
+│   │   │   │   │   │   ├── crypto.c
+│   │   │   │   │   │   ├── dac.c
+│   │   │   │   │   │   ├── dma.c
+│   │   │   │   │   │   ├── gpio.c
+│   │   │   │   │   │   ├── i2c.c
+│   │   │   │   │   │   ├── iwdg.c
+│   │   │   │   │   │   ├── libopencm3_stm32f4.ld
+│   │   │   │   │   │   ├── Makefile
+│   │   │   │   │   │   ├── pwr.c
+│   │   │   │   │   │   ├── rcc.c
+│   │   │   │   │   │   ├── rtc.c
+│   │   │   │   │   │   ├── spi.c
+│   │   │   │   │   │   ├── stm32f405x6.ld
+│   │   │   │   │   │   ├── timer.c
+│   │   │   │   │   │   ├── usart.c
+│   │   │   │   │   │   └── vector_chipset.c
+│   │   │   │   │   └── l1
+│   │   │   │   │       ├── crc.c
+│   │   │   │   │       ├── dac.c
+│   │   │   │   │       ├── dma.c
+│   │   │   │   │       ├── flash.c
+│   │   │   │   │       ├── gpio.c
+│   │   │   │   │       ├── i2c.c
+│   │   │   │   │       ├── iwdg.c
+│   │   │   │   │       ├── libopencm3_stm32l1.ld
+│   │   │   │   │       ├── Makefile
+│   │   │   │   │       ├── pwr.c
+│   │   │   │   │       ├── rcc.c
+│   │   │   │   │       ├── rtc.c
+│   │   │   │   │       ├── spi.c
+│   │   │   │   │       ├── stm32l15xx6.ld
+│   │   │   │   │       ├── stm32l15xx8.ld
+│   │   │   │   │       ├── stm32l15xxb.ld
+│   │   │   │   │       ├── stm32l15xxc.ld
+│   │   │   │   │       ├── stm32l15xxd.ld
+│   │   │   │   │       ├── timer.c
+│   │   │   │   │       └── usart.c
+│   │   │   │   └── usb
+│   │   │   │       ├── usb.c
+│   │   │   │       ├── usb_control.c
+│   │   │   │       ├── usb_f103.c
+│   │   │   │       ├── usb_f107.c
+│   │   │   │       ├── usb_f207.c
+│   │   │   │       ├── usb_fx07_common.c
+│   │   │   │       ├── usb_fx07_common.h
+│   │   │   │       ├── usb_private.h
+│   │   │   │       └── usb_standard.c
+│   │   │   ├── locm3.sublime-project
+│   │   │   ├── Makefile
+│   │   │   ├── README
+│   │   │   └── scripts
+│   │   │       ├── black_magic_probe_debug.scr
+│   │   │       ├── black_magic_probe_flash.scr
+│   │   │       ├── checkpatch.pl
+│   │   │       ├── data
+│   │   │       │   └── lpc43xx
+│   │   │       │       ├── adc.csv
+│   │   │       │       ├── adc.yaml
+│   │   │       │       ├── atimer.csv
+│   │   │       │       ├── atimer.yaml
+│   │   │       │       ├── ccu.csv
+│   │   │       │       ├── ccu.yaml
+│   │   │       │       ├── cgu.csv
+│   │   │       │       ├── cgu.yaml
+│   │   │       │       ├── creg.csv
+│   │   │       │       ├── creg.yaml
+│   │   │       │       ├── csv2yaml.py
+│   │   │       │       ├── eventrouter.csv
+│   │   │       │       ├── eventrouter.yaml
+│   │   │       │       ├── gen.py
+│   │   │       │       ├── gima.csv
+│   │   │       │       ├── gima.yaml
+│   │   │       │       ├── gpdma.csv
+│   │   │       │       ├── gpdma.yaml
+│   │   │       │       ├── gpio.csv
+│   │   │       │       ├── gpio.yaml
+│   │   │       │       ├── i2c.csv
+│   │   │       │       ├── i2c.yaml
+│   │   │       │       ├── i2s.csv
+│   │   │       │       ├── i2s.yaml
+│   │   │       │       ├── README
+│   │   │       │       ├── rgu.csv
+│   │   │       │       ├── rgu.yaml
+│   │   │       │       ├── ritimer.csv
+│   │   │       │       ├── ritimer.yaml
+│   │   │       │       ├── rtc.csv
+│   │   │       │       ├── rtc.yaml
+│   │   │       │       ├── scu.csv
+│   │   │       │       ├── scu.yaml
+│   │   │       │       ├── sdio.csv
+│   │   │       │       ├── sdio.yaml
+│   │   │       │       ├── sgpio.csv
+│   │   │       │       ├── sgpio.yaml
+│   │   │       │       ├── spi.csv
+│   │   │       │       ├── spifi.csv
+│   │   │       │       ├── spifi.yaml
+│   │   │       │       ├── spi.yaml
+│   │   │       │       ├── ssp.csv
+│   │   │       │       ├── ssp.yaml
+│   │   │       │       ├── usb.csv
+│   │   │       │       ├── usb.yaml
+│   │   │       │       └── yaml_odict.py
+│   │   │       ├── genlink.awk
+│   │   │       ├── irq2nvic_h
+│   │   │       └── lpcvtcksum
+│   │   ├── README
+│   │   ├── toolchain-arm-cortex-m.cmake
+│   │   └── tools
+│   │       ├── check_clock.py
+│   │       ├── cpld_bitstream.py
+│   │       ├── dumb_crc32.py
+│   │       ├── dump_cgu.py
+│   │       └── xsvf.py
+│   ├── hardware
+│   │   ├── bubblegum
+│   │   │   ├── bubblegum.brd
+│   │   │   ├── bubblegum-cache.lib
+│   │   │   ├── bubblegum.cmp
+│   │   │   ├── bubblegum.net
+│   │   │   ├── bubblegum.pro
+│   │   │   └── bubblegum.sch
+│   │   ├── gsg-kicad-lib
+│   │   │   ├── CODE_OF_CONDUCT.md
+│   │   │   ├── gsg-modules.pretty
+│   │   │   │   ├── 0402.kicad_mod
+│   │   │   │   ├── 0402-SHORT-10MIL.kicad_mod
+│   │   │   │   ├── 0603D.kicad_mod
+│   │   │   │   ├── 0603-JUMPER-3-BRIDGED12.kicad_mod
+│   │   │   │   ├── 0603-JUMPER_3.kicad_mod
+│   │   │   │   ├── 0603-JUMPER.kicad_mod
+│   │   │   │   ├── 0603.kicad_mod
+│   │   │   │   ├── 0805.kicad_mod
+│   │   │   │   ├── 1Pin_0603.kicad_mod
+│   │   │   │   ├── 2450BP39D100C.kicad_mod
+│   │   │   │   ├── 2500BL14M100.kicad_mod
+│   │   │   │   ├── 2X5-SHROUDED.kicad_mod
+│   │   │   │   ├── 2X5-SHROUDED_LOCK.kicad_mod
+│   │   │   │   ├── 2X5-SHROUDED-NS.kicad_mod
+│   │   │   │   ├── 2X5-SHROUDED_SMD.kicad_mod
+│   │   │   │   ├── 3306F.kicad_mod
+│   │   │   │   ├── 50MIL-HEADER-2x5-TH.kicad_mod
+│   │   │   │   ├── 5130BP18U4060.kicad_mod
+│   │   │   │   ├── APA102-2020.kicad_mod
+│   │   │   │   ├── B140-13-F.kicad_mod
+│   │   │   │   ├── B9413.kicad_mod
+│   │   │   │   ├── BGA256C80P16X16_1400X1400X170.kicad_mod
+│   │   │   │   ├── BGA7H1N6.kicad_mod
+│   │   │   │   ├── BK-912.kicad_mod
+│   │   │   │   ├── BU2032SM-BT.kicad_mod
+│   │   │   │   ├── CUI_PJ-102[AB]H.kicad_mod
+│   │   │   │   ├── DEA202484HT.kicad_mod
+│   │   │   │   ├── DIP14.kicad_mod
+│   │   │   │   ├── DSN1006-2.kicad_mod
+│   │   │   │   ├── F5Q.kicad_mod
+│   │   │   │   ├── FIL-DEA-0603.kicad_mod
+│   │   │   │   ├── foxglove_jtag.kicad_mod
+│   │   │   │   ├── GREATFET-PROTO-AREA.kicad_mod
+│   │   │   │   ├── GRF6011.kicad_mod
+│   │   │   │   ├── HC-49S.kicad_mod
+│   │   │   │   ├── HEADER-1x1.kicad_mod
+│   │   │   │   ├── HEADER-1x1-TESTPROBE.kicad_mod
+│   │   │   │   ├── HEADER-1x20.kicad_mod
+│   │   │   │   ├── HEADER-1x20-SMD.kicad_mod
+│   │   │   │   ├── HEADER-1x20-SMD-RA.kicad_mod
+│   │   │   │   ├── HEADER-1x20-TESTPROBE.kicad_mod
+│   │   │   │   ├── HEADER-1x2.kicad_mod
+│   │   │   │   ├── HEADER-1x2-SHORTED.kicad_mod
+│   │   │   │   ├── HEADER-1x3.kicad_mod
+│   │   │   │   ├── HEADER-1x4.kicad_mod
+│   │   │   │   ├── HEADER-1x5.kicad_mod
+│   │   │   │   ├── HEADER-1x6.kicad_mod
+│   │   │   │   ├── HEADER-1x7.kicad_mod
+│   │   │   │   ├── HEADER-1x8.kicad_mod
+│   │   │   │   ├── HEADER-2x10.kicad_mod
+│   │   │   │   ├── HEADER-2x11.kicad_mod
+│   │   │   │   ├── HEADER-2x12.kicad_mod
+│   │   │   │   ├── HEADER-2x13.kicad_mod
+│   │   │   │   ├── HEADER-2x16.kicad_mod
+│   │   │   │   ├── HEADER-2x20.kicad_mod
+│   │   │   │   ├── HEADER-2x20-LC.kicad_mod
+│   │   │   │   ├── HEADER-2x20-LC-SMD-2.kicad_mod
+│   │   │   │   ├── HEADER-2x20-LC-SMD-2_trap_ends.kicad_mod
+│   │   │   │   ├── HEADER-2x20-LC-SMD.kicad_mod
+│   │   │   │   ├── HEADER-2x20-LC-SMD_trap_ends.kicad_mod
+│   │   │   │   ├── HEADER-2x20-REVERSE.kicad_mod
+│   │   │   │   ├── HEADER-2x20-TESTPROBE.kicad_mod
+│   │   │   │   ├── HEADER-2x2.kicad_mod
+│   │   │   │   ├── HEADER-2x3.kicad_mod
+│   │   │   │   ├── HEADER-2x4.kicad_mod
+│   │   │   │   ├── HEADER-2x4-TESTPROBE.kicad_mod
+│   │   │   │   ├── HEADER-2x5.kicad_mod
+│   │   │   │   ├── HEADER-2x6.kicad_mod
+│   │   │   │   ├── HEADER-2x7.kicad_mod
+│   │   │   │   ├── HEADER-2x8.kicad_mod
+│   │   │   │   ├── HEADER-2x9.kicad_mod
+│   │   │   │   ├── HEADER-SMT-2x1.kicad_mod
+│   │   │   │   ├── HEADER-SMT-2x2.kicad_mod
+│   │   │   │   ├── HEADER-SMT-2x4.kicad_mod
+│   │   │   │   ├── HEADER-SMT-2x7.kicad_mod
+│   │   │   │   ├── HHM2293A1.kicad_mod
+│   │   │   │   ├── HOLE126MIL-COPPER.kicad_mod
+│   │   │   │   ├── HOLE126MIL.kicad_mod
+│   │   │   │   ├── JST_PH_S2B-PH-SM4-TB_02x2.00mm_Angled.kicad_mod
+│   │   │   │   ├── KT2520K.kicad_mod
+│   │   │   │   ├── LP0603.kicad_mod
+│   │   │   │   ├── LQFP144.kicad_mod
+│   │   │   │   ├── LTC5507.kicad_mod
+│   │   │   │   ├── LTST-S220.kicad_mod
+│   │   │   │   ├── MHSS1105.kicad_mod
+│   │   │   │   ├── OH4.kicad_mod
+│   │   │   │   ├── PinHeader_2x10_P2.54mm_Vertical_flipped.kicad_mod
+│   │   │   │   ├── POGOPIN-5-IMME.kicad_mod
+│   │   │   │   ├── QFN12-3.kicad_mod
+│   │   │   │   ├── QFN16-3.kicad_mod
+│   │   │   │   ├── QFN20-4.kicad_mod
+│   │   │   │   ├── QFN24-4.kicad_mod
+│   │   │   │   ├── QFN32-5.kicad_mod
+│   │   │   │   ├── QFN-56-1EP_8x8mm_P0.5mm_EP6.5x6.5mm_ThermalVias.kicad_mod
+│   │   │   │   ├── RESISTOR-AXIAL-1.7x3.3mm.kicad_mod
+│   │   │   │   ├── RESISTOR-AXIAL-2.3x6.0mm.kicad_mod
+│   │   │   │   ├── RJ45-RJHSE-5380.kicad_mod
+│   │   │   │   ├── SiT1533.kicad_mod
+│   │   │   │   ├── SKY13317-373LF.kicad_mod
+│   │   │   │   ├── SKY13322-375LF.kicad_mod
+│   │   │   │   ├── SKY13350-385LF.kicad_mod
+│   │   │   │   ├── SKY13351-378LF.kicad_mod
+│   │   │   │   ├── SKY13374-397LF.kicad_mod
+│   │   │   │   ├── SKY13411-374LF.kicad_mod
+│   │   │   │   ├── SLG46621.kicad_mod
+│   │   │   │   ├── SMA-73251-2120.kicad_mod
+│   │   │   │   ├── SMA-EDGE.kicad_mod
+│   │   │   │   ├── SMA-KIT-1.5MF.kicad_mod
+│   │   │   │   ├── SMA-VERTICAL.kicad_mod
+│   │   │   │   ├── SOD128.kicad_mod
+│   │   │   │   ├── SOIC16.kicad_mod
+│   │   │   │   ├── SOIC8-154.kicad_mod
+│   │   │   │   ├── SOIC8-208.kicad_mod
+│   │   │   │   ├── SON50P200X200X60-9N.kicad_mod
+│   │   │   │   ├── SOT23-3.kicad_mod
+│   │   │   │   ├── SOT23GDS.kicad_mod
+│   │   │   │   ├── SOT25.kicad_mod
+│   │   │   │   ├── SOT343.kicad_mod
+│   │   │   │   ├── SOT353-1.kicad_mod
+│   │   │   │   ├── SOT363.kicad_mod
+│   │   │   │   ├── SOT457.kicad_mod
+│   │   │   │   ├── SSOP20.kicad_mod
+│   │   │   │   ├── SSSS810701.kicad_mod
+│   │   │   │   ├── SWITCH-FSMRA.kicad_mod
+│   │   │   │   ├── SWITCH-PTS840-P.kicad_mod
+│   │   │   │   ├── TerminalBlock_4UCON_19963_02x3.5mm_Straight.kicad_mod
+│   │   │   │   ├── TESTPOINT-50MIL.kicad_mod
+│   │   │   │   ├── TESTPOINT-TOORCAMP-2018-EDGE.kicad_mod
+│   │   │   │   ├── TESTPOINT-TOORCAMP-2018-JIG-SPRING.kicad_mod
+│   │   │   │   ├── TSLP-7-1.kicad_mod
+│   │   │   │   ├── TSSOP16.kicad_mod
+│   │   │   │   ├── TSSOP20.kicad_mod
+│   │   │   │   ├── TSSOP28.kicad_mod
+│   │   │   │   ├── TSSOP56.kicad_mod
+│   │   │   │   ├── USB-MICROB-FCI-10103592-EXT.kicad_mod
+│   │   │   │   ├── USB-MICROB-FCI-10103592.kicad_mod
+│   │   │   │   ├── USB-MICROB-FCI-10103592-LONGPADS.kicad_mod
+│   │   │   │   ├── VBPW34FASR.kicad_mod
+│   │   │   │   ├── VSSOP8.kicad_mod
+│   │   │   │   ├── XQFN10.kicad_mod
+│   │   │   │   ├── XSON6.kicad_mod
+│   │   │   │   ├── XTAL3.2x2.5mm-EXT.kicad_mod
+│   │   │   │   ├── XTAL3.2x2.5mm.kicad_mod
+│   │   │   │   ├── XTAL5.0x3.2mm.kicad_mod
+│   │   │   │   └── XTAL-AB26TRQ.kicad_mod
+│   │   │   ├── gsg-symbols.dcm
+│   │   │   ├── gsg-symbols.lib
+│   │   │   ├── LICENSE
+│   │   │   └── README.md
+│   │   ├── hackrf-one
+│   │   │   ├── 74AUP2G58GU.kicad_sym
+│   │   │   ├── acrylic_case
+│   │   │   │   ├── HackRF_One_Case_v2.dxf
+│   │   │   │   ├── HackRF_One_Case_v2.pdf
+│   │   │   │   ├── HackRF_One_Case_v2.svg
+│   │   │   │   └── README.md
+│   │   │   ├── baseband.kicad_sch
+│   │   │   ├── fp-lib-table
+│   │   │   ├── frontend.kicad_sch
+│   │   │   ├── hackrf-one-cache.lib
+│   │   │   ├── hackrf-one.kicad_pcb
+│   │   │   ├── hackrf-one.kicad_pro
+│   │   │   ├── hackrf-one.kicad_sch
+│   │   │   ├── LICENSE
+│   │   │   ├── mcu.kicad_sch
+│   │   │   ├── PlasticCase_CAD
+│   │   │   │   ├── Case_With_HackRF.png
+│   │   │   │   ├── HackRF_One_Case.png
+│   │   │   │   ├── HackRF_One_Case_With_Button_CutOuts.dxf
+│   │   │   │   └── README
+│   │   │   ├── README
+│   │   │   └── sym-lib-table
+│   │   ├── jawbreaker
+│   │   │   ├── baseband.sch
+│   │   │   ├── frontend.sch
+│   │   │   ├── jawbreaker.brd
+│   │   │   ├── jawbreaker-cache.lib
+│   │   │   ├── jawbreaker.cmp
+│   │   │   ├── jawbreaker.net
+│   │   │   ├── jawbreaker.pro
+│   │   │   ├── jawbreaker.sch
+│   │   │   ├── mcu.sch
+│   │   │   ├── README
+│   │   │   └── SoBv1_DP17298
+│   │   │       ├── jawbreaker_and_case.png
+│   │   │       ├── README
+│   │   │       ├── SoBv1-DP17298-jawbreaker-Bottom_laser_cutting_493.3mm_Easy.txt
+│   │   │       ├── SoBv1-DP17298-jawbreaker-Bottom.skp
+│   │   │       ├── SoBv1-DP17298-jawbreaker-Bottom.svg
+│   │   │       ├── SoBv1-DP17298-jawbreaker.jpg
+│   │   │       ├── SoBv1-DP17298-jawbreaker-Top_laser_cutting_1153.3mm_Normal.txt
+│   │   │       ├── SoBv1-DP17298-jawbreaker-Top.skp
+│   │   │       └── SoBv1-DP17298-jawbreaker-Top.svg
+│   │   ├── jellybean
+│   │   │   ├── jellybean_board_PCB_layers.pdf
+│   │   │   ├── jellybean_BOM.ods
+│   │   │   ├── jellybean.brd
+│   │   │   ├── jellybean-cache.lib
+│   │   │   ├── jellybean.cmp
+│   │   │   ├── jellybean.net
+│   │   │   ├── JellyBean_PinMux.pmx
+│   │   │   ├── JellyBean_pins.png
+│   │   │   ├── jellybean.pro
+│   │   │   ├── jellybean.sch
+│   │   │   ├── jellybean_schematic.pdf
+│   │   │   ├── JellyBean_TPS62410.ods
+│   │   │   └── README
+│   │   ├── kicad
+│   │   │   ├── hackrf.dcm
+│   │   │   ├── hackrf.lib
+│   │   │   └── hackrf.mod
+│   │   ├── lemondrop
+│   │   │   ├── lemondrop.brd
+│   │   │   ├── lemondrop-cache.lib
+│   │   │   ├── lemondrop.cmp
+│   │   │   ├── lemondrop.net
+│   │   │   ├── lemondrop.pro
+│   │   │   ├── lemondrop.sch
+│   │   │   └── README
+│   │   ├── licorice
+│   │   │   ├── licorice.brd
+│   │   │   ├── licorice-cache.lib
+│   │   │   ├── licorice.cmp
+│   │   │   ├── licorice.net
+│   │   │   ├── licorice.pro
+│   │   │   └── licorice.sch
+│   │   ├── LNA915
+│   │   │   ├── fp-lib-table
+│   │   │   ├── LNA915-cache.lib
+│   │   │   ├── LNA915.cmp
+│   │   │   ├── LNA915.kicad_pcb
+│   │   │   ├── LNA915.lib
+│   │   │   ├── LNA915.pro
+│   │   │   ├── LNA915.sch
+│   │   │   ├── README
+│   │   │   └── sym-lib-table
+│   │   ├── lollipop
+│   │   │   ├── lollipop.brd
+│   │   │   ├── lollipop-cache.lib
+│   │   │   ├── lollipop.cmp
+│   │   │   ├── lollipop_logic.py
+│   │   │   ├── lollipop.net
+│   │   │   ├── lollipop.pro
+│   │   │   └── lollipop.sch
+│   │   ├── marzipan
+│   │   │   ├── baseband.sch
+│   │   │   ├── fp-lib-table
+│   │   │   ├── frontend.sch
+│   │   │   ├── marzipan-cache.lib
+│   │   │   ├── marzipan.cmp
+│   │   │   ├── marzipan.kicad_pcb
+│   │   │   ├── marzipan.net
+│   │   │   ├── marzipan.pro
+│   │   │   ├── marzipan.sch
+│   │   │   ├── mcu.sch
+│   │   │   └── README
+│   │   ├── neapolitan
+│   │   │   ├── baseband.sch
+│   │   │   ├── fp-lib-table
+│   │   │   ├── frontend.sch
+│   │   │   ├── mcu.sch
+│   │   │   ├── neapolitan-cache.lib
+│   │   │   ├── neapolitan.cmp
+│   │   │   ├── neapolitan.kicad_pcb
+│   │   │   ├── neapolitan.net
+│   │   │   ├── neapolitan.pro
+│   │   │   ├── neapolitan.sch
+│   │   │   └── README
+│   │   ├── operacake
+│   │   │   ├── fp-lib-table
+│   │   │   ├── operacake-cache.lib
+│   │   │   ├── operacake.kicad_pcb
+│   │   │   ├── operacake.net
+│   │   │   ├── operacake.pro
+│   │   │   ├── operacake.sch
+│   │   │   └── README
+│   │   └── test
+│   │       └── si5351-configure.py
+│   ├── host
+│   │   ├── cmake
+│   │   │   ├── cmake_uninstall.cmake.in
+│   │   │   ├── modules
+│   │   │   │   ├── FindFFTW3f.cmake
+│   │   │   │   └── FindLIBUSB.cmake
+│   │   │   └── set_release.cmake
+│   │   ├── CMakeLists.txt
+│   │   ├── hackrf-tools
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── getopt
+│   │   │   │   ├── getopt.c
+│   │   │   │   └── getopt.h
+│   │   │   └── src
+│   │   │       ├── CMakeLists.txt
+│   │   │       ├── hackrf_biast.c
+│   │   │       ├── hackrf_clock.c
+│   │   │       ├── hackrf_cpldjtag.c
+│   │   │       ├── hackrf_debug.c
+│   │   │       ├── hackrf_info.c
+│   │   │       ├── hackrf_operacake.c
+│   │   │       ├── hackrf_spiflash.c
+│   │   │       ├── hackrf_sweep.c
+│   │   │       └── hackrf_transfer.c
+│   │   ├── libhackrf
+│   │   │   ├── 53-hackrf.rules
+│   │   │   ├── 53-hackrf.rules.in
+│   │   │   ├── CMakeLists.txt
+│   │   │   ├── HackRFConfig.cmake
+│   │   │   ├── libhackrf.pc.in
+│   │   │   └── src
+│   │   │       ├── CMakeLists.txt
+│   │   │       ├── hackrf.c
+│   │   │       └── hackrf.h
+│   │   └── README.md
+│   ├── Jenkinsfile
+│   ├── Readme.md
+│   ├── tools
+│   │   ├── add-braces.sh
+│   │   ├── deploy-nightly.sh
+│   │   ├── reformat-source.sh
+│   │   └── sgpio_debug
+│   │       ├── create_tx_counter.py
+│   │       ├── sgpio_debug_rx.grc
+│   │       └── sgpio_debug_tx.sh
+│   └── TRADEMARK
+├── hardware
+│   ├── portapack_h1
+│   │   ├── audio.sch
+│   │   ├── cpld
+│   │   │   ├── 20150901
+│   │   │   │   ├── Makefile
+│   │   │   │   ├── output_files
+│   │   │   │   │   └── portapack_h1_cpld.svf
+│   │   │   │   ├── portapack_h1_cpld.qpf
+│   │   │   │   ├── portapack_h1_cpld.qsf
+│   │   │   │   ├── portapack_h1_cpld.sdc
+│   │   │   │   ├── top_tb.vhd
+│   │   │   │   └── top.vhd
+│   │   │   └── 20170522
+│   │   │       ├── Makefile
+│   │   │       ├── output_files
+│   │   │       │   └── portapack_h1_cpld.svf
+│   │   │       ├── portapack_h1_cpld.qpf
+│   │   │       ├── portapack_h1_cpld.qsf
+│   │   │       ├── portapack_h1_cpld.sdc
+│   │   │       └── top.vhd
+│   │   ├── fp-lib-table
+│   │   ├── gps.sch
+│   │   ├── hackrf_if.sch
+│   │   ├── lcd_sw_sd.sch
+│   │   ├── portapack_h1.kicad_pcb
+│   │   ├── portapack_h1.net
+│   │   ├── portapack_h1.pdf
+│   │   ├── portapack_h1.pro
+│   │   ├── portapack_h1.sch
+│   │   ├── power.sch
+│   │   ├── README
+│   │   └── sym-lib-table
+│   ├── portapack_h2
+│   │   └── 3d_printed
+│   │       ├── cover
+│   │       │   └── revisited_cover.stl
+│   │       ├── enclosure
+│   │       │   ├── revisited_down.stl
+│   │       │   ├── revisited_down.stp
+│   │       │   ├── revisited_support.stl
+│   │       │   ├── revisited_support.stp
+│   │       │   ├── revisited_up.stl
+│   │       │   └── revisited_up.stp
+│   │       └── README.md
+│   ├── portapack_h2m
+│   │   ├── fonts
+│   │   │   ├── adrip1-info.txt
+│   │   │   ├── adrip1.ttf
+│   │   │   ├── beatstreet-info.txt
+│   │   │   ├── beatstreet.ttf
+│   │   │   ├── Blackbook 3rd-info.txt
+│   │   │   ├── Blackbook 3rd.otf
+│   │   │   ├── BlackbookOne-info.txt
+│   │   │   ├── BlackbookOne.ttf
+│   │   │   ├── Bluebird Alishanty-info.txt
+│   │   │   ├── Bluebird Alishanty.ttf
+│   │   │   ├── degrassi-info.txt
+│   │   │   ├── degrassi.ttf
+│   │   │   ├── freshmarker-info.txt
+│   │   │   ├── freshmarker.ttf
+│   │   │   ├── _get_font_info.py
+│   │   │   ├── gomarice_simple_slum-info.txt
+│   │   │   ├── gomarice_simple_slum.ttf
+│   │   │   ├── GONGN___-info.txt
+│   │   │   ├── GONGN___.ttf
+│   │   │   ├── Kleinscribere-Bold-info.txt
+│   │   │   ├── Kleinscribere-Bold.ttf
+│   │   │   ├── Kleinscribere-info.txt
+│   │   │   ├── Kleinscribere.ttf
+│   │   │   ├── Schwarzenegger Condensed Regular-info.txt
+│   │   │   ├── Schwarzenegger Condensed Regular.ttf
+│   │   │   ├── Schwarzenegger-info.txt
+│   │   │   ├── Schwarzenegger.ttf
+│   │   │   ├── SedgwickAveDisplay-Regular-info.txt
+│   │   │   ├── SedgwickAveDisplay-Regular.ttf
+│   │   │   ├── SedgwickAve-Regular-info.txt
+│   │   │   ├── SedgwickAve-Regular.ttf
+│   │   │   ├── Smoke Weed-info.txt
+│   │   │   ├── Smoke Weed.otf
+│   │   │   ├── SouthernAire-info.txt
+│   │   │   ├── SouthernAire.ttf
+│   │   │   ├── SprayersTypes-info.txt
+│   │   │   ├── SprayersTypes.ttf
+│   │   │   ├── tagster-info.txt
+│   │   │   ├── tagster.otf
+│   │   │   └── TERMINAT.TTF
+│   │   └── portapack.svg
+│   └── portapack_h4m
+│       ├── 3d_printed
+│       │   └── README.md
+│       ├── Audio_Schematic.pdf
+│       ├── CPLD
+│       │   ├── AG256SL100
+│       │   │   ├── Makefile
+│       │   │   ├── output_files
+│       │   │   │   └── portapack_h4m_cpld.svf
+│       │   │   ├── portapack_h4m_cpld.qpf
+│       │   │   ├── portapack_h4m_cpld.qsf
+│       │   │   ├── portapack_h4m_cpld.sdc
+│       │   │   ├── quartus.ini_ignore
+│       │   │   └── top.vhd
+│       │   ├── README.md
+│       │   └── Supra
+│       │       ├── af_batch.tcl
+│       │       ├── af_ip.tcl
+│       │       ├── af_map.tcl
+│       │       ├── af_quartus.tcl
+│       │       ├── af_run.tcl
+│       │       ├── alta_db
+│       │       │   ├── alta.aqf
+│       │       │   ├── alta.asf
+│       │       │   ├── alta.cellmap
+│       │       │   ├── alta_lib.v
+│       │       │   ├── alta.pinmap
+│       │       │   ├── coverage.rpt.gz
+│       │       │   ├── filtered.vx
+│       │       │   ├── flatten.vx
+│       │       │   ├── fmax.rpt
+│       │       │   ├── hold.rpt.gz
+│       │       │   ├── hold_summary.rpt.gz
+│       │       │   ├── io.asf
+│       │       │   ├── packed.vx
+│       │       │   ├── place.tx
+│       │       │   ├── route.tx
+│       │       │   ├── setup.rpt.gz
+│       │       │   ├── setup_summary.rpt.gz
+│       │       │   └── xfer.rpt
+│       │       ├── H4M.proj
+│       │       ├── portapack_h4m_cpld.asf
+│       │       ├── portapack_h4m_cpld_assignment_defaults.qdf
+│       │       ├── portapack_h4m_cpld.bin
+│       │       ├── portapack_h4m_cpld_derate.sdc
+│       │       ├── portapack_h4m_cpld_download.svf
+│       │       ├── portapack_h4m_cpld.post.asf
+│       │       ├── portapack_h4m_cpld.pre.asf
+│       │       ├── portapack_h4m_cpld.prg
+│       │       ├── portapack_h4m_cpld.qpf
+│       │       ├── portapack_h4m_cpld.qsf
+│       │       ├── portapack_h4m_cpld_routed.v
+│       │       ├── portapack_h4m_cpld.sdc
+│       │       └── portapack_h4m_cpld_sram.prg
+│       ├── CPLD_Schematic.pdf
+│       ├── h4-gerbers
+│       │   ├── Drill_PTH_Through.DRL
+│       │   ├── Drill_PTH_Through_Via.DRL
+│       │   ├── Gerber_BoardOutlineLayer.GKO
+│       │   ├── Gerber_BottomLayer.GBL
+│       │   ├── Gerber_BottomPasteMaskLayer.GBP
+│       │   ├── Gerber_BottomSilkscreenLayer.GBO
+│       │   ├── Gerber_BottomSolderMaskLayer.GBS
+│       │   ├── Gerber_TopLayer.GTL
+│       │   ├── Gerber_TopPasteMaskLayer.GTP
+│       │   ├── Gerber_TopSilkscreenLayer.GTO
+│       │   ├── Gerber_TopSolderMaskLayer.GTS
+│       │   └── README.txt
+│       ├── h4-pcb
+│       │   ├── H4-Official Version_V1.0.PcbDoc.json
+│       │   └── README.txt
+│       ├── LCD_TF_Schematic.pdf
+│       ├── Power_Switch_Schematic.pdf
+│       ├── readme_h4m
+│       └── To_HackRF_Connector_Schematic.pdf
+├── LICENSE
+├── LICENSE.GPL-2.0-or-later
+├── praline-test.tree
+├── pull_request_template.md
+├── README.md
+├── sdcard
+│   ├── ADSB
+│   │   ├── About the new world_map.bin.url
+│   │   ├── airlines.db
+│   │   ├── icao24.db
+│   │   └── world_map.jpg
+│   ├── AIS
+│   │   └── mids.db
+│   ├── BLETX
+│   │   ├── Android Spam v4.txt
+│   │   ├── BLE Tx Sample.txt
+│   │   └── Discovery Packet.txt
+│   ├── CVSFILES
+│   │   ├── Aisle_Eighteen_Customer_Service_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Eighteen_ENGLISH.C16
+│   │   ├── Aisle_Eight_ENGLISH.C16
+│   │   ├── Aisle_Eight_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Eleven_ENGLISH.C16
+│   │   ├── Aisle_Eleven_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Fifteen_ENGLISH.C16
+│   │   ├── Aisle_Five_ENGLISH.C16
+│   │   ├── Aisle_Five_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Four_ENGLISH.C16
+│   │   ├── Aisle_Fourteen_ENGLISH.C16
+│   │   ├── Aisle_Nine_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Nineteen_Customer_Service_needed_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Nineteen_ENGLISH.C16
+│   │   ├── Aisle_One_ENGLISH.C16
+│   │   ├── Aisle_One_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Seven_ENGLISH.C16
+│   │   ├── Aisle_Seven_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Seventeen_Customer_Service_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Seventeen_ENGLISH.C16
+│   │   ├── Aisle_Six_ENGLISH.C16
+│   │   ├── Aisle_Six_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Sixteen_Customer_Service_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Sixteen_ENGLISH.C16
+│   │   ├── Aisle_Ten_ENGLISH.C16
+│   │   ├── Aisle_Ten_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Thirteen_ENGLISH.C16
+│   │   ├── Aisle_Thirteen_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Three_ENGLISH.C16
+│   │   ├── Aisle_Three_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Twelve_ENGLISH.C16
+│   │   ├── Aisle_Twelve_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Twenty_ENGLISH.C16
+│   │   ├── Aisle_Twenty_Medical_Alert_to_the_Minute_ENGLISH_SPANISH.C16
+│   │   ├── Aisle_Two_ENGLISH.C16
+│   │   ├── Aisle_Two_ENGLISH_SPANISH.C16
+│   │   ├── Allergy_Department_ENGLISH.C16
+│   │   ├── Baby_Formula_ENGLISH.C16
+│   │   ├── Baby_Formula_ENGLISH_SPANISH.C16
+│   │   ├── Batteries_ENGLISH.C16
+│   │   ├── Batteries_ENGLISH_SPANISH.C16
+│   │   ├── Body_Wash_ENGLISH.C16
+│   │   ├── Body_Wash_ENGLISH_SPANISH.C16
+│   │   ├── Cashier_to_the_Front_of_the_Store_ENGLISH.C16
+│   │   ├── Clinic_1_Medical_Alert_to_the_ENGLISH.C16
+│   │   ├── Cosmetics_Department_ENGLISH.C16
+│   │   ├── Cosmetics_Department_ENGLISH_SPANISH.C16
+│   │   ├── Cough_Cold_ENGLISH.C16
+│   │   ├── Cough_Cold_ENGLISH_SPANISH.C16
+│   │   ├── Customer_Service_Scan_All_Aisles_ENGLISH.C16
+│   │   ├── Dental_Care_ENGLISH.C16
+│   │   ├── Dental_Care_ENGLISH_SPANISH.C16
+│   │   ├── Deodorants_ENGLISH.C16
+│   │   ├── Deodorants_ENGLISH_SPANISH.C16
+│   │   ├── Diet_and_Nutrition_Department_ENGLISH.C16
+│   │   ├── Diet_and_Nutrition_Department_ENGLISH_SPANISH.C16
+│   │   ├── Ding_1_ENGLISH.C16
+│   │   ├── Electric_Razors_ENGLISH.C16
+│   │   ├── Electric_Razors_ENGLISH_SPANISH.C16
+│   │   ├── Electronics_ENGLISH.C16
+│   │   ├── Electronics_ENGLISH_SPANISH.C16
+│   │   ├── Eye_Care_Department_ENGLISH.C16
+│   │   ├── Eye_Care_Department_ENGLISH_SPANISH.C16
+│   │   ├── Family_Planning_ENGLISH.C16
+│   │   ├── Family_Planning_ENGLISH_SPANISH.C16
+│   │   ├── Film_Department_ENGLISH.C16
+│   │   ├── Film_Department_ENGLISH_SPANISH.C16
+│   │   ├── First_Aid_Department_ENGLISH.C16
+│   │   ├── First_Aid_Department_ENGLISH_SPANISH.C16
+│   │   ├── Foot_Care_Department_ENGLISH.C16
+│   │   ├── Foot_Care_Department_ENGLISH_SPANISH.C16
+│   │   ├── Hair-Care_Department_ENGLISH.C16
+│   │   ├── Hair-Care_Department_ENGLISH_SPANISH.C16
+│   │   ├── Health_Department_OTC_Health_ENGLISH.C16
+│   │   ├── Home_Diagnostics_ENGLISH_SPANISH.C16
+│   │   ├── Liquor_Department_ENGLISH.C16
+│   │   ├── Liquor_Department_ENGLISH_SPANISH.C16
+│   │   ├── Manager_to_the_Front_of_the_Store_ENGLISH.C16
+│   │   ├── Manager_to_the_Front_of_the_Store_ENGLISH_SPANISH.C16
+│   │   ├── Minute_Clinic_2_OTC_ENGLISH_SPANISH.C16
+│   │   ├── Pain_Reliever_Department_ENGLISH.C16
+│   │   ├── Pain_Reliever_Department_ENGLISH_SPANISH.C16
+│   │   ├── Pre-Recorded_Video_Department_ENGLISH.C16
+│   │   ├── Pre-Recorded_Video_Department_ENGLISH_SPANISH.C16
+│   │   ├── Recordable_Media_Department_ENGLISH.C16
+│   │   ├── Recordable_Media_Department_ENGLISH_SPANISH.C16
+│   │   ├── Security_to_the_Front_of_the_Store_ENGLISH.C16
+│   │   ├── Security_to_the_Front_of_the_Store_ENGLISH_SPANISH.C16
+│   │   ├── Security_to_the_Minute_Clinic_Customer_ENGLISH_SPANISH.C16
+│   │   ├── Shaving_Department_ENGLISH_SPANISH.C16
+│   │   ├── Skin_Care_Department_ENGLISH.C16
+│   │   ├── Skin_Care_Department_ENGLISH_SPANISH.C16
+│   │   ├── Small_Appliances_ENGLISH.C16
+│   │   ├── Small_Appliances_ENGLISH_SPANISH.C16
+│   │   ├── Special_Ding_ENGLISH.C16
+│   │   ├── Stationery_ENGLISH.C16
+│   │   ├── Stationery_ENGLISH_SPANISH.C16
+│   │   ├── Stomach_Remedies_ENGLISH.C16
+│   │   ├── Telecommunications_Department_ENGLISH.C16
+│   │   ├── Telecommunications_Department_ENGLISH_SPANISH.C16
+│   │   ├── the_Beauty_Counter_ENGLISH_SPANISH.C16
+│   │   ├── the_Fragrance_Case_ENGLISH.C16
+│   │   ├── the_Fragrance_Case_ENGLISH_SPANISH.C16
+│   │   ├── the_Pharmacy_ENGLISH.C16
+│   │   ├── the_Pharmacy_ENGLISH_SPANISH.C16
+│   │   ├── the_Photo_Lab_ENGLISH.C16
+│   │   ├── the_Photo_Lab_ENGLISH_SPANISH.C16
+│   │   ├── Vitamin_Department_ENGLISH.C16
+│   │   ├── Vitamin_Department_ENGLISH_SPANISH.C16
+│   │   └── Womens_Health_Department_ENGLISH_SPANISH.C16
+│   ├── FREQMAN
+│   │   ├── ACARS.TXT
+│   │   ├── CB_BAND_A.TXT
+│   │   ├── CB_BAND_B.TXT
+│   │   ├── CB_BAND_C.TXT
+│   │   ├── CB_BAND_D.TXT
+│   │   ├── CB_BAND_E_GER_1.TXT
+│   │   ├── CB_BAND_E_GER_2.TXT
+│   │   ├── CB_BAND_E.TXT
+│   │   ├── CB_BAND_F.TXT
+│   │   ├── CB_BAND_G.TXT
+│   │   ├── CB_BAND_H.TXT
+│   │   ├── CB_BAND_I.TXT
+│   │   ├── CB_BAND_J.TXT
+│   │   ├── CB_UHF_AUSTRALIA.txt
+│   │   ├── CHIPD.TXT
+│   │   ├── DABPLUS.TXT
+│   │   ├── DPMR446.TXT
+│   │   ├── DVB-T_FR.TXT
+│   │   ├── FM_JAPAN_BAND.TXT
+│   │   ├── FM_OIRT_BAND.TXT
+│   │   ├── FM_STANDARD_BAND.TXT
+│   │   ├── FPV_ANALOG.TXT
+│   │   ├── FREENET.TXT
+│   │   ├── FRS.TXT
+│   │   ├── GMRS.TXT
+│   │   ├── GSM-FR.TXT
+│   │   ├── GSM-NL.TXT
+│   │   ├── HAM_2M_BAND.TXT
+│   │   ├── HAM_70CM_BAND.TXT
+│   │   ├── ISM.TXT
+│   │   ├── JAMMER_GSM_GPS.TXT
+│   │   ├── JAMMER_WIFI.txt
+│   │   ├── KDR444.TXT
+│   │   ├── KEYFOB.txt
+│   │   ├── LPD433_1.TXT
+│   │   ├── LPD433_2.TXT
+│   │   ├── MARINE_VHF.TXT
+│   │   ├── MURS.TXT
+│   │   ├── NOAAWEATHER.TXT
+│   │   ├── OTHERS.TXT
+│   │   ├── PMR446.TXT
+│   │   ├── POCSAG.TXT
+│   │   ├── RADIOSONDE_EUCENTRAL.TXT
+│   │   ├── RADIOSONDE.TXT
+│   │   ├── RECON_F0_HOPLIST.TXT
+│   │   ├── RECON_F0_LIST.TXT
+│   │   ├── RECON.TXT
+│   │   ├── SCANNER.TXT
+│   │   ├── SSTV.TXT
+│   │   ├── TIMEFREQ.TXT
+│   │   ├── WATER_METERS.TXT
+│   │   ├── WEFAX_1.TXT
+│   │   ├── WEFAX_2.TXT
+│   │   ├── WLAN2_4.TXT
+│   │   ├── WLAN5_8.TXT
+│   │   ├── ZARE_REG_MREP.TXT
+│   │   └── ZARE_ZARE.TXT
+│   ├── GPS
+│   │   └── How to generate files for the GPS Sim.url
+│   ├── HOPPER
+│   │   ├── BLE_adv.PHOP
+│   │   ├── fobs_common.PHOP
+│   │   └── fobs.PHOP
+│   ├── LOOKINGGLASS
+│   │   └── PRESETS.TXT
+│   ├── MACADDRESS
+│   │   └── macaddress.db
+│   ├── OOKFILES
+│   │   └── OOK_EXAMPLE.OOK
+│   ├── OSM
+│   │   └── readme.md
+│   ├── PLAYLIST
+│   │   └── TESLAS.PPL
+│   ├── REMOTES
+│   │   └── touchtunes.txt
+│   ├── SAMPLES
+│   │   ├── HamptonBayFanOnOff.C16
+│   │   ├── HamptonBayFanOnOff.TXT
+│   │   ├── LED
+│   │   │   └── Aurora_RGB
+│   │   │       ├── BLUE.C16
+│   │   │       ├── BLUE.TXT
+│   │   │       ├── FAN_AUTO.C16
+│   │   │       ├── FAN_AUTO.TXT
+│   │   │       ├── FAN+-.C16
+│   │   │       ├── FAN+-.TXT
+│   │   │       ├── GREEN.C16
+│   │   │       ├── GREEN.TXT
+│   │   │       ├── HOLD.C16
+│   │   │       ├── HOLD.TXT
+│   │   │       ├── LED_SPEED.C16
+│   │   │       ├── LED_SPEED.TXT
+│   │   │       ├── LOCK.C16
+│   │   │       ├── LOCK.TXT
+│   │   │       ├── M_B_sync.C16
+│   │   │       ├── M_B_sync.TXT
+│   │   │       ├── Mode+.C16
+│   │   │       ├── MODE-.C16
+│   │   │       ├── Mode+.TXT
+│   │   │       ├── MODE-.TXT
+│   │   │       ├── POWER.C16
+│   │   │       ├── POWER.TXT
+│   │   │       ├── Q1.C16
+│   │   │       ├── Q1.TXT
+│   │   │       ├── Q2.C16
+│   │   │       ├── Q2.TXT
+│   │   │       ├── Q3.C16
+│   │   │       ├── Q3.TXT
+│   │   │       ├── Q4.C16
+│   │   │       ├── Q4.TXT
+│   │   │       ├── Q5.C16
+│   │   │       ├── Q5.TXT
+│   │   │       ├── README.md
+│   │   │       ├── RED.C16
+│   │   │       ├── RED.TXT
+│   │   │       └── remote.jpeg
+│   │   ├── README.md
+│   │   ├── TeslaChargePort_EU_AU.C16
+│   │   ├── TeslaChargePort_EU_AU.TXT
+│   │   ├── TeslaChargePort_US.C16
+│   │   └── TeslaChargePort_US.TXT
+│   ├── SPLASH
+│   │   ├── mayhem-default.bmp
+│   │   ├── mayhem-mt.bmp
+│   │   └── README.txt
+│   ├── SSTV
+│   │   ├── 320240BW.bmp
+│   │   ├── 320256C.bmp
+│   │   └── sstvtest.bmp
+│   ├── SUBGHZ
+│   │   └── flipper_tx_example.sub
+│   ├── WATERFALLS
+│   │   ├── aurora.txt
+│   │   ├── default.txt
+│   │   ├── flame.txt
+│   │   ├── matrix.txt
+│   │   └── sunset.txt
+│   ├── WAV
+│   │   ├── do not give up.wav
+│   │   ├── epic sax.wav
+│   │   ├── final countdown.wav
+│   │   ├── How to generate WAV files.url
+│   │   ├── mission impossible.wav
+│   │   ├── sexy.wav
+│   │   ├── shopping_cart_lock.wav
+│   │   ├── shopping_cart_unlock.wav
+│   │   ├── thug life.wav
+│   │   └── trololol.wav
+│   └── WHIPCALC
+│       └── ANTENNAS.TXT
+└── SECURITY.md
+
+671 directories, 4938 files
