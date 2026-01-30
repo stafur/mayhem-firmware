@@ -27,13 +27,12 @@ using namespace hackrf::one;
 namespace baseband {
 
 void CPLD::init() {
-
 #ifdef PRALINE
     gpio_q_invert.write(true);
     chThdSleepMilliseconds(5);
     gpio_q_invert.write(false);
-    //gpio_target_tck.output();
-    //gpio_target_tck.write(true);
+    // gpio_target_tck.output();
+    // gpio_target_tck.write(true);
 #endif
     set_invert(false);
     gpio_q_invert.output();

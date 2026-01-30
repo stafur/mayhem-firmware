@@ -362,25 +362,24 @@ static void set_cpu_clock_speed() {
 #ifdef PRALINE
     // NOW enable the hardware path from the FPGA
     // Doing it here minimizes the time the MCU spends "breathless"
-    
-    //TODO: gpio_r9_clkin_en.write(1); //This write is causing the screen to go black.
+
+    // TODO: gpio_r9_clkin_en.write(1); //This write is causing the screen to go black.
 
     // We SKIP the switch to GP_CLKIN entirely.
     // This prevents the black screen.
     ui::Painter painter;
     painter.draw_string(
-		    {0, 16}, 
-		    {ui::font::fixed_8x16, 
-		    Color::yellow(), Color::black()}, 
-		    "PRO: STAYING ON IRC");
+        {0, 16},
+        {ui::font::fixed_8x16,
+         Color::yellow(), Color::black()},
+        "PRO: STAYING ON IRC");
     return;
 
-    //USED TO DEBUG PRALINE BOARD
+    // USED TO DEBUG PRALINE BOARD
     painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: CLK IN TST==="
-    );
+        {0, 0},  // Coordinates (X, Y)
+        ui::Style{ui::font::fixed_8x16, Color::white(), Color::black()},
+        "DEBUG: CLK IN TST===");
     chThdSleepMilliseconds(3000);
 #endif
 
@@ -395,22 +394,21 @@ static void set_cpu_clock_speed() {
         // If we timed out, the clock is DEAD.
         // Print a warning and stay on the internal 12MHz clock.
         painter.draw_string(
-		{0, 16}, 
-		{ui::font::fixed_8x16, Color::red(), Color::black()}, 
-		"ERR: PLL1 LOCK FAIL");
+            {0, 16},
+            {ui::font::fixed_8x16, Color::red(), Color::black()},
+            "ERR: PLL1 LOCK FAIL");
         return;
     }
 
-    //USED TO DEBUG PRALINE BOARD
+    // USED TO DEBUG PRALINE BOARD
     painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: SETSPD1B==="
-    );
+        {0, 0},  // Coordinates (X, Y)
+        ui::Style{ui::font::fixed_8x16, Color::white(), Color::black()},
+        "DEBUG: SETSPD1B===");
 
 #else
     while (!cgu::pll1::is_locked());
-#endif 
+#endif
 
     set_clock_config(clock_config_pll1_step);
 
@@ -550,9 +548,9 @@ static void initialize_boot_splash_screen() {
 
 init_status_t init() {
 #ifdef PRALINE
-    //Force R9 HACKRF PRO mimic for boot.
+    // Force R9 HACKRF PRO mimic for boot.
     hackrf_r9 = true;
-#endif    
+#endif
 
     set_idivc_base_clocks(cgu::CLK_SEL::IDIVC);
 
@@ -607,7 +605,7 @@ init_status_t init() {
 
     i2c0.start(i2c_config_fast_clock);
     chThdSleepMilliseconds(10);
-    
+
     /* Check if portapack is attached by checking if any of the two audio chips is present. */
     if (lcd_fast_setup == false && is_portapack_present() == false)
         return init_status_t::INIT_NO_PORTAPACK;
@@ -639,18 +637,17 @@ init_status_t init() {
         portapack::backlight()->on();
     }
 
-
 #ifdef PRALINE
-    //Start the FGPA sooner for the HACKRF_PRO
+    // Start the FGPA sooner for the HACKRF_PRO
     init_status_t return_code = init_status_t::INIT_SUCCESS;
     if (!hackrf::cpld::load_sram()) {
-        //if (lcd_fast_setup)
-            //chDbgPanic("HACKRF CPLD FAILED");
-        
+        // if (lcd_fast_setup)
+        // chDbgPanic("HACKRF CPLD FAILED");
+
         return_code = init_status_t::INIT_HACKRF_CPLD_FAILED;
     }
     chThdSleepMilliseconds(100);
-#else    
+#else
     init_status_t return_code = init_status_t::INIT_SUCCESS;
     if (!hackrf::cpld::load_sram()) {
         if (lcd_fast_setup)
@@ -672,49 +669,45 @@ init_status_t init() {
     gpdma::controller.enable();
     chThdSleepMilliseconds(10);
 
-#ifdef PRALINE    
-    //USED TO DEBUG PRALINE BOARD
+#ifdef PRALINE
+    // USED TO DEBUG PRALINE BOARD
     ui::Painter painter;
     painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: GDMA==="
-    );
+        {0, 0},  // Coordinates (X, Y)
+        ui::Style{ui::font::fixed_8x16, Color::white(), Color::black()},
+        "DEBUG: GDMA===");
     chThdSleepMilliseconds(3000);
 #endif
 
 #ifndef PRALINE
     audio::init(portapack_audio_codec());
 #else
-    //audio::init(portapack_audio_codec());
-    //USED TO DEBUG PRALINE BOARD
+    // audio::init(portapack_audio_codec());
+    // USED TO DEBUG PRALINE BOARD
     painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: AUDIO==="
-    );
+        {0, 0},  // Coordinates (X, Y)
+        ui::Style{ui::font::fixed_8x16, Color::white(), Color::black()},
+        "DEBUG: AUDIO===");
     chThdSleepMilliseconds(3000);
 #endif
 
     battery::BatteryManagement::set_calc_override(persistent_memory::ui_override_batt_calc());
 #ifdef PRALINE
-    //USED TO DEBUG PRALINE BOARD
+    // USED TO DEBUG PRALINE BOARD
     painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: BTTRY==="
-    );
+        {0, 0},  // Coordinates (X, Y)
+        ui::Style{ui::font::fixed_8x16, Color::white(), Color::black()},
+        "DEBUG: BTTRY===");
     chThdSleepMilliseconds(3000);
 #endif
 
     i2cdev::I2CDevManager::init();
 #ifdef PRALINE
-    //USED TO DEBUG PRALINE BOARD
+    // USED TO DEBUG PRALINE BOARD
     painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: I2CDEV==="
-    );
+        {0, 0},  // Coordinates (X, Y)
+        ui::Style{ui::font::fixed_8x16, Color::white(), Color::black()},
+        "DEBUG: I2CDEV===");
     chThdSleepMilliseconds(3000);
 #endif
 
@@ -726,12 +719,11 @@ init_status_t init() {
     }
 
 #ifdef PRALINE
-    //USED TO DEBUG PRALINE BOARD
+    // USED TO DEBUG PRALINE BOARD
     painter.draw_string(
-        {0, 0},// Coordinates (X, Y)
-        ui::Style{ ui::font::fixed_8x16, Color::white(), Color::black() },
-        "DEBUG: RTRNTOMAIN==="
-    );
+        {0, 0},  // Coordinates (X, Y)
+        ui::Style{ui::font::fixed_8x16, Color::white(), Color::black()},
+        "DEBUG: RTRNTOMAIN===");
     chThdSleepMilliseconds(3000);
 #endif
     return return_code;

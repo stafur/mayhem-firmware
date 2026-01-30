@@ -283,7 +283,7 @@ void ClockManager::init_clock_generator() {
     // FOR HACKRF_PRO DRIVE THE CLOCK REGISTERS FIRST
     // Force the pins to GPIO mode with no pull-ups/downs
     // P2_11 is clkin_en, P2_12 is clkout_en on R9/Pro
-    LPC_SCU->SFSP[2][11] = 0x0; // GPIO mode, disable glitch filter
+    LPC_SCU->SFSP[2][11] = 0x0;  // GPIO mode, disable glitch filter
     LPC_SCU->SFSP[2][12] = 0x0;
 
     // Ensure the GPIO directions are set to output
@@ -294,11 +294,11 @@ void ClockManager::init_clock_generator() {
     clock_generator.write(si5351a_ms_2_mcu_10m_reg);
     clock_generator.reset_plls();
 
-    chThdSleepMilliseconds(50); // Small wait for Si5351 to stabilize
+    chThdSleepMilliseconds(50);  // Small wait for Si5351 to stabilize
 #endif
 
     reference = choose_reference();
-    
+
     clock_generator.disable_output(clock_generator_output_mcu_clkin);
 
     const auto ref_pll = hackrf_r9
@@ -391,23 +391,22 @@ ClockManager::ReferenceSource ClockManager::detect_reference_source() {
 }
 
 ClockManager::Reference ClockManager::choose_reference() {
-
 #ifdef PRALINE
     hackrf_r9 = true;
 #endif
     if (hackrf_r9) {
 #ifdef PRALINE
-	gpio_r9_clkout_en.write(1); // Enable clock output from Si5351
+        gpio_r9_clkout_en.write(1);  // Enable clock output from Si5351
 
-	// P2_11 is GP_CLKIN. We must enable the input buffer (bit 6)
+        // P2_11 is GP_CLKIN. We must enable the input buffer (bit 6)
         // and set it to high-speed mode (bit 5).
         LPC_SCU->SFSP[2][11] = (0 << 0) | (1 << 5) | (1 << 6);
 
-	// Force the correct R9 reference source and frequency
+        // Force the correct R9 reference source and frequency
         // Praline/R9 MUST use 10000000 (10MHz), NOT 25000000.
-        const Reference r9_ref = { ReferenceSource::Xtal, 10000000 };
+        const Reference r9_ref = {ReferenceSource::Xtal, 10000000};
 
-	// Increase the stabilization delay significantly.
+        // Increase the stabilization delay significantly.
         // A blank screen often means the MCU clock glitched during the transition.
         volatile uint32_t delay = 1000000;
         while (delay--);
@@ -618,11 +617,11 @@ void ClockManager::stop_audio_pll() {
 }
 
 void ClockManager::enable_clock_output(bool enable) {
-//Create a safety flag specifically for PRALINE
+// Create a safety flag specifically for PRALINE
 #ifdef PRALINE
-        const bool needs_r9_safety = true;
+    const bool needs_r9_safety = true;
 #else
-       const bool needs_r9_safety = hackrf_r9;
+    const bool needs_r9_safety = hackrf_r9;
 #endif
     if (needs_r9_safety) {
         gpio_r9_clkout_en.output();
