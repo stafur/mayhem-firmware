@@ -141,6 +141,9 @@ Continuous (Fox-oring)
 #include <string.h>
 #include "i2cdevmanager.hpp"
 
+#include "lpc43xx_cpp.hpp"
+using namespace lpc43xx;
+
 #include "rffc507x.hpp" /* c/m, avoiding initial short ON Ant_DC_Bias pulse, from cold reset  */
 rffc507x::RFFC507x first_if;
 ui::SystemView* system_view_ptr;
@@ -208,6 +211,33 @@ int main(void) {
             config_mode_clear();
             break;
     }
+
+#ifdef PRALINE
+    // --- CRITICAL HANDOFF CLEANUP START ---
+
+    // 1. Disable LCD Controller (Stop the Source of Flashing)
+    // We write 0 to the LCD_CTRL register at address 0x40008000.
+    // (Using raw address to avoid 'LPC_LCD not declared' errors)
+    *reinterpret_cast<volatile uint32_t*>(0x40008000) = 0;
+
+    // 2. Set LCD/Radio Bus Pins to Input (Stop Pin Contention)
+    LPC_GPIO->DIR[4] &= ~0xFF; 
+    LPC_GPIO->DIR[7] &= ~0xFF; 
+    
+    // Clear Port 2 Control signals
+    LPC_GPIO->DIR[2] &= ~0xFFFF;
+
+    // 3. Reset CPU Clock to 12MHz IRC (Fixes "Si5351: FAIL")
+    // Set BASE_M4_CLK to Internal RC Oscillator (IDIVA / 0x01)
+    // Bit 24-28: CLK_SEL = 0x01
+    // Bit 11:    AUTOBLOCK = 1
+    LPC_CGU->BASE_M4_CLK.word = (0x01 << 24) | (1 << 11);
+
+    // Busy wait loop to allow clock switch to stabilize
+    for(volatile int i=0; i<10000; i++) __asm__("nop");
+
+    // --- CRITICAL HANDOFF CLEANUP END ---
+#endif
 
     m4_init(portapack::spi_flash::image_tag_hackrf, portapack::memory::map::m4_code_hackrf, true);
     m0_halt();

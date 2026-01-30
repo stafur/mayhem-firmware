@@ -32,11 +32,12 @@ if(BOARD STREQUAL "PRALINE")
 	set(BOARDSRC
 		${CHIBIOS_PORTAPACK}/boards/PORTAPACK_APPLICATION/fpga_bridge.c
 		${CHIBIOS_PORTAPACK}/boards/PORTAPACK_APPLICATION/board.cpp
+
 		#${HACKRF_COMMON_DIR}/adc.c
 		#${HACKRF_COMMON_DIR}/clkin.c
 		#${HACKRF_COMMON_DIR}/firmware_info.c
 		${HACKRF_COMMON_DIR}/fpga.c
-		${HACKRF_COMMON_DIR}/fpga_image.c
+		#${HACKRF_COMMON_DIR}/fpga_image.c
 		${HACKRF_COMMON_DIR}/hackrf_core.c
 		${HACKRF_COMMON_DIR}/i2c_bus.c
 		${HACKRF_COMMON_DIR}/i2c_lpc.c

@@ -38,6 +38,65 @@ constexpr GPIO gpio_led_usb = gpio[GPIO2_1];
 constexpr GPIO gpio_led_rx = gpio[GPIO2_2];
 constexpr GPIO gpio_led_tx = gpio[GPIO2_8];
 
+#ifdef PRALINE
+    // --- HACKRF PRO (PRALINE) ---
+    constexpr GPIO gpio_1v2_enable = gpio[GPIO4_7];
+    constexpr GPIO gpio_3v3aux_enable_n = gpio[GPIO5_15]; 
+    constexpr GPIO gpio_vaa_disable = gpio[GPIO4_1];
+
+    constexpr GPIO gpio_max283x_select = gpio[GPIO6_28];
+    constexpr GPIO gpio_max283x_enable = gpio[GPIO7_1];
+    constexpr GPIO gpio_max2837_rxenable = gpio[GPIO7_2];
+    constexpr GPIO gpio_max2837_txenable = gpio[GPIO3_4]; // Praline specific
+
+    constexpr GPIO gpio_max5864_select = gpio[GPIO6_30];
+
+    constexpr GPIO gpio_fpga_creset = gpio[GPIO2_11];
+    constexpr GPIO gpio_fpga_cdone  = gpio[GPIO5_14];
+    constexpr GPIO gpio_fpga_cs     = gpio[GPIO2_10];
+
+    constexpr GPIO gpio_mix_en_n = gpio[GPIO3_2];
+    constexpr GPIO gpio_lpf_en   = gpio[GPIO4_8];
+    constexpr GPIO gpio_rf_amp_en = gpio[GPIO4_9];
+    constexpr GPIO gpio_ant_bias_en_n = gpio[GPIO1_12];
+
+    // Mappings for compatibility (unused or mapped to defaults)
+    constexpr GPIO gpio_og_1v8_enable = gpio[GPIO3_6];
+    constexpr GPIO gpio_r9_1v8_enable = gpio[GPIO2_9];
+    constexpr GPIO gpio_vregmode = gpio[GPIO3_7];
+    constexpr GPIO gpio_og_vaa_disable = gpio[GPIO2_9];
+    constexpr GPIO gpio_r9_vaa_disable = gpio[GPIO3_6];
+    constexpr GPIO gpio_rx_mix_bp = gpio[GPIO2_12];
+    constexpr GPIO gpio_tx_mix_bp = gpio[GPIO2_11];
+    constexpr GPIO gpio_mix_bypass = gpio[GPIO5_16];
+    constexpr GPIO gpio_not_mix_bypass = gpio[GPIO1_0];
+    constexpr GPIO gpio_og_rx = gpio[GPIO5_5];
+    constexpr GPIO gpio_og_tx = gpio[GPIO5_15];
+    constexpr GPIO gpio_r9_rx = gpio[GPIO0_7];
+    constexpr GPIO gpio_lp = gpio[GPIO2_10];
+    constexpr GPIO gpio_hp = gpio[GPIO2_0];
+    constexpr GPIO gpio_rx_amp = gpio[GPIO1_11];
+    constexpr GPIO gpio_tx_amp = gpio[GPIO2_15];
+    constexpr GPIO gpio_amp_bypass = gpio[GPIO0_14];
+    constexpr GPIO gpio_not_rx_amp_pwr = gpio[GPIO1_12];
+    constexpr GPIO gpio_not_tx_amp_pwr = gpio[GPIO3_5];
+    constexpr GPIO gpio_rffc5072_resetx = gpio[GPIO2_14];
+    constexpr GPIO gpio_rffc5072_select = gpio[GPIO2_13];
+    constexpr GPIO gpio_rffc5072_clock = gpio[GPIO5_6];
+    constexpr GPIO gpio_rffc5072_data = gpio[GPIO3_3];
+    constexpr GPIO gpio_max2839_rxtx = gpio[GPIO2_5];
+    constexpr GPIO gpio_q_invert = gpio[GPIO0_13];
+    constexpr GPIO gpio_cpld_tdo = gpio[GPIO5_18];
+    constexpr GPIO gpio_cpld_tck = gpio[GPIO3_0];
+    constexpr GPIO gpio_cpld_tms = gpio[GPIO3_4];
+    constexpr GPIO gpio_cpld_tdi = gpio[GPIO3_1];
+    constexpr GPIO gpio_r9_clkin_en = gpio[GPIO5_15];
+    constexpr GPIO gpio_r9_clkout_en = gpio[GPIO0_9];
+    constexpr GPIO gpio_r9_mcu_clk_en = gpio[GPIO0_8];
+    constexpr GPIO gpio_r9_not_ant_pwr = gpio[GPIO2_4];
+
+#else
+
 constexpr GPIO gpio_og_1v8_enable = gpio[GPIO3_6];
 constexpr GPIO gpio_r9_1v8_enable = gpio[GPIO2_9];
 constexpr GPIO gpio_vregmode = gpio[GPIO3_7];
@@ -86,6 +145,7 @@ constexpr GPIO gpio_r9_clkin_en = gpio[GPIO5_15];
 constexpr GPIO gpio_r9_clkout_en = gpio[GPIO0_9];
 constexpr GPIO gpio_r9_mcu_clk_en = gpio[GPIO0_8];
 constexpr GPIO gpio_r9_not_ant_pwr = gpio[GPIO2_4];
+#endif
 
 /* LEDs */
 

@@ -107,6 +107,19 @@ enum Pins {
     P7_5,
     P7_6,
     P7_7,
+#ifdef PRALINE
+    // --- PRALINE SCU PINS HERE ---
+    P8_1,  // For GPIO 4[1]
+    P8_7,  // For GPIO 4[7]
+    P8_8,  // For GPIO 4[8]
+    P8_9,  // For GPIO 4[9]
+    P6_28, // For GPIO 6[28]
+    P6_30, // For GPIO 6[30]
+    PE_0,  // For GPIO 7[0]? (Placeholder for 7_1 if needed)
+    PE_1,  // For GPIO 7[1]
+    PE_2,  // For GPIO 7[2]
+    // -----------------------------
+#endif
     P9_5,
     P9_6,
     PF_4,
@@ -195,6 +208,22 @@ constexpr Pin pins[]{
     [P7_5] = {7, 5},
     [P7_6] = {7, 6},
     [P7_7] = {7, 7},
+
+#ifdef PRALINE
+    // --- PRALINE PIN MAPPINGS HERE ---
+    // Mapping: {Port, Pin}
+    [P8_1]  = {8, 1},
+    [P8_7]  = {8, 7},
+    [P8_8]  = {8, 8},
+    [P8_9]  = {8, 9},
+    [P6_28] = {6, 28},
+    [P6_30] = {6, 30},
+    [PE_0]  = {14, 0}, // Port E is 14
+    [PE_1]  = {14, 1},
+    [PE_2]  = {14, 2},
+    // ----------------------------------------
+#endif
+
     [P9_5] = {9, 5},
     [P9_6] = {9, 6},
     [PF_4] = {15, 4},
@@ -264,6 +293,20 @@ enum GPIOs {
     GPIO3_13,
     GPIO3_14,
     GPIO3_15,
+
+#ifdef PRALINE
+    // --- PRALINE GPIOs HERE ---
+    GPIO4_1,
+    GPIO4_7,
+    GPIO4_8,
+    GPIO4_9,
+    GPIO6_28,
+    GPIO6_30,
+    GPIO7_1,
+    GPIO7_2,
+    // ---------------------------------
+#endif
+
     GPIO4_11,
     GPIO5_0,
     GPIO5_1,
@@ -351,6 +394,21 @@ constexpr GPIO gpio[] = {
     [GPIO3_13] = {pins[P7_5], 3, 13, 0},
     [GPIO3_14] = {pins[P7_6], 3, 14, 0},
     [GPIO3_15] = {pins[P7_7], 3, 15, 0},
+
+#ifdef PRALINE
+    // --- PRALINE GPIO MAPPINGS HERE ---
+    // Format: { SCU_PIN, GPIO_PORT, GPIO_PIN, FUNC_MODE }
+    // Note: Assuming Function 0 for these based on typical LPC43xx
+    [GPIO4_1]  = {pins[P8_1],  4, 1,  0}, // VAA Disable
+    [GPIO4_7]  = {pins[P8_7],  4, 7,  0}, // 1V2 Enable
+    [GPIO4_8]  = {pins[P8_8],  4, 8,  0}, // LPF Enable
+    [GPIO4_9]  = {pins[P8_9],  4, 9,  0}, // RF Amp Enable
+    [GPIO6_28] = {pins[P6_28], 6, 28, 0}, // Radio CS
+    [GPIO6_30] = {pins[P6_30], 6, 30, 0}, // ADC CS
+    [GPIO7_1]  = {pins[PE_1],  7, 1,  4}, // Radio Enable (Check FUNC, usually 1 for PE_x)
+    [GPIO7_2]  = {pins[PE_2],  7, 2,  4}, // Radio RX Enable
+    // -----------------------------------------
+#endif
 
     [GPIO4_11] = {pins[P9_6], 4, 11, 0},
 
