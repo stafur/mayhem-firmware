@@ -4829,6 +4829,8 @@
 │   │       ├── dumb_crc32.py
 │   │       ├── dump_cgu.py
 │   │       └── xsvf.py
+│   ├── flashsize.h.in
+│   ├── format-code.sh
 │   ├── hardware
 │   │   ├── bubblegum
 │   │   │   ├── bubblegum.brd
@@ -5608,4 +5610,4 @@
 │       └── ANTENNAS.TXT
 └── SECURITY.md
 
-671 directories, 4938 files
+671 directories, 4940 files
