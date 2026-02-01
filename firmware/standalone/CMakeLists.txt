@@ -6,6 +6,7 @@ add_subdirectory(pacman)
 add_subdirectory(digitalrain)
 
 add_custom_target(
+	syscalls.cpp
 	standalone_apps
 	DEPENDS pacman_app digitalrain_app
 )
