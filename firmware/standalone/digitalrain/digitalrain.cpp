@@ -23,6 +23,9 @@
 
 #include <memory>
 #include <string>
+extern "C" void _fini() {
+    // Empty implementation to satisfy the linker
+}
 
 StandaloneViewMirror* standaloneViewMirror = nullptr;
 ui::Context* context = nullptr;

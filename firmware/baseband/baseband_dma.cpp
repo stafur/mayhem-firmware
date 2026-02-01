@@ -182,3 +182,16 @@ baseband::buffer_t wait_for_buffer() {
 
 } /* namespace dma */
 } /* namespace baseband */
+
+extern "C" {
+
+    // Stub _sbrk: Returns -1 to indicate Out of Memory immediately.
+    // This uses minimal instructions (mov, bx) saving ~100 bytes over a real implementation.
+    void* _sbrk(int) {
+        return (void*)-1;
+    }
+
+    // Stub _fini: Empty cleanup function.
+    void _fini() { }
+
+}

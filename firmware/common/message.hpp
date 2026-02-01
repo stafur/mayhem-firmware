@@ -1157,7 +1157,7 @@ class SSTVRXConfigureMessage : public Message {
    public:
     constexpr SSTVRXConfigureMessage(
         const uint8_t code)
-        : Message{id : ID::SSTVRXConfigure},
+        : Message{ID::SSTVRXConfigure},
           code(code) {
     }
 

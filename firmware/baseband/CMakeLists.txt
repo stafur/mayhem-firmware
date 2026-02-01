@@ -32,7 +32,8 @@ include(CheckCXXCompilerFlag)
 project(baseband_shared)
 
 # Compiler options here.
-set(USE_OPT "-O3 -g -falign-functions=16 -fno-math-errno --specs=nano.specs")
+#set(USE_OPT "-O3 -g -falign-functions=16 -fno-math-errno --specs=nano.specs")
+set(USE_OPT "-Os -g -falign-functions=16 -fno-math-errno --specs=nano.specs")
 
 # C specific options here (added to USE_OPT).
 set(USE_COPT "-std=gnu99")
@@ -318,7 +319,8 @@ macro(DeclareTargets chunk_tag name)
 endmacro()
 
 set(add_to_firmware TRUE)
-set(MODE_FLAGS "-O3")
+#set(MODE_FLAGS "-O3")
+set(MODE_FLAGS "-Os")
 
 
 ### ADS-B RX
@@ -503,7 +505,8 @@ DeclareTargets(PFUT flash_utility)
 
 ### Place external app and disabled images below so they don't get added to the firmware
 set(add_to_firmware FALSE)
-set(MODE_FLAGS "-O3")
+#set(MODE_FLAGS "-O3")
+set(MODE_FLAGS "-Os")
 
 ### FLEX RX
 

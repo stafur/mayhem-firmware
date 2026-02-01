@@ -32,7 +32,8 @@ include(CheckCXXCompilerFlag)
 project(application)
 
 # Compiler options here.
-set(USE_OPT "-Os -g --specs=nano.specs -specs=nosys.specs")
+#set(USE_OPT "-Os -g --specs=nano.specs -specs=nosys.specs")
+set(USE_OPT "-Os -g --specs=nano.specs")
 
 # C specific options here (added to USE_OPT).
 set(USE_COPT "-std=gnu99")
@@ -135,6 +136,7 @@ file(GLOB I2CDEV_SOURCES ${COMMON}/i2cdev_*.cpp)
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
 set(CPPSRC
+	syscalls.cpp
 	main.cpp
 	shell.cpp
 	${COMMON}/adsb.cpp
@@ -327,7 +329,7 @@ set(CPPSRC
 	view_factory_base.cpp
 )
 
-set_source_files_properties(${CPPSRC} PROPERTIES COMPILE_FLAGS -flto) # Add lto flag to the non-external sources only
+#set_source_files_properties(${CPPSRC} PROPERTIES COMPILE_FLAGS -flto) # Add lto flag to the non-external sources only
 
 list (APPEND CPPSRC ${EXTCPPSRC}) # Append external sources after setting lto flag to internal ones
 

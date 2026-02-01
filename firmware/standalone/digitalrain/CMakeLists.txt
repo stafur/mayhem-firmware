@@ -31,7 +31,8 @@ include(CheckCXXCompilerFlag)
 project(digitalrain_app)
 
 # Compiler options here.
-set(USE_OPT "-Os -g --specs=nano.specs --specs=nosys.specs")
+#set(USE_OPT "-Os -g --specs=nano.specs --specs=nosys.specs")
+set(USE_OPT "-Os -g ")
 
 # C specific options here (added to USE_OPT).
 set(USE_COPT "-std=gnu99")
